@@ -1,0 +1,26 @@
+{
+  "name": "dhl/module-rates-express",
+  "version": "0.1.0",
+  "type": "magento2-module",
+  "description": "Rates in Checkout implementation for DHL Express API",
+  "license": "OSL-3.0",
+  "authors": [
+    {
+      "email": "max.melzer@netresearch.de",
+      "name": "Max Melzer"
+    }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Dhl\\ExpressRates\\": ""
+    },
+    "files": [
+      "registration.php"
+    ]
+  },
+  "require": {
+    "magento/module-shipping": "^100.3.0",
+    "dhl/sdk-api-express": "@dev"
+  }
+}
