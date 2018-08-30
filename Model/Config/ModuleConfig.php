@@ -340,21 +340,6 @@ class ModuleConfig implements ModuleConfigInterface
     }
 
     /**
-     * Get the duty taxes account number.
-     *
-     * @param string|null $store
-     * @return string
-     */
-    public function getDutyTaxesAccountNumber($store = null): string
-    {
-        return (string)$this->scopeConfig->getValue(
-            self::CONFIG_XML_PATH_DUTY_TAXES_ACCOUNTNUMBER,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
      * Check if regular pickup is enabled.
      *
      * @param string|null $store

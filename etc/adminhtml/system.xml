@@ -91,11 +91,6 @@
                     <validate>validate-length maximum-length-9 minimum-length-9 validate-digits</validate>
                     <tooltip><![CDATA[This is the account number provided by DHL Express]]></tooltip>
                 </field>
-                <field id="duty_taxes_accountnumber" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="215" translate="tooltip label comment" type="text">
-                    <label>Duty/Taxes Account Number</label>
-                    <validate>validate-length maximum-length-9 minimum-length-9 validate-digits</validate>
-                    <tooltip><![CDATA[Duty/taxes account number]]></tooltip>
-                </field>
                 <field id="sandboxmode" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="220"
                        translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Sandbox Mode]]></label>

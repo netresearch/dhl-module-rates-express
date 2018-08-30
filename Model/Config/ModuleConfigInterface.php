@@ -32,7 +32,6 @@ interface ModuleConfigInterface
     public const CONFIG_XML_PATH_ACCOUNT_NUMBER = self::CONFIG_ROOT . 'accountnumber';
     public const CONFIG_XML_PATH_LOGLEVEL = self::CONFIG_ROOT . 'loglevel';
     public const CONFIG_XML_PATH_ENABLE_LOGGING = self::CONFIG_ROOT . 'logging';
-    public const CONFIG_XML_PATH_DUTY_TAXES_ACCOUNTNUMBER = self::CONFIG_ROOT . 'duty_taxes_accountnumber';
     public const CONFIG_XML_PATH_ALLOWED_DOMESTIC_PRODUCTS = self::CONFIG_ROOT . 'alloweddomesticproducts';
     public const CONFIG_XML_PATH_ALLOWED_INTERNATIONAL_PRODUCTS = self::CONFIG_ROOT . 'allowedinternationalproducts';
     public const CONFIG_XML_PATH_REGULAR_PICKUP = self::CONFIG_ROOT . 'regular_pickup';
@@ -198,14 +197,6 @@ interface ModuleConfigInterface
      * @return string[]
      */
     public function getAllowedInternationalProducts($store = null): array;
-
-    /**
-     * Get the duty taxes account number.
-     *
-     * @param null $store
-     * @return string
-     */
-    public function getDutyTaxesAccountNumber($store = null): string;
 
     /**
      * Check if regular pickup is enabled.
