@@ -54,8 +54,8 @@ class CustomInformation extends Field
      */
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element): string
     {
-        $moduleVersion = $this->moduleList->getOne('Dhl_Express')['setup_version'];
-        $logo          = $this->repository->getUrl('Dhl_Express::images/logo.svg');
+        $moduleVersion = $this->moduleList->getOne('Dhl_ExpressRates')['setup_version'];
+        $logo          = $this->repository->getUrl('Dhl_ExpressRates::images/logo.svg');
 
         $html = $this->getLayout()
             ->createBlock(\Magento\Framework\View\Element\Template::class)

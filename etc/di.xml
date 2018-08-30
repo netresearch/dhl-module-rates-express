@@ -45,4 +45,12 @@
             </argument>
         </arguments>
     </virtualType>
+
+    <!-- plugins -->
+    <type name="Magento\Quote\Model\Cart\ShippingMethodConverter">
+        <plugin name="Dhl_ExpressRates_AdditionalMethodData" type="Dhl\ExpressRates\Plugin\Quote\Cart\ShippingMethodConverterPlugin" sortOrder="1"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\Rate">
+        <plugin name="Dhl_ExpressRates_AdditionalMethodData" type="Dhl\ExpressRates\Plugin\Quote\Cart\ShippingMethodConverterPlugin" sortOrder="1"/>
+    </type>
 </config>

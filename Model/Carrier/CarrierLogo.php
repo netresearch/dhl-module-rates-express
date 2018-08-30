@@ -82,7 +82,7 @@ class CarrierLogo
             return null;
         }
         $logo = $this->moduleConfig->isCheckoutLogoEnabled($store)
-            ? $this->getViewFileUrl('Dhl_Express::'.$this->moduleConfig->getCarrierLogoUrl())
+            ? $this->getViewFileUrl('Dhl_ExpressRates::'.$this->moduleConfig->getCarrierLogoUrl())
             : null;
 
         return $logo;
