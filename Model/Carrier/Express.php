@@ -7,11 +7,8 @@ declare(strict_types=1);
 namespace Dhl\ExpressRates\Model\Carrier;
 
 use Dhl\ExpressRates\Model\Rate\CheckoutProvider as RateProvider;
-use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Xml\Security;
 use Magento\Quote\Model\Quote\Address\RateRequest;
-use Magento\Shipping\Model\Tracking\Result as TrackingResult;
 
 /**
  * Class Express
@@ -21,15 +18,20 @@ use Magento\Shipping\Model\Tracking\Result as TrackingResult;
  * @copyright 2018 Netresearch GmbH & Co. KG
  * @link http://www.netresearch.de/
  */
-class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline implements
+class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     \Magento\Shipping\Model\Carrier\CarrierInterface
 {
-    public const CARRIER_CODE = 'dhlexpress';
+    const CARRIER_CODE = 'dhlexpress';
 
     /**
      * @var string
      */
     protected $_code = self::CARRIER_CODE;
+
+    /**
+     * @var \Magento\Shipping\Model\Rate\ResultFactory
+     */
+    private $rateFactory;
 
     /**
      * @var RateProvider
@@ -42,18 +44,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline impl
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory $rateErrorFactory
      * @param \Psr\Log\LoggerInterface $logger
-     * @param Security $xmlSecurity
-     * @param \Magento\Shipping\Model\Simplexml\ElementFactory $xmlElFactory
      * @param \Magento\Shipping\Model\Rate\ResultFactory $rateFactory
-     * @param \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory
-     * @param \Magento\Shipping\Model\Tracking\ResultFactory $trackFactory
-     * @param TrackingResult\ErrorFactory $trackErrorFactory
-     * @param TrackingResult\StatusFactory $trackStatusFactory
-     * @param \Magento\Directory\Model\RegionFactory $regionFactory
-     * @param \Magento\Directory\Model\CountryFactory $countryFactory
-     * @param \Magento\Directory\Model\CurrencyFactory $currencyFactory
-     * @param \Magento\Directory\Helper\Data $directoryData
-     * @param \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry
      * @param RateProvider $rateProvider
      * @param array $data
      */
@@ -61,40 +52,14 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline impl
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory $rateErrorFactory,
         \Psr\Log\LoggerInterface $logger,
-        Security $xmlSecurity,
-        \Magento\Shipping\Model\Simplexml\ElementFactory $xmlElFactory,
         \Magento\Shipping\Model\Rate\ResultFactory $rateFactory,
-        \Magento\Quote\Model\Quote\Address\RateResult\MethodFactory $rateMethodFactory,
-        \Magento\Shipping\Model\Tracking\ResultFactory $trackFactory,
-        \Magento\Shipping\Model\Tracking\Result\ErrorFactory $trackErrorFactory,
-        \Magento\Shipping\Model\Tracking\Result\StatusFactory $trackStatusFactory,
-        \Magento\Directory\Model\RegionFactory $regionFactory,
-        \Magento\Directory\Model\CountryFactory $countryFactory,
-        \Magento\Directory\Model\CurrencyFactory $currencyFactory,
-        \Magento\Directory\Helper\Data $directoryData,
-        \Magento\CatalogInventory\Api\StockRegistryInterface $stockRegistry,
         RateProvider $rateProvider,
         array $data = []
     ) {
+        $this->rateFactory = $rateFactory;
         $this->rateProvider = $rateProvider;
-        parent::__construct(
-            $scopeConfig,
-            $rateErrorFactory,
-            $logger,
-            $xmlSecurity,
-            $xmlElFactory,
-            $rateFactory,
-            $rateMethodFactory,
-            $trackFactory,
-            $trackErrorFactory,
-            $trackStatusFactory,
-            $regionFactory,
-            $countryFactory,
-            $currencyFactory,
-            $directoryData,
-            $stockRegistry,
-            $data
-        );
+
+        parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
     }
 
     /**
@@ -110,29 +75,11 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline impl
             return $this->rateProvider->getRates($request);
         } catch (LocalizedException $e) {
             $this->_logger->error($e->getMessage(), ['exception' => $e->getPrevious() ?? $e]);
-            $result = $this->_rateFactory->create();
+            $result = $this->rateFactory->create();
             $result->append($this->getErrorMessage());
 
             return $result;
         }
-    }
-
-    /**
-     * @return array
-     */
-    public function getAllowedMethods(): array
-    {
-        // @TODO: Fill in functionality
-        return [];
-    }
-
-    /**
-     * @param DataObject $request
-     * @return DataObject
-     */
-    protected function _doShipmentRequest(DataObject $request): DataObject
-    {
-        return false;
     }
 
     /**
@@ -158,6 +105,33 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrierOnline impl
         }
 
         return parent::proccessAdditionalValidation($request);
+    }
+
+    /**
+     * @return array
+     */
+    public function getAllowedMethods()
+    {
+        return [];
+    }
+
+    /**
+     * Get error messages
+     *
+     * @return bool|\Magento\Quote\Model\Quote\Address\RateResult\Error
+     */
+    private function getErrorMessage()
+    {
+        if ($this->getConfigData('showmethod')) {
+            $error = $this->_rateErrorFactory->create();
+            $error->setCarrier($this->getCarrierCode());
+            $error->setCarrierTitle($this->getConfigData('title'));
+            $error->setErrorMessage($this->getConfigData('specificerrmsg'));
+
+            return $error;
+        }
+
+        return false;
     }
 
     /**

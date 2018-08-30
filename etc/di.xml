@@ -11,11 +11,8 @@
     <preference for="Dhl\ExpressRates\Webservice\Rate\ResponseDataMapperInterface" type="Dhl\ExpressRates\Webservice\Rate\ResponseDataMapper"/>
 
     <!-- sdk preferences -->
-    <preference for="Dhl\ExpressRates\Api\RateRequestBuilderInterface" type="Dhl\ExpressRates\RequestBuilder\RateRequestBuilder"/>
-    <preference for="Dhl\ExpressRates\Api\ShipmentRequestBuilderInterface" type="Dhl\ExpressRates\RequestBuilder\ShipmentRequestBuilder"/>
-    <preference for="Dhl\ExpressRates\Api\ShipmentDeleteRequestBuilderInterface" type="Dhl\ExpressRates\RequestBuilder\ShipmentDeleteRequestBuilder"/>
-    <preference for="Dhl\ExpressRates\Api\TrackingRequestBuilderInterface" type="Dhl\ExpressRates\RequestBuilder\TrackingRequestBuilder"/>
-    <preference for="Dhl\ExpressRates\Api\ServiceFactoryInterface" type="Dhl\ExpressRates\Webservice\SoapServiceFactory"/>
+    <preference for="Dhl\Express\Api\RateRequestBuilderInterface" type="Dhl\Express\RequestBuilder\RateRequestBuilder"/>
+    <preference for="Dhl\Express\Api\ServiceFactoryInterface" type="Dhl\Express\Webservice\SoapServiceFactory"/>
 
     <!-- argument overrides -->
     <type name="\Dhl\ExpressRates\Model\Carrier\Express">
