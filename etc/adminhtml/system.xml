@@ -5,7 +5,7 @@
             <group id="dhlexpress" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10" translate="tooltip label comment">
                 <!-- Custom information section -->
                 <field id="custom_information" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\CustomInformation</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\CustomInformation</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
 
@@ -13,11 +13,11 @@
                 <!-- General fields -->
                 <field id="general_settings" translate="tooltip label comment" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Checkout Presentation]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="active" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="100" translate="tooltip label comment"
-                       type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Enabled]]></label>
                     <tooltip><![CDATA[Enable this to have DHL Express shipping products listed during Checkout.]]></tooltip>
                 </field>
@@ -31,18 +31,18 @@
                     <tooltip><![CDATA[This value will be displayed on the Checkout page unless the "Display DHL Logo in Checkout" is enabled.]]></tooltip>
                 </field>
                 <field id="checkout_show_logo" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="111"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Display DHL Logo]]></label>
                     <comment><![CDATA[The logo image will replace the method title configured above.]]></comment>
                     <tooltip><![CDATA[Decide whether you want to show display the carrier name or it's logo image.]]></tooltip>
                 </field>
                 <field id="checkout_show_delivery_time" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="112"
-                       translate="comment label tooltip" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Display Estimated Delivery Date]]></label>
                     <tooltip><![CDATA[DHL estimates the delivery date based on the expected shipment date.  Select 'Yes' to display this date to the consumer on the checkoutu page.]]></tooltip>
                 </field>
                 <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="115"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkbox">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
                     <label><![CDATA[Applicable Countries]]></label>
                     <button_label>I want to customize the countries list</button_label>
                     <frontend_class>shipping-applicable-country</frontend_class>
@@ -59,7 +59,7 @@
                     </depends>
                 </field>
                 <field id="show_method_if_not_applicable" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="125"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Show Method if Not Applicable]]></label>
                     <tooltip><![CDATA[Disable to ensure this method is not visible during Checkout if there are no products available. Enable to display the text from the 'Unavailability Message' field.]]></tooltip>
                 </field>
@@ -74,7 +74,7 @@
                 <!-- API config fields -->
                 <field id="apisettings_heading" translate="tooltip label comment" sortOrder="190" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[API Settings]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="username" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="200" translate="tooltip label comment" type="text">
@@ -97,33 +97,33 @@
                     <tooltip><![CDATA[Duty/taxes account number]]></tooltip>
                 </field>
                 <field id="sandboxmode" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="220"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Sandbox Mode]]></label>
                     <tooltip><![CDATA[Use sandbox mode for testing. No real shipments or labels are created while in sandbox mode.]]></tooltip>
                 </field>
                 <field id="logging" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="225"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Enable Logging]]></label>
                     <tooltip><![CDATA[Select 'Yes' to enable logging.]]></tooltip>
                 </field>
                 <field id="loglevel" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="230"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Log Level]]></label>
                     <depends>
                         <field id="logging">1</field>
                     </depends>
-                    <source_model>Dhl\ShippingCore\Model\Config\Source\LogLevel</source_model>
+                    <source_model>Dhl\ExpressRates\Model\Config\Source\LogLevel</source_model>
                     <comment><![CDATA[Select 'Error' to only log errors, 'Info' for warnings, and 'Debug' to log all API activity (may result in large log files!). Log files are located under <code>var/log</code>.]]></comment>
                 </field>
 
                 <!-- Package insurance config fields -->
                 <field id="package_insurance_heading" translate="label" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Package Insurance]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="package_insurance" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="265"
-                       translate="label comment toolitip" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="label comment toolitip" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Package Insurance]]></label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[Enable to configure possible insurance charges for shipping rates displayed in Checkout.]]></comment>
@@ -141,16 +141,16 @@
                 <!-- Rate Request config fields -->
                 <field id="shipmentsettings_heading" translate="tooltip label comment" sortOrder="290" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label><![CDATA[Rates Request Settings]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="allowedinternationalproducts" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="300"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkboxset">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkboxset">
                     <label><![CDATA[Allowed International Products]]></label>
                     <source_model>Dhl\ExpressRates\Model\Config\Source\InternationalProducts</source_model>
                 </field>
                 <field id="alloweddomesticproducts" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="310"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkboxset">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkboxset">
                     <label><![CDATA[Allowed Domestic Products]]></label>
                     <source_model>Dhl\ExpressRates\Model\Config\Source\DomesticProducts</source_model>
                 </field>
@@ -163,7 +163,7 @@
                     <tooltip><![CDATA[Orders confirmed before the cut-off time are expected to ship the same day.  Orders confirmed after the cut-off time are expected to ship the following day. Holidays and weekends globally between the origin and destination are taken into account.]]></tooltip>
                 </field>
                 <field id="regular_pickup" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="350"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Regular Pickup]]></label>
                     <tooltip><![CDATA[Select whether you have a contract for a regular pickup with DHL.]]></tooltip>
                 </field>
@@ -174,12 +174,12 @@
                     <comment><![CDATA[At this time all shipments usually will have been handed over to DHL or picked up by DHL.]]></comment>
                 </field>
                 <field id="terms_of_trade" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="370"
-                       translate="label" type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       translate="label" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Terms of Trade]]></label>
-                    <source_model>Dhl\ShippingCore\Model\Config\Source\TermsOfTrade</source_model>
+                    <source_model>Dhl\ExpressRates\Model\Config\Source\TermsOfTrade</source_model>
                 </field>
                 <field id="enable_rates_configuration" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="380"
-                       translate="comment label tooltip" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkbox">
+                       translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
                     <label><![CDATA[Customize Checkout Rates]]></label>
                     <button_label><![CDATA[Let me customize the rates displayed in Checkout]]></button_label>
                 </field>
@@ -188,14 +188,14 @@
                 <field id="international_rates_calculation_heading" translate="tooltip label comment" sortOrder="595" showInDefault="1"
                        showInWebsite="1" showInStore="1">
                     <label><![CDATA[International Rates Calculation]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                     </depends>
                 </field>
                 <field id="international_affect_rates" translate="label tooltip" sortOrder="600" showInDefault="1" showInWebsite="1" showInStore="0"
-                       type="Dhl\ShippingCore\Model\Data\Form\Element\Checkbox">
+                       type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
                     <label><![CDATA[Modify International Rates]]></label>
                     <button_label><![CDATA[Modify rates for international shipments]]></button_label>
                     <depends>
@@ -203,7 +203,7 @@
                     </depends>
                 </field>
                 <field id="international_handling_type" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="605"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Calculate Handling Fee]]></label>
                     <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
                     <comment><![CDATA[Fixed values will be calculated with configured base currency. A percentage value "50" will be calculated as 50%.]]></comment>
@@ -241,14 +241,14 @@
                 <field id="domestic_rates_calculation_heading" translate="tooltip label comment" sortOrder="695" showInDefault="1"
                        showInWebsite="1" showInStore="0">
                     <label><![CDATA[Domestic Rates Calculation]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                     </depends>
                 </field>
                 <field id="domestic_affect_rates" showInDefault="1" showInWebsite="1" showInStore="0"  sortOrder="700"
-                       translate="comment label tooltip" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkbox">
+                       translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
                     <label><![CDATA[Modify Domestic Rates]]></label>
                     <button_label><![CDATA[Modify rates for domestic shipments]]></button_label>
                     <depends>
@@ -256,7 +256,7 @@
                     </depends>
                 </field>
                 <field id="domestic_handling_type" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="705"
-                       translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Calculate Handling Fee]]></label>
                     <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
                     <comment><![CDATA[Fixed values will be calculated with configured base currency. A percentage value "50" will be calculated as 50%.]]></comment>
@@ -294,24 +294,24 @@
                 <!-- Round prices -->
                 <field id="round_prices_heading" translate="tooltip label comment" sortOrder="795" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Round prices]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                     </depends>
                 </field>
                 <field id="round_prices_mode" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="800" translate="tooltip label comment"
-                       type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Rounding Mode]]></label>
-                    <source_model>Dhl\ShippingCore\Model\Config\Source\RoundedPricesMode</source_model>
+                    <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesMode</source_model>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                     </depends>
                 </field>
                 <field id="round_prices_format" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="805" translate="tooltip label comment"
-                       type="Dhl\ShippingCore\Model\Data\Form\Element\Radioset">
+                       type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
                     <label><![CDATA[Rounding Options]]></label>
-                    <source_model>Dhl\ShippingCore\Model\Config\Source\RoundedPricesFormat</source_model>
+                    <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesFormat</source_model>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                         <field id="round_prices_mode" separator=",">round_up,round_off</field>
@@ -331,14 +331,14 @@
                 <!-- Free shipping config fields -->
                 <field id="free_shipping_enable_heading" translate="label" sortOrder="895" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Free Shipping]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
                     </depends>
                 </field>
                 <field id="free_shipping_enable" translate="tooltip label comment" sortOrder="900" showInDefault="1"
-                       showInWebsite="1" showInStore="0" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       showInWebsite="1" showInStore="0" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Configure Free Shipping]]></label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
@@ -346,7 +346,7 @@
                     </depends>
                 </field>
                 <field id="free_shipping_virtual_products_enable" translate="tooltip label comment" sortOrder="910" showInDefault="1"
-                       showInWebsite="1" showInStore="0" type="Dhl\ShippingCore\Model\Data\Form\Element\Toggle">
+                       showInWebsite="1" showInStore="0" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Include Virtual Products in Price Calculation]]></label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <depends>
@@ -359,7 +359,7 @@
                 <!-- International free shipping config fields -->
                 <field id="international_free_shipping_enable_heading" translate="label" sortOrder="945" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[International Free Shipping]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
@@ -367,7 +367,7 @@
                     </depends>
                 </field>
                 <field id="international_free_shipping_products" showInDefault="1" showInWebsite="1" showInStore="0"
-                       sortOrder="950" translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkboxset">
+                       sortOrder="950" translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkboxset">
                     <label><![CDATA[Free Shipping Available For]]></label>
                     <source_model>Dhl\ExpressRates\Model\Config\Source\InternationalProducts</source_model>
                     <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
@@ -390,7 +390,7 @@
                 <!-- Domestic free shipping config fields -->
                 <field id="domestic_free_shipping_enable_heading" translate="label" sortOrder="975" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Domestic Free Shipping]]></label>
-                    <frontend_model>Dhl\ShippingCore\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
                     <attribute type="shared">1</attribute>
                     <depends>
                         <field id="enable_rates_configuration">1</field>
@@ -398,7 +398,7 @@
                     </depends>
                 </field>
                 <field id="domestic_free_shipping_products" showInDefault="1" showInWebsite="1" showInStore="0"
-                       sortOrder="980" translate="tooltip label comment" type="Dhl\ShippingCore\Model\Data\Form\Element\Checkboxset">
+                       sortOrder="980" translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkboxset">
                     <label><![CDATA[Free Shipping Available For]]></label>
                     <source_model>Dhl\ExpressRates\Model\Config\Source\DomesticProducts</source_model>
                     <depends>
