@@ -21,8 +21,6 @@
     <type name="\Dhl\ExpressRates\Model\Carrier\Express">
         <arguments>
             <argument name="rateProvider" xsi:type="object">Dhl\ExpressRates\Model\Rate\CheckoutProvider\Proxy</argument>
-            <argument name="shipmentProvider" xsi:type="object">Dhl\ExpressRates\Model\Shipment\ShipmentLabelProvider\Proxy</argument>
-            <argument name="trackingInfoProvider" xsi:type="object">Dhl\ExpressRates\Model\Tracking\TrackingInfoProvider\Proxy</argument>
         </arguments>
     </type>
     <type name="Dhl\ExpressRates\Model\Rate\CheckoutProvider">

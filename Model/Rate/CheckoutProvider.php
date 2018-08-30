@@ -6,7 +6,6 @@ declare(strict_types=1);
 
 namespace Dhl\ExpressRates\Model\Rate;
 
-use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Webservice\RateAdapterInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
@@ -61,7 +60,7 @@ class CheckoutProvider
      * @return Result
      * @throws LocalizedException
      */
-    public function getRates(RateRequest $request): Result
+    public function getRates(RateRequest $request)
     {
         $methods = $this->rateAdapter->getRates($request);
 
