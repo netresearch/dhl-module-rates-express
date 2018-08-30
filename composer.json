@@ -20,7 +20,7 @@
     ]
   },
   "require": {
-    "magento/module-shipping": "^100.3.0",
+    "magento/module-shipping": "^100.1.0",
     "dhl/sdk-api-express": "@dev"
   }
 }
