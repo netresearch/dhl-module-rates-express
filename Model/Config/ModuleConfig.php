@@ -406,7 +406,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDomesticHandlingType(?string $store = null): string
+    public function getDomesticHandlingType($store = null): string
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -423,7 +423,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticHandlingFee(?string $store = null): float
+    public function getDomesticHandlingFee($store = null): float
     {
         if ($this->isRatesConfigurationEnabled($store)) {
             $type = $this->getDomesticHandlingType($store) ===
@@ -448,7 +448,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getInternationalHandlingType(?string $store = null): string
+    public function getInternationalHandlingType($store = null): string
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -465,7 +465,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getInternationalHandlingFee(?string $store = null): float
+    public function getInternationalHandlingFee($store = null): float
     {
         if ($this->isRatesConfigurationEnabled($store)) {
             $type =
@@ -489,7 +489,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesMode(?string $store = null): string
+    public function getRoundedPricesMode($store = null): string
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -505,7 +505,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundUp(?string $store = null): bool
+    public function roundUp($store = null): bool
     {
         return $this->isRatesConfigurationEnabled($store) &&
             $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_UP;
@@ -517,7 +517,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundOff(?string $store = null): bool
+    public function roundOff($store = null): bool
     {
         return $this->isRatesConfigurationEnabled($store) &&
             $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_OFF;
@@ -529,7 +529,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesFormat(?string $store = null): string
+    public function getRoundedPricesFormat($store = null): string
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -545,7 +545,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getRoundedPricesStaticDecimal(?string $store = null): float
+    public function getRoundedPricesStaticDecimal($store = null): float
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (float)$this->scopeConfig->getValue(
@@ -559,7 +559,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function isFreeShippingEnabled(?string $store = null): bool
+    public function isFreeShippingEnabled($store = null): bool
     {
         return $this->isRatesConfigurationEnabled($store) &&
             (bool)$this->scopeConfig->getValue(
@@ -572,7 +572,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function isFreeShippingVirtualProductsIncluded(?string $store = null): bool
+    public function isFreeShippingVirtualProductsIncluded($store = null): bool
     {
         return $this->isRatesConfigurationEnabled($store) &&
             (bool)$this->scopeConfig->getValue(
@@ -585,7 +585,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function getDomesticFreeShippingProducts(?string $store = null): array
+    public function getDomesticFreeShippingProducts($store = null): array
     {
         if ($this->isRatesConfigurationEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
@@ -602,7 +602,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function getDomesticFreeShippingSubTotal(?string $store = null): float
+    public function getDomesticFreeShippingSubTotal($store = null): float
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (float)$this->scopeConfig->getValue(
@@ -615,7 +615,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function getInternationalFreeShippingProducts(?string $store = null): array
+    public function getInternationalFreeShippingProducts($store = null): array
     {
         if ($this->isRatesConfigurationEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
@@ -632,7 +632,7 @@ class ModuleConfig implements ModuleConfigInterface
     /**
      * @inheritdoc
      */
-    public function getInternationalFreeShippingSubTotal(?string $store = null): float
+    public function getInternationalFreeShippingSubTotal($store = null): float
     {
         return $this->isRatesConfigurationEnabled($store) ?
             (float)$this->scopeConfig->getValue(
@@ -675,7 +675,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getCarrierLogoUrl(?string $store = null): string
+    public function getCarrierLogoUrl($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_CARRIER_LOGO,
@@ -690,7 +690,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutLogoEnabled(?string $store = null): bool
+    public function isCheckoutLogoEnabled($store = null): bool
     {
         $value = $this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_CHECKOUT_SHOW_LOGO,
@@ -707,7 +707,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutDeliveryTimeEnabled(?string $store = null): bool
+    public function isCheckoutDeliveryTimeEnabled($store = null): bool
     {
         $value = $this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME,

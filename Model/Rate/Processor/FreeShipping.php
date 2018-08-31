@@ -43,7 +43,7 @@ class FreeShipping implements RateProcessorInterface
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, ?RateRequest $request = null): array
+    public function processMethods(array $methods, $request = null): array
     {
         // Return methods if free shipping is disabled in config
         if (($request === null) || !$this->moduleConfig->isFreeShippingEnabled()) {

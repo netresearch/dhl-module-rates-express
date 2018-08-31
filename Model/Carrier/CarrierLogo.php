@@ -74,7 +74,7 @@ class CarrierLogo
     /**
      * @return null|string
      */
-    public function getImageUrl(): ?string
+    public function getImageUrl()
     {
         try {
             $store = (string)$this->storeManger->getStore()->getId();
@@ -92,7 +92,7 @@ class CarrierLogo
      * @param string $fileId
      * @return null|string
      */
-    private function getViewFileUrl($fileId): ?string
+    private function getViewFileUrl($fileId)
     {
         $themeId = $this->getThemeId();
         $theme = $this->themeProvider->getThemeById($themeId);
@@ -112,7 +112,7 @@ class CarrierLogo
      * @param string|null $store
      * @return string
      */
-    private function getThemeId(?string $store = null): string
+    private function getThemeId($store = null): string
     {
         return $this->scopeConfig->getValue(
             \Magento\Framework\View\DesignInterface::XML_PATH_THEME_ID,

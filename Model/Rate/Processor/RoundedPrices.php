@@ -39,7 +39,7 @@ class RoundedPrices implements RateProcessorInterface
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, ?RateRequest $request = null): array
+    public function processMethods(array $methods, $request = null): array
     {
         foreach ($methods as $method) {
             $method->setPrice(

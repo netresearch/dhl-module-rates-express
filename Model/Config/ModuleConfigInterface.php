@@ -237,7 +237,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getDomesticHandlingType(?string $store = null): string;
+    public function getDomesticHandlingType($store = null): string;
 
     /**
      * Get the domestic handling fee.
@@ -246,7 +246,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticHandlingFee(?string $store = null): float;
+    public function getDomesticHandlingFee($store = null): float;
 
     /**
      * Get the international handling type.
@@ -255,7 +255,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getInternationalHandlingType(?string $store = null): string;
+    public function getInternationalHandlingType($store = null): string;
 
     /**
      * Get the international handling fee.
@@ -264,7 +264,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalHandlingFee(?string $store = null): float;
+    public function getInternationalHandlingFee($store = null): float;
 
     /**
      * Get mode for rounded prices.
@@ -272,7 +272,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string|null
      */
-    public function getRoundedPricesMode(?string $store = null): ?string;
+    public function getRoundedPricesMode($store = null);
 
     /**
      * Returns true when price should be rounded up.
@@ -280,7 +280,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundUp(?string $store = null): bool;
+    public function roundUp($store = null): bool;
 
     /**
      * Returns true when price should be rounded off.
@@ -288,7 +288,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundOff(?string $store = null): bool;
+    public function roundOff($store = null): bool;
 
     /**
      * Get rounded prices format.
@@ -296,7 +296,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesFormat(?string $store = null): string;
+    public function getRoundedPricesFormat($store = null): string;
 
     /**
      * Get rounded prices static value.
@@ -304,7 +304,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getRoundedPricesStaticDecimal(?string $store = null): float;
+    public function getRoundedPricesStaticDecimal($store = null): float;
 
     /**
      * Returns whether free shipping is enabled or not.
@@ -313,7 +313,7 @@ interface ModuleConfigInterface
      *
      * @return bool
      */
-    public function isFreeShippingEnabled(?string $store = null): bool;
+    public function isFreeShippingEnabled($store = null): bool;
 
     /**
      * Returns whether virtual products should be included in the subtotal value calculation or not.
@@ -322,7 +322,7 @@ interface ModuleConfigInterface
      *
      * @return bool
      */
-    public function isFreeShippingVirtualProductsIncluded(?string $store = null): bool;
+    public function isFreeShippingVirtualProductsIncluded($store = null): bool;
 
     /**
      * Get the domestic free shipping allowed products.
@@ -331,7 +331,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getDomesticFreeShippingProducts(?string $store = null): array;
+    public function getDomesticFreeShippingProducts($store = null): array;
 
     /**
      * Get the domestic free shipping subtotal value.
@@ -340,7 +340,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticFreeShippingSubTotal(?string $store = null): float;
+    public function getDomesticFreeShippingSubTotal($store = null): float;
 
     /**
      * Get the international free shipping allowed products.
@@ -349,7 +349,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getInternationalFreeShippingProducts(?string $store = null): array;
+    public function getInternationalFreeShippingProducts($store = null): array;
 
     /**
      * Get the international free shipping subtotal value.
@@ -358,7 +358,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalFreeShippingSubTotal(?string $store = null): float;
+    public function getInternationalFreeShippingSubTotal($store = null): float;
 
     /**
      * Get carrier logo url
@@ -366,7 +366,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getCarrierLogoUrl(?string $store = null): string;
+    public function getCarrierLogoUrl($store = null): string;
 
     /**
      * Check if logo should be displayed in checkout
@@ -374,7 +374,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutLogoEnabled(?string $store = null): bool;
+    public function isCheckoutLogoEnabled($store = null): bool;
 
     /**
      * Check if delivery time should be displayed in checkout
@@ -382,7 +382,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutDeliveryTimeEnabled(?string $store = null): bool;
+    public function isCheckoutDeliveryTimeEnabled($store = null): bool;
 
     /**
      * Get terms of trade
