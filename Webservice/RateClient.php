@@ -2,8 +2,6 @@
 /**
  * See LICENSE.md for license details.
  */
-declare(strict_types=1);
-
 namespace Dhl\ExpressRates\Webservice;
 
 use Dhl\Express\Api\Data\RateRequestInterface;

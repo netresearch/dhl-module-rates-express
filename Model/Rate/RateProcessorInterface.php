@@ -2,8 +2,6 @@
 /**
  * See LICENSE.md for license details.
  */
-declare(strict_types=1);
-
 namespace Dhl\ExpressRates\Model\Rate;
 
 use Magento\Quote\Model\Quote\Address\RateRequest;
