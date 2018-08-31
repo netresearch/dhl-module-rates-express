@@ -21,5 +21,5 @@ interface ProductsInterface extends \Magento\Framework\Option\ArrayInterface
      *
      * @return array
      */
-    public function toPlainArray(): array;
+    public function toPlainArray();
 }

@@ -42,7 +42,7 @@ class HandlingFee implements RateProcessorInterface
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null): array
+    public function processMethods(array $methods, $request = null)
     {
         /** @var Method $method */
         foreach ($methods as $method) {
@@ -67,7 +67,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return string
      */
-    private function getHandlingType(Method $method): string
+    private function getHandlingType(Method $method)
     {
         // Calculate fee depending on shipping type
         if ($this->isDomesticShipping($method)) {
@@ -84,7 +84,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return float
      */
-    private function getHandlingFee(Method $method): float
+    private function getHandlingFee(Method $method)
     {
         // Calculate fee depending on shipping type
         if ($this->isDomesticShipping($method)) {
@@ -101,7 +101,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isDomesticShipping(Method $method): bool
+    private function isDomesticShipping(Method $method)
     {
         return \in_array($method->getMethod(), ShippingProductsInterface::PRODUCTS_DOMESTIC, true);
     }
@@ -115,7 +115,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return float
      */
-    private function calculatePrice($amount, $handlingType, $handlingFee): float
+    private function calculatePrice($amount, $handlingType, $handlingFee)
     {
         if ($handlingType === AbstractCarrier::HANDLING_TYPE_PERCENT) {
             $amount += $amount * $handlingFee / 100.0;

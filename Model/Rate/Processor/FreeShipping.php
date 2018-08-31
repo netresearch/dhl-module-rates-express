@@ -43,7 +43,7 @@ class FreeShipping implements RateProcessorInterface
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null): array
+    public function processMethods(array $methods, $request = null)
     {
         // Return methods if free shipping is disabled in config
         if (($request === null) || !$this->moduleConfig->isFreeShippingEnabled()) {
@@ -81,7 +81,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return float
      */
-    private function getBaseSubTotalInclTax(RateRequest $request): float
+    private function getBaseSubTotalInclTax(RateRequest $request)
     {
         if ($this->moduleConfig->isFreeShippingVirtualProductsIncluded()) {
             return $request->getBaseSubtotalInclTax();
@@ -108,7 +108,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isDomesticShipping(Method $method): bool
+    private function isDomesticShipping(Method $method)
     {
         return \in_array($method->getMethod(), ShippingProductsInterface::PRODUCTS_DOMESTIC, true);
     }
@@ -120,7 +120,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledDomesticProduct(Method $method): bool
+    private function isEnabledDomesticProduct(Method $method)
     {
         return \in_array(
             $method->getData('method'),
@@ -136,7 +136,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledInternationalProduct(Method $method): bool
+    private function isEnabledInternationalProduct(Method $method)
     {
         return \in_array(
             $method->getData('method'),

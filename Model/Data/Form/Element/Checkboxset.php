@@ -24,7 +24,7 @@ class Checkboxset extends Checkboxes
     /**
      * @return string
      */
-    public function getElementHtml(): string
+    public function getElementHtml()
     {
         $this->setData('after_element_html', $this->getAfterHtml());
 
@@ -36,7 +36,7 @@ class Checkboxset extends Checkboxes
      *
      * @return string
      */
-    private function getAfterHtml(): string
+    private function getAfterHtml()
     {
         $html = '<input type="hidden" id="%s" value="%s"/>
         <script>

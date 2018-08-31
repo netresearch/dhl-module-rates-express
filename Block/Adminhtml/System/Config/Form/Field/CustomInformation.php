@@ -52,7 +52,7 @@ class CustomInformation extends Field
      * @return string
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element): string
+    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         $moduleVersion = $this->moduleList->getOne('Dhl_ExpressRates')['setup_version'];
         $logo          = $this->repository->getUrl('Dhl_ExpressRates::images/logo.svg');

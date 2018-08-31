@@ -68,7 +68,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isEnabled($store = null): bool;
+    public function isEnabled($store = null);
 
     /**
      * Get the sort order.
@@ -76,7 +76,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getSortOrder($store = null): int;
+    public function getSortOrder($store = null);
 
     /**
      * Get the title.
@@ -84,7 +84,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getTitle($store = null): string;
+    public function getTitle($store = null);
 
     /**
      * Get the emulated carrier.
@@ -92,7 +92,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getEmulatedCarrier($store = null): string;
+    public function getEmulatedCarrier($store = null);
 
     /**
      * Check if shipping only to specific countries.
@@ -100,7 +100,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function shipToSpecificCountries($store = null): bool;
+    public function shipToSpecificCountries($store = null);
 
     /**
      * Get the specific countries.
@@ -108,7 +108,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getSpecificCountries($store = null): array;
+    public function getSpecificCountries($store = null);
 
     /**
      * Show DHL Express in checkout if there are no products available.
@@ -116,7 +116,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function showIfNotApplicable($store = null): bool;
+    public function showIfNotApplicable($store = null);
 
     /**
      * Get the error message.
@@ -124,7 +124,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getNotApplicableErrorMessage($store = null): string;
+    public function getNotApplicableErrorMessage($store = null);
 
     /**
      * Get the username.
@@ -132,7 +132,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getUserName($store = null): string;
+    public function getUserName($store = null);
 
     /**
      * Get the password.
@@ -140,7 +140,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getPassword($store = null): string;
+    public function getPassword($store = null);
 
     /**
      * Check if Sandbox mode is enabled.
@@ -148,7 +148,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function sandboxModeEnabled($store = null): bool;
+    public function sandboxModeEnabled($store = null);
 
     /**
      * Check if Sandbox mode is disabled.
@@ -156,7 +156,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function sandboxModeDisabled($store = null): bool;
+    public function sandboxModeDisabled($store = null);
 
     /**
      * Get the Logging status.
@@ -164,7 +164,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isLoggingEnabled($store = null): bool;
+    public function isLoggingEnabled($store = null);
 
     /**
      * Get the log level.
@@ -172,7 +172,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getLogLevel($store = null): int;
+    public function getLogLevel($store = null);
 
     /**
      * Get the account number.
@@ -180,7 +180,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getAccountNumber($store = null): string;
+    public function getAccountNumber($store = null);
 
     /**
      * Get the allowed domestic products.
@@ -188,7 +188,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedDomesticProducts($store = null): array;
+    public function getAllowedDomesticProducts($store = null);
 
     /**
      * Get the allowed international products.
@@ -196,7 +196,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedInternationalProducts($store = null): array;
+    public function getAllowedInternationalProducts($store = null);
 
     /**
      * Check if regular pickup is enabled.
@@ -204,7 +204,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isRegularPickup($store = null): bool;
+    public function isRegularPickup($store = null);
 
     /**
      * Return if packages are insured.
@@ -212,7 +212,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isInsured($store = null): bool;
+    public function isInsured($store = null);
 
     /**
      * Get the value from which the packages should be insured.
@@ -220,7 +220,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function insuranceFromValue($store = null): float;
+    public function insuranceFromValue($store = null);
 
     /**
      * Get the pickup time.
@@ -228,7 +228,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getPickupTime($store = null): string;
+    public function getPickupTime($store = null);
 
     /**
      * Get the domestic handling type.
@@ -237,7 +237,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getDomesticHandlingType($store = null): string;
+    public function getDomesticHandlingType($store = null);
 
     /**
      * Get the domestic handling fee.
@@ -246,7 +246,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticHandlingFee($store = null): float;
+    public function getDomesticHandlingFee($store = null);
 
     /**
      * Get the international handling type.
@@ -255,7 +255,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getInternationalHandlingType($store = null): string;
+    public function getInternationalHandlingType($store = null);
 
     /**
      * Get the international handling fee.
@@ -264,7 +264,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalHandlingFee($store = null): float;
+    public function getInternationalHandlingFee($store = null);
 
     /**
      * Get mode for rounded prices.
@@ -280,7 +280,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundUp($store = null): bool;
+    public function roundUp($store = null);
 
     /**
      * Returns true when price should be rounded off.
@@ -288,7 +288,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundOff($store = null): bool;
+    public function roundOff($store = null);
 
     /**
      * Get rounded prices format.
@@ -296,7 +296,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesFormat($store = null): string;
+    public function getRoundedPricesFormat($store = null);
 
     /**
      * Get rounded prices static value.
@@ -304,7 +304,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getRoundedPricesStaticDecimal($store = null): float;
+    public function getRoundedPricesStaticDecimal($store = null);
 
     /**
      * Returns whether free shipping is enabled or not.
@@ -313,7 +313,7 @@ interface ModuleConfigInterface
      *
      * @return bool
      */
-    public function isFreeShippingEnabled($store = null): bool;
+    public function isFreeShippingEnabled($store = null);
 
     /**
      * Returns whether virtual products should be included in the subtotal value calculation or not.
@@ -322,7 +322,7 @@ interface ModuleConfigInterface
      *
      * @return bool
      */
-    public function isFreeShippingVirtualProductsIncluded($store = null): bool;
+    public function isFreeShippingVirtualProductsIncluded($store = null);
 
     /**
      * Get the domestic free shipping allowed products.
@@ -331,7 +331,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getDomesticFreeShippingProducts($store = null): array;
+    public function getDomesticFreeShippingProducts($store = null);
 
     /**
      * Get the domestic free shipping subtotal value.
@@ -340,7 +340,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticFreeShippingSubTotal($store = null): float;
+    public function getDomesticFreeShippingSubTotal($store = null);
 
     /**
      * Get the international free shipping allowed products.
@@ -349,7 +349,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getInternationalFreeShippingProducts($store = null): array;
+    public function getInternationalFreeShippingProducts($store = null);
 
     /**
      * Get the international free shipping subtotal value.
@@ -358,7 +358,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalFreeShippingSubTotal($store = null): float;
+    public function getInternationalFreeShippingSubTotal($store = null);
 
     /**
      * Get carrier logo url
@@ -366,7 +366,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getCarrierLogoUrl($store = null): string;
+    public function getCarrierLogoUrl($store = null);
 
     /**
      * Check if logo should be displayed in checkout
@@ -374,7 +374,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutLogoEnabled($store = null): bool;
+    public function isCheckoutLogoEnabled($store = null);
 
     /**
      * Check if delivery time should be displayed in checkout
@@ -382,7 +382,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutDeliveryTimeEnabled($store = null): bool;
+    public function isCheckoutDeliveryTimeEnabled($store = null);
 
     /**
      * Get terms of trade
@@ -390,7 +390,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getTermsOfTrade($store = null): string;
+    public function getTermsOfTrade($store = null);
 
     /**
      * Get the cut off time.
@@ -398,7 +398,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getCutOffTime($store = null): string;
+    public function getCutOffTime($store = null);
 
     /**
      * Check if rates configuration is enabled
@@ -406,7 +406,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isRatesConfigurationEnabled($store = null): bool;
+    public function isRatesConfigurationEnabled($store = null);
 
     /**
      * Get the general weight unit.
@@ -414,14 +414,14 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getWeightUnit($store = null): string;
+    public function getWeightUnit($store = null);
 
     /**
      * Get the general dimensions unit.
      *
      * @return string
      */
-    public function getDimensionsUOM(): string;
+    public function getDimensionsUOM();
 
     /**
      * Maps Magento's internal unit names to SDKs unit names
@@ -429,7 +429,7 @@ interface ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeDimensionUOM($unit): string;
+    public function normalizeDimensionUOM($unit);
 
     /**
      * Checks if route is dutiable by stores origin country and eu country list
@@ -439,7 +439,7 @@ interface ModuleConfigInterface
      * @return bool
      *
      */
-    public function isDutiableRoute($receiverCountry, $store = null): bool;
+    public function isDutiableRoute($receiverCountry, $store = null);
 
     /**
      * Returns countries that are marked as EU-Countries
@@ -447,7 +447,7 @@ interface ModuleConfigInterface
      * @param mixed $store
      * @return string[]
      */
-    public function getEuCountries($store = null): array;
+    public function getEuCountries($store = null);
 
     /**
      * Returns the shipping origin country
@@ -457,5 +457,5 @@ interface ModuleConfigInterface
      * @param mixed $store
      * @return string
      */
-    public function getOriginCountry($store = null): string;
+    public function getOriginCountry($store = null);
 }

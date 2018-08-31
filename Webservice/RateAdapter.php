@@ -61,7 +61,7 @@ class RateAdapter implements RateAdapterInterface
      *
      * @throws LocalizedException
      */
-    public function getRates(RateRequest $request): array
+    public function getRates(RateRequest $request)
     {
         $requestModel = $this->requestDataMapper->mapRequest($request);
 

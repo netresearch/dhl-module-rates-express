@@ -32,7 +32,7 @@ class OfflineCarriers implements ArrayInterface
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function toOptionArray(): array
+    public function toOptionArray()
     {
         $result = [];
         $carriers = $this->scopeConfig->getValue('carriers');

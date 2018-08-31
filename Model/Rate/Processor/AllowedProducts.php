@@ -36,7 +36,7 @@ class AllowedProducts implements RateProcessorInterface
     /**
      * @inheritdoc
      */
-    public function processMethods(array $methods, $request = null): array
+    public function processMethods(array $methods, $request = null)
     {
         $result = [];
         foreach ($methods as $method) {
@@ -55,7 +55,7 @@ class AllowedProducts implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledProduct(Method $method): bool
+    private function isEnabledProduct(Method $method)
     {
         $allowedDomestic      = $this->config->getAllowedDomesticProducts();
         $allowedInternational = $this->config->getAllowedInternationalProducts();

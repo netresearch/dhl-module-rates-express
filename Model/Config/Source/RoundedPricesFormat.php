@@ -27,7 +27,7 @@ class RoundedPricesFormat implements \Magento\Framework\Option\ArrayInterface
     /**
      * {@inheritdoc}
      */
-    public function toOptionArray(): array
+    public function toOptionArray()
     {
         return [
             ['value' => self::FULL_PRICE, 'label' => 'Round to integer'],

@@ -49,7 +49,7 @@ class PickupTime
      *
      * @return int
      */
-    public function getReadyAtTimestamp(): int
+    public function getReadyAtTimestamp()
     {
         $cutOffTimeRaw = explode(',', $this->moduleConfig->getCutOffTime());
         $pickUpTimeRaw = explode(',', $this->moduleConfig->getPickupTime());

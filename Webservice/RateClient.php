@@ -60,7 +60,7 @@ class RateClient implements RateClientInterface
      * @throws \Dhl\Express\Exception\RateRequestException
      * @throws \Dhl\Express\Exception\SoapException
      */
-    public function performRatesRequest(RateRequestInterface $request): RateResponseInterface
+    public function performRatesRequest(RateRequestInterface $request)
     {
         $rateService = $this->serviceFactory->createRateService(
             $this->moduleConfig->getUserName(),

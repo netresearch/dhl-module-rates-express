@@ -100,7 +100,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \InvalidArgumentException
      */
-    public function mapResult(RateResponseInterface $rateResponse): array
+    public function mapResult(RateResponseInterface $rateResponse)
     {
         $result = [];
 
@@ -135,7 +135,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      *
      * @return string
      */
-    private function getFormattedDeliveryDate(\DateTime $dateTime): string
+    private function getFormattedDeliveryDate(\DateTime $dateTime)
     {
         return $this->dateTimeFormatter->formatObject(
             $dateTime,
@@ -154,7 +154,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \InvalidArgumentException
      */
-    private function convertPriceToCurrency($value, $inputCurrencyCode): float
+    private function convertPriceToCurrency($value, $inputCurrencyCode)
     {
         /** @var string $baseCurrencyCode */
         $baseCurrencyCode = $this->storeManager->getStore()->getBaseCurrencyCode();
@@ -176,7 +176,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @param Rate $rate
      * @return MethodAdditionalInfoInterface
      */
-    private function getMethodAdditionalInformation(Rate $rate): MethodAdditionalInfoInterface
+    private function getMethodAdditionalInformation(Rate $rate)
     {
         $data = [];
 

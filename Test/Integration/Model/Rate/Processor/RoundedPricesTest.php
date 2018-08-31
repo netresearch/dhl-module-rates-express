@@ -176,7 +176,7 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     /**
      * @return Method[]
      */
-    public function provideTestRateMethods(): array
+    public function provideTestRateMethods()
     {
         $methodFactory = ObjectManager::getInstance()->create(MethodFactory::class);
         $methods = [];

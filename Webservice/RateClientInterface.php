@@ -25,5 +25,5 @@ interface RateClientInterface
      * @throws \Dhl\Express\Exception\RateRequestException
      * @throws \Dhl\Express\Exception\SoapException
      */
-    public function performRatesRequest(RateRequestInterface $request): RateResponseInterface;
+    public function performRatesRequest(RateRequestInterface $request);
 }

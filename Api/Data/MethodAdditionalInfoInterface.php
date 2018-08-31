@@ -23,7 +23,7 @@ interface MethodAdditionalInfoInterface
     /**
      * @return string
      */
-    public function getDeliveryDate(): string;
+    public function getDeliveryDate();
 
     /**
      * @param string $deliveryDate
@@ -34,7 +34,7 @@ interface MethodAdditionalInfoInterface
     /**
      * @return string
      */
-    public function getCarrierLogoUrl(): string;
+    public function getCarrierLogoUrl();
 
     /**
      * @param string $carrierLogoUrl

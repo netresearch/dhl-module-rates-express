@@ -112,7 +112,7 @@ class CarrierLogo
      * @param string|null $store
      * @return string
      */
-    private function getThemeId($store = null): string
+    private function getThemeId($store = null)
     {
         return $this->scopeConfig->getValue(
             \Magento\Framework\View\DesignInterface::XML_PATH_THEME_ID,

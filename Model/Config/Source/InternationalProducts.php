@@ -23,7 +23,7 @@ class InternationalProducts implements \Magento\Framework\Option\ArrayInterface
     /**
      * @inheritdoc
      */
-    public function toOptionArray(): array
+    public function toOptionArray()
     {
         $options = ShippingProductsInterface::PRODUCT_NAMES_INTERNATIONAL;
 

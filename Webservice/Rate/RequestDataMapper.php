@@ -64,7 +64,7 @@ class RequestDataMapper implements RequestDataMapperInterface
      * @return RateRequestInterface
      * @throws LocalizedException
      */
-    public function mapRequest(RateRequest $request): RateRequestInterface
+    public function mapRequest(RateRequest $request)
     {
         $this->rateRequestBuilder->setShipperAddress(
             $request->getCountryId(),

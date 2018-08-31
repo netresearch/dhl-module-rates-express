@@ -27,5 +27,5 @@ interface RateProcessorInterface
      *
      * @return Method[]
      */
-    public function processMethods(array $methods, $request = null): array;
+    public function processMethods(array $methods, $request = null);
 }

@@ -25,5 +25,5 @@ interface RateAdapterInterface
      * @param RateRequest $request
      * @return AbstractResult[]
      */
-    public function getRates(RateRequest $request): array;
+    public function getRates(RateRequest $request);
 }

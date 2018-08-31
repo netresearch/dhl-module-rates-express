@@ -21,7 +21,7 @@ class Toggle extends Checkbox
      *
      * @return string
      */
-    public function getElementHtml(): string
+    public function getElementHtml(),
     {
         $this->setData('style', 'position:absolute; clip:rect(0,0,0,0); overflow:hidden');
         $this->addClass('admin__actions-switch-checkbox');
@@ -32,7 +32,7 @@ class Toggle extends Checkbox
     /**
      * @return string
      */
-    protected function getSecondaryLabelHtml(): string
+    protected function getSecondaryLabelHtml(),
     {
         $html = '<label for="%s" class="admin__actions-switch-label">
             <span class="admin__actions-switch-text" data-text-on="%s" data-text-off="%s"></span>

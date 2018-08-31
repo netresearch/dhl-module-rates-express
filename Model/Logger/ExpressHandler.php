@@ -48,7 +48,7 @@ class ExpressHandler extends Base
     /**
      * @inheritdoc
      */
-    public function isHandling(array $record): bool
+    public function isHandling(array $record)
     {
         $logEnabled = $this->moduleConfig->isLoggingEnabled();
         $logLevel = $this->moduleConfig->getLogLevel();

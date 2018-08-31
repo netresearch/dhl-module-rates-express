@@ -33,7 +33,7 @@ class RoundedPricesMode implements \Magento\Framework\Option\ArrayInterface
     /**
      * {@inheritdoc}
      */
-    public function toOptionArray(): array
+    public function toOptionArray()
     {
         return [
             ['value' => self::DO_NOT_ROUND, 'label' => 'Don\'t round'],

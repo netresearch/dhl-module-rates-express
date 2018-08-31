@@ -25,7 +25,7 @@ class Heading extends Field
      *
      * @return string
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element): string
+    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         $comment = $element->getData('comment');
         if ($comment) {

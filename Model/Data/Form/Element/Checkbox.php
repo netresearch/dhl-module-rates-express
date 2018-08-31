@@ -23,7 +23,7 @@ class Checkbox extends CoreCheckbox
     /**
      * @return string
      */
-    public function getElementHtml(): string
+    public function getElementHtml()
     {
         $this->setIsChecked((bool)$this->getData('value'));
         $this->setData('after_element_js', $this->getSecondaryLabelHtml() . $this->getJsHtml());
@@ -34,7 +34,7 @@ class Checkbox extends CoreCheckbox
     /**
      * @return string
      */
-    public function getButtonLabel(): string
+    public function getButtonLabel()
     {
         return $this->getData('field_config')['button_label'] ?? '';
     }
@@ -44,7 +44,7 @@ class Checkbox extends CoreCheckbox
      *
      * @return string
      */
-    protected function getJsHtml(): string
+    protected function getJsHtml()
     {
         $html = '<input type="hidden" id="%s" value="%s"/>
         <script>
@@ -78,7 +78,7 @@ class Checkbox extends CoreCheckbox
     /**
      * @return string
      */
-    protected function getSecondaryLabelHtml(): string
+    protected function getSecondaryLabelHtml()
     {
         $html = '<label for="%s" class="admin__field-label">%s</label>';
 

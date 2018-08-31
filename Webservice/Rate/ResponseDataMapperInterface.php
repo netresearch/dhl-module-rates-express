@@ -25,5 +25,5 @@ interface ResponseDataMapperInterface
      * @param RateResponseInterface $rateResponse
      * @return Method[]
      */
-    public function mapResult(RateResponseInterface $rateResponse): array;
+    public function mapResult(RateResponseInterface $rateResponse);
 }

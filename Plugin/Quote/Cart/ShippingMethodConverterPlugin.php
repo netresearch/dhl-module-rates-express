@@ -58,7 +58,7 @@ class ShippingMethodConverterPlugin
     public function afterModelToDataObject(
         ShippingMethodConverter $subject,
         ShippingMethodInterface $result
-    ): ShippingMethodInterface {
+    ) {
         $carrierMethod = $this->getCarrierMethod($result);
         if (array_key_exists($carrierMethod, $this->methodAdditionalInfo)) {
             /** @var  $extensibleAttribute ShippingMethodExtensionInterface */

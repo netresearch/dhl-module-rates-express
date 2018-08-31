@@ -25,5 +25,5 @@ interface RequestDataMapperInterface
      * @param RateRequest $request
      * @return RateRequestInterface
      */
-    public function mapRequest(RateRequest $request): RateRequestInterface;
+    public function mapRequest(RateRequest $request);
 }

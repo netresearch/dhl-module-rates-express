@@ -140,7 +140,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      * @param \Magento\Framework\DataObject|RateRequest $request
      * @return bool
      */
-    private function validateItemWeight(\Magento\Framework\DataObject $request): bool
+    private function validateItemWeight(\Magento\Framework\DataObject $request)
     {
         /** @var $item \Magento\Quote\Model\Quote\Item */
         foreach ($request->getAllItems() as $item) {
