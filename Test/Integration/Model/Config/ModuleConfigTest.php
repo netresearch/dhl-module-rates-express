@@ -2,8 +2,7 @@
 /**
  * See LICENSE.md for license details.
  */
-
-namespace Dhl\ExpressRates\Model\Config;
+namespace Dhl\ExpressRates\Test\Integration\Model\Config;
 
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;

@@ -2,8 +2,7 @@
 /**
  * See LICENSE.md for license details.
  */
-
-namespace Dhl\ExpressRates\Model\Rate\Processor;
+namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Carrier\Express;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;

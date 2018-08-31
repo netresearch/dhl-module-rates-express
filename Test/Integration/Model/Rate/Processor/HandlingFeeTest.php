@@ -2,7 +2,7 @@
 /**
  * See LICENSE.md for license details.
  */
-namespace Dhl\ExpressRates\Model\Config;
+namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Api\Data\ShippingProductsInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
