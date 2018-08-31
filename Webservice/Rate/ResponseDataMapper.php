@@ -154,7 +154,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \InvalidArgumentException
      */
-    private function convertPriceToCurrency(float $value, string $inputCurrencyCode): float
+    private function convertPriceToCurrency($value, $inputCurrencyCode): float
     {
         /** @var string $baseCurrencyCode */
         $baseCurrencyCode = $this->storeManager->getStore()->getBaseCurrencyCode();

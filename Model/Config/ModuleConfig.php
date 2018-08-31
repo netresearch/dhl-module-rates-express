@@ -651,7 +651,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @see InternationalProducts
      */
-    private function normalizeAllowedProducts(string $allowedProductsValue): array
+    private function normalizeAllowedProducts($allowedProductsValue): array
     {
         $combinedKeys = explode(',', $allowedProductsValue) ?: [];
 
@@ -800,7 +800,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeDimensionUOM(string $unit): string
+    public function normalizeDimensionUOM($unit): string
     {
         if (array_key_exists($unit, $this->dimensionUnitMap)) {
             return $this->dimensionUnitMap[$unit];
@@ -815,7 +815,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeWeightUOM(string $unit): string
+    public function normalizeWeightUOM($unit): string
     {
         if (array_key_exists($unit, $this->weightUnitMap)) {
             return $this->weightUnitMap[$unit];
@@ -847,7 +847,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @return bool
      *
      */
-    public function isDutiableRoute(string $receiverCountry, $store = null): bool
+    public function isDutiableRoute($receiverCountry, $store = null): bool
     {
         $originCountry = $this->getOriginCountry($store);
         $euCountries = $this->getEuCountries($store);

@@ -56,7 +56,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundPrice(float $price): float
+    private function roundPrice($price): float
     {
         $mode = $this->moduleConfig->getRoundedPricesMode();
 
@@ -87,7 +87,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundOffToStaticDecimal(float $price): float
+    private function roundOffToStaticDecimal($price): float
     {
         $roundedDecimal = $this->moduleConfig->getRoundedPricesStaticDecimal();
         $decimal = $price - floor($price);
@@ -110,7 +110,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundUpToStaticDecimal(float $price): float
+    private function roundUpToStaticDecimal($price): float
     {
         $roundedDecimal = $this->moduleConfig->getRoundedPricesStaticDecimal();
         $decimal = $price - floor($price);

@@ -429,7 +429,7 @@ interface ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeDimensionUOM(string $unit): string;
+    public function normalizeDimensionUOM($unit): string;
 
     /**
      * Checks if route is dutiable by stores origin country and eu country list
@@ -439,7 +439,7 @@ interface ModuleConfigInterface
      * @return bool
      *
      */
-    public function isDutiableRoute(string $receiverCountry, $store = null): bool;
+    public function isDutiableRoute($receiverCountry, $store = null): bool;
 
     /**
      * Returns countries that are marked as EU-Countries

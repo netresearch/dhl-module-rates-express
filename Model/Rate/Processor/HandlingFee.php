@@ -115,7 +115,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return float
      */
-    private function calculatePrice(float $amount, string $handlingType, float $handlingFee): float
+    private function calculatePrice($amount, $handlingType, $handlingFee): float
     {
         if ($handlingType === AbstractCarrier::HANDLING_TYPE_PERCENT) {
             $amount += $amount * $handlingFee / 100.0;
