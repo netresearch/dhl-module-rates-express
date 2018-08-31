@@ -16,9 +16,9 @@ namespace Dhl\ExpressRates\Api\Data;
  */
 interface MethodAdditionalInfoInterface
 {
-    public const ATTRIBUTE_KEY = 'additional_info';
-    public const DELIVERY_DATE = 'delivery_date';
-    public const CARRIER_LOGO_URL = 'carrier_logo_url';
+    const ATTRIBUTE_KEY = 'additional_info';
+    const DELIVERY_DATE = 'delivery_date';
+    const CARRIER_LOGO_URL = 'carrier_logo_url';
 
     /**
      * @return string

@@ -24,7 +24,7 @@ use Magento\Store\Model\ScopeInterface;
  */
 class ModuleConfig implements ModuleConfigInterface
 {
-    public const DEFAULT_DIMENSION_UNIT = 'in';
+    const DEFAULT_DIMENSION_UNIT = 'in';
 
     /**
      * @var ScopeConfigInterface
