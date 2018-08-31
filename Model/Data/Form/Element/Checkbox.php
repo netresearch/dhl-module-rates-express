@@ -36,7 +36,7 @@ class Checkbox extends CoreCheckbox
      */
     public function getButtonLabel()
     {
-        return $this->getData('field_config')['button_label'] ?? '';
+        return $this->getData('field_config')['button_label'] ?: '';
     }
 
     /**

@@ -74,7 +74,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
         try {
             return $this->rateProvider->getRates($request);
         } catch (LocalizedException $e) {
-            $this->_logger->error($e->getMessage(), ['exception' => $e->getPrevious() ?? $e]);
+            $this->_logger->error($e->getMessage(), ['exception' => $e->getPrevious() ?: $e]);
             $result = $this->rateFactory->create();
             $result->append($this->getErrorMessage());
 

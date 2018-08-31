@@ -62,7 +62,7 @@ class ShippingMethodConverterPlugin
         $carrierMethod = $this->getCarrierMethod($result);
         if (array_key_exists($carrierMethod, $this->methodAdditionalInfo)) {
             /** @var  $extensibleAttribute ShippingMethodExtensionInterface */
-            $extensibleAttribute = $result->getExtensionAttributes() ?? $this->extensionFactory->create();
+            $extensibleAttribute = $result->getExtensionAttributes() ?: $this->extensionFactory->create();
 
             $extensibleAttribute->setAdditionalInfo($this->methodAdditionalInfo[$carrierMethod]);
 
