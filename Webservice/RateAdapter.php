@@ -68,7 +68,9 @@ class RateAdapter implements RateAdapterInterface
         try {
             $response = $this->client->performRatesRequest($requestModel);
             $result   = $this->responseDataMapper->mapResult($response);
-        } catch (RateRequestException | SoapException $e) {
+        } catch (RateRequestException $e) {
+            throw new LocalizedException(__('Error during rate request.'), $e, $e->getCode());
+        } catch (SoapException $e) {
             throw new LocalizedException(__('Error during rate request.'), $e, $e->getCode());
         }
 
