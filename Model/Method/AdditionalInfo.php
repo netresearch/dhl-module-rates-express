@@ -30,7 +30,7 @@ final class AdditionalInfo extends DataObject implements MethodAdditionalInfoInt
     /**
      * @inheritdoc
      */
-    public function setDeliveryDate(string $deliveryDate): void
+    public function setDeliveryDate(string $deliveryDate)
     {
         $this->setData(self::DELIVERY_DATE, $deliveryDate);
     }
@@ -46,7 +46,7 @@ final class AdditionalInfo extends DataObject implements MethodAdditionalInfoInt
     /**
      * @inheritdoc
      */
-    public function setCarrierLogoUrl(string $carrierLogoUrl): void
+    public function setCarrierLogoUrl(string $carrierLogoUrl)
     {
         $this->setData(self::CARRIER_LOGO_URL, $carrierLogoUrl);
     }
