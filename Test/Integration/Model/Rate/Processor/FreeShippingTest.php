@@ -6,6 +6,7 @@ namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Api\Data\ShippingProductsInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
+use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Model\Config\Source\DomesticProducts;
 use Dhl\ExpressRates\Model\Rate\Processor\FreeShipping;
 use Magento\Catalog\Model\ProductFactory;
@@ -122,7 +123,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $freeShipping = new FreeShipping($this->config, $this->domesticProducts);
+        $freeShipping = new FreeShipping($this->config);
         $methods      = $freeShipping->processMethods([ $method ], $this->request);
 
         self::assertSame(6.0, $methods[0]->getPrice());
@@ -158,7 +159,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
         // Total amount of order
         $this->request->setBaseSubtotalInclTax(100.0);
 
-        $freeShipping = new FreeShipping($this->config, $this->domesticProducts);
+        $freeShipping = new FreeShipping($this->config);
         $methods      = $freeShipping->processMethods([ $method ], $this->request);
 
         // Limit reached, shipping price should be zero
@@ -195,7 +196,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
         // Total amount of order
         $this->request->setBaseSubtotalInclTax(100.0);
 
-        $freeShipping = new FreeShipping($this->config, $this->domesticProducts);
+        $freeShipping = new FreeShipping($this->config);
         $methods      = $freeShipping->processMethods([ $method ], $this->request);
 
         // Limit reached, shipping price should be zero
@@ -232,7 +233,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
         // Total amount of order
         $this->request->setBaseSubtotalInclTax(10.0);
 
-        $freeShipping = new FreeShipping($this->config, $this->domesticProducts);
+        $freeShipping = new FreeShipping($this->config);
         $methods      = $freeShipping->processMethods([ $method ], $this->request);
 
         // Price should be the same as initial provided
@@ -287,7 +288,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $freeShipping = new FreeShipping($this->config, $this->domesticProducts);
+        $freeShipping = new FreeShipping($this->config);
         $methods      = $freeShipping->processMethods([ $method ], $this->request);
 
         // Price should be the same as initial provided

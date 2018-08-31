@@ -7,6 +7,7 @@ namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 use Dhl\ExpressRates\Api\Data\ShippingProductsInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
 use Dhl\ExpressRates\Model\Config\ModuleConfig;
+use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Model\Config\Source\DomesticProducts;
 use Dhl\ExpressRates\Model\Rate\Processor\HandlingFee;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
@@ -111,7 +112,7 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $handlingFee = new HandlingFee($this->config, $this->domesticProducts);
+        $handlingFee = new HandlingFee($this->config);
         $methods     = $handlingFee->processMethods([ $method ]);
 
         self::assertSame(9.0, $methods[0]->getPrice());
@@ -141,7 +142,7 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $handlingFee = new HandlingFee($this->config, $this->domesticProducts);
+        $handlingFee = new HandlingFee($this->config);
         $methods     = $handlingFee->processMethods([ $method ]);
 
         self::assertSame(9.0, $methods[0]->getPrice());
@@ -171,7 +172,7 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $handlingFee = new HandlingFee($this->config, $this->domesticProducts);
+        $handlingFee = new HandlingFee($this->config);
         $methods     = $handlingFee->processMethods([ $method ]);
 
         self::assertSame(9.0, $methods[0]->getPrice());
@@ -201,7 +202,7 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
             ]
         );
 
-        $handlingFee = new HandlingFee($this->config, $this->domesticProducts);
+        $handlingFee = new HandlingFee($this->config);
         $methods     = $handlingFee->processMethods([ $method ]);
 
         self::assertSame(0.0, $methods[0]->getPrice());
