@@ -11,6 +11,7 @@
     }
   ],
   "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Dhl\\ExpressRates\\": ""
@@ -19,8 +20,26 @@
       "registration.php"
     ]
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Dhl\\ExpressRates\\": [
+        "Test/Integration"
+      ]
+    }
+  },
+  "config": {
+    "platform": {
+      "php": "7.1"
+    }
+  },
   "require": {
+    "ext-intl": "*",
+    "psr/log": "~1.0",
     "magento/module-shipping": "^100.1.0",
     "dhl/sdk-api-express": "@dev"
+  },
+  "require-dev": {
+    "roave/security-advisories": "dev-master",
+    "phpunit/phpunit": "*"
   }
 }
