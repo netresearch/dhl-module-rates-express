@@ -19,10 +19,6 @@ use Magento\Framework\Module\ModuleList;
  */
 class CustomInformation extends Field
 {
-    /**
-     * @var Repository
-     */
-    private $repository;
 
     /**
      * @var ModuleList
@@ -36,13 +32,13 @@ class CustomInformation extends Field
      * @param Repository $repository
      * @param ModuleList $moduleList
      */
-    public function __construct(Context $context, Repository $repository, ModuleList $moduleList)
+    public function __construct(Context $context, ModuleList $moduleList)
     {
-        $this->repository = $repository;
         $this->moduleList = $moduleList;
 
         parent::__construct($context);
     }
+
 
     /**
      * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
@@ -53,7 +49,7 @@ class CustomInformation extends Field
     public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
     {
         $moduleVersion = $this->moduleList->getOne('Dhl_ExpressRates')['setup_version'];
-        $logo          = $this->repository->getUrl('Dhl_ExpressRates::images/logo.svg');
+        $logo          = $this->getViewFileUrl('Dhl_ExpressRates::images/logo.svg');
 
         $html = $this->getLayout()
             ->createBlock(\Magento\Framework\View\Element\Template::class)
