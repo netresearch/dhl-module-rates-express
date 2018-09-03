@@ -31,16 +31,14 @@ class ExpressHandler extends Base
      * @param DriverInterface $filesystem
      * @param ModuleConfigInterface $config
      * @param null|string $filePath
-     * @param null|string $fileName
      */
     public function __construct(
         DriverInterface $filesystem,
         ModuleConfigInterface $config,
-        $filePath = null,
-        $fileName = null
+        $filePath = null
     ) {
         $this->moduleConfig = $config;
-        parent::__construct($filesystem, $filePath, $fileName);
+        parent::__construct($filesystem, $filePath);
     }
 
     /**

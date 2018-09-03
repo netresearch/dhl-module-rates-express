@@ -29,7 +29,6 @@ class CustomInformation extends Field
      * CustomInformation constructor.
      *
      * @param Context    $context
-     * @param Repository $repository
      * @param ModuleList $moduleList
      */
     public function __construct(Context $context, ModuleList $moduleList)
