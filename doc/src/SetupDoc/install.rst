@@ -119,7 +119,7 @@ Uninstalling the module
 Automatic uninstallation
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are using Magento® **2.2** or higher, it can be uninstalled as follows:
+If you are using Magento® **2.2** or higher, the module can be uninstalled as follows:
 
 * On the command line, navigate into the root folder of your Magento® installation.
 * Execute the following commands:

@@ -62,17 +62,17 @@ Package Insurance
 Rates Request Settings
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* *Allowed International Products*: Limit which internation DHL Express products should be
+* *Allowed International Products*: Limit which international DHL Express products should be
   available in the checkout.
 * *Allowed Domestic Products*: Limit which domestic DHL Express products should be available in
   the checkout.
-* *Order Cut-off Time*: Orders which are placed before this time are expected to ship the same
-  day. Orders placed afterwards are expected to ship the following day. Holidays and weekends
-  (globally between the origin and destination) are taken into account.
+* *Order Cut-off Time*: Orders which are placed before this time are expected to ship on the same
+  day; orders placed afterwards are expected to ship on the following day. Holidays and weekends
+  (globally between shipment origin and destination) are taken into account.
 * *Regular Pickup*: Enable this if you have an agreement with DHL Express about regular pickups
   (e.g. every day at a fixed time).
-* *Pickup/Handover Time*: Set the time at which shipments are regularly handed over or picked up
-  by DHL.
+* *Pickup/Handover Time*: Set the time at which shipments are regularly handed over to or picked
+  up by DHL.
 * *Terms of Trade*: Select one of these options:
 
   * *DDP*: Delivered Duty Paid. The seller is responsible for delivering the goods to the
@@ -83,8 +83,10 @@ Rates Request Settings
     buyer is responsible for paying the duty and taxes.
 
 * *Customize Checkout Rates*: Enable this if you want to modify the rates shown in the checkout,
-  e.g. by adding handling fees or provide discounts. Options for `International Rates Calculation`_
-  and `Domestic Rates Calculation`_ will be displayed below if this is enabled.
+  e.g. by adding handling fees or providing discounts.
+  
+  Options for `International Rates Calculation`_ and `Domestic Rates Calculation`_ will be 
+  displayed below if this is enabled.
 
 .. raw:: pdf
 
@@ -138,6 +140,7 @@ Free Shipping
 Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
 
 * *Configure Free Shipping*: Enable this if you want to offer free shipping via DHL Express.
+
   Options for `International Free Shipping`_ and `Domestic Free Shipping`_ will be displayed
   below if this is enabled.
 * *Include Virtual Products in Price Calculation*: Enable this if virtual products should be
