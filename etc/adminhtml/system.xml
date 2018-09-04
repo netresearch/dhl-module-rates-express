@@ -9,7 +9,7 @@
                     <attribute type="shared">1</attribute>
                 </field>
 
-                <label><![CDATA[DHL Express]]></label>
+                <label><![CDATA[DHL Express Rates]]></label>
                 <!-- General fields -->
                 <field id="general_settings" translate="tooltip label comment" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Checkout Presentation]]></label>
