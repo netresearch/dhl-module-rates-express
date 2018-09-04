@@ -10,14 +10,21 @@ staging system before moving it into a production system.
 Installing the module
 ---------------------
 
-.. admonition:: Please note
+The module needs to be installed with Composer. Other installation procedures are not
+officially supported.
 
-    Questions about setting up and using Composer in Magento® are not covered by our
+The module does not make any changes to the database.
+
+No new attributes are added to Magento®.
+
+.. admonition:: Composer usage
+
+    Basic questions about setting up and using Composer in Magento® are not covered by our
     technical support. Please refer to these official documentations:
 
-    https://getcomposer.org/doc/01-basic-usage.md
-
-    https://devdocs.magento.com/guides/v2.2/comp-mgr/install-extensions.html
+    * https://getcomposer.org/doc/01-basic-usage.md
+    * https://devdocs.magento.com/guides/v2.1/comp-mgr/install-extensions.html
+    * https://devdocs.magento.com/guides/v2.2/comp-mgr/install-extensions.html
 
 .. raw:: pdf
 
@@ -36,7 +43,7 @@ Follow these steps:
 ::
 
     composer config repositories.dhlexpress artifact /path/to/folder/with/package/
-    composer require TODO REPO-NAME/PACKAGE-NAME
+    composer require dhl/module-rates-express
     composer update
 
 **Note:** The path to the package in the above example is absolute, i.e. starting at
@@ -49,7 +56,7 @@ Omit the filename!
 
 ::
 
-    php bin/magento module:enable TODO MODULE-NAME --clear-static-content
+    php bin/magento module:enable Dhl_ExpressRates --clear-static-content
     php bin/magento setup:upgrade
     php bin/magento cache:flush
     php bin/magento setup:di:compile
@@ -80,10 +87,10 @@ Follow these steps:
 
 ::
 
-    composer require TODO REPO-NAME/PACKAGE-NAME
+    composer require dhl/module-rates-express
     composer update
 
-* These steps are also explained in the official Magento® guide for Composer installations: 
+* **Hint**: These steps are also explained in the Magento® guide for installing extensions: 
   https://devdocs.magento.com/guides/v2.2/comp-mgr/install-extensions.html
 * Check if any errors occurred at this point, and resolve them. See the Composer documentation:
   https://getcomposer.org/doc/articles/troubleshooting.md
@@ -91,7 +98,7 @@ Follow these steps:
 
 ::
 
-    php bin/magento module:enable TODO MODULE-NAME --clear-static-content
+    php bin/magento module:enable Dhl_ExpressRates --clear-static-content
     php bin/magento setup:upgrade
     php bin/magento cache:flush
     php bin/magento setup:di:compile
@@ -109,26 +116,23 @@ Follow these steps:
 Uninstalling the module
 -----------------------
 
-Composer repository / package
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Automatic uninstallation
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are using Magento® 2.2 and the module has been installed with Composer from a repository
-or package (see above), it can be uninstalled as follows:
+If you are using Magento® **2.2** or higher, it can be uninstalled as follows:
 
 * On the command line, navigate into the root folder of your Magento® installation.
 * Execute the following commands:
 
 ::
 
-    php bin/magento module:uninstall --remove-data TODO MODULE-NAME
+    php bin/magento module:uninstall --remove-data Dhl_ExpressRates
     composer update
 
-This will automatically remove source files, clean up the database, and update package dependencies.
+This will automatically remove the source files and update package dependencies.
 
-.. admonition:: Only available in Magento® 2.2
-
-   The above uninstallation procedure only works in Magento® **2.2** or newer.
-   In Magento **2.1** and below, please use the `manual uninstallation`_ method instead.
+**Note**: The above uninstallation procedure only works in Magento® 2.2 or newer. In Magento
+2.1 and below, please use the `manual uninstallation`_ method instead.
 
 Manual uninstallation
 ~~~~~~~~~~~~~~~~~~~~~
@@ -140,5 +144,5 @@ To uninstall the module manually, follow these steps:
 
 ::
 
-    php bin/magento module:disable TODO MODULE-NAME
-    composer remove TODO REPO-NAME/PACKAGE-NAME
+    php bin/magento module:disable Dhl_ExpressRates
+    composer remove dhl/module-rates-express

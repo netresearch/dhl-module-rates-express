@@ -3,9 +3,7 @@ The following requirements must be met for the smooth operation of the extension
 Magento®
 --------
 
-The most recent versions of the following Magento® versions are supported:
-
-TODO
+The most recent versions of the following Magento® editions are supported:
 
 - Community Edition 2.1+, 2.2+
 - Enterprise Edition 2.1+, 2.2+
@@ -15,11 +13,9 @@ PHP
 
 These PHP versions are supported by the extension:
 
-TODO
-
 - PHP 5.6, 7.0, 7.1
 
-.. admonition:: PHP versions
+.. admonition:: PHP version requirements
 
    Please also note the PHP requirements of Magento® itself:
 

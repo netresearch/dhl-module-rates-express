@@ -19,11 +19,11 @@
 .. sectnum::
 
 ======================================================================
-TODO MODULE-NAME extension for Magento® 2: Setup guide
+DHL Express Rates extension for Magento® 2: Setup guide
 ======================================================================
 
 This document covers the **installation, setup, and configuration** of the
-TODO MODULE-NAME extension.
+DHL Express Rates extension.
 
 .. raw:: pdf
 

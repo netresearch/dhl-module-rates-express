@@ -19,10 +19,10 @@
 .. sectnum::
 
 ======================================================================
-TODO MODULE-NAME extension for Magento® 2: User Guide
+DHL Express Rates extension extension for Magento® 2: User Guide
 ======================================================================
 
-This document covers the **usage and workflows** of the TODO MODULE-NAME extension.
+This document covers the **usage and workflows** of the DHL Express Rates extension extension.
 
 .. raw:: pdf
 
