@@ -62,8 +62,7 @@ class CheckoutProvider
      */
     public function getRates(RateRequest $request)
     {
-        $methods = $this->rateAdapter->getRates($request);
-
+        $methods    = $this->rateAdapter->getRates($request);
         $rateResult = $this->rateResultFactory->create();
 
         foreach ($this->rateProcessors as $rateProcessor) {

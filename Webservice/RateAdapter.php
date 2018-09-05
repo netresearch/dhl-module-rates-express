@@ -56,7 +56,9 @@ class RateAdapter implements RateAdapterInterface
      * Fetch Rates through API client
      *
      * @param RateRequest $request
+     *
      * @return array
+     *
      * @throws LocalizedException
      */
     public function getRates(RateRequest $request): array
@@ -65,7 +67,7 @@ class RateAdapter implements RateAdapterInterface
 
         try {
             $response = $this->client->performRatesRequest($requestModel);
-            $result = $this->responseDataMapper->mapResult($response);
+            $result   = $this->responseDataMapper->mapResult($response);
         } catch (RateRequestException | SoapException $e) {
             throw new LocalizedException(__('Error during rate request.'), $e, $e->getCode());
         }

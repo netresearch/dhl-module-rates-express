@@ -11,6 +11,7 @@ use Dhl\Express\Api\RateRequestBuilderInterface;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Model\PickupTime;
 use Dhl\Express\Model\Request\Rate\ShipmentDetails;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 
 /**
@@ -59,8 +60,9 @@ class RequestDataMapper implements RequestDataMapperInterface
      * Maps the available application data to the DHL Express specific request object
      *
      * @param RateRequest $request
+     *
      * @return RateRequestInterface
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
     public function mapRequest(RateRequest $request): RateRequestInterface
     {
@@ -69,6 +71,18 @@ class RequestDataMapper implements RequestDataMapperInterface
             $request->getPostcode(),
             $request->getCity()
         );
+
+        if (empty($request->getDestPostcode())) {
+            throw new LocalizedException(
+                __('The recipient postal code is missing, which is required to calculate rates')
+            );
+        }
+
+        if (empty($request->getDestCity())) {
+            throw new LocalizedException(
+                __('The recipient city is missing, which is required to calculate rates')
+            );
+        }
 
         $this->rateRequestBuilder->setRecipientAddress(
             $request->getDestCountryId(),
