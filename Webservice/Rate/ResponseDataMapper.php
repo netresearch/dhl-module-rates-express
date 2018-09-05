@@ -65,13 +65,13 @@ class ResponseDataMapper implements ResponseDataMapperInterface
     /**
      * ResponseDataMapper constructor.
      *
-     * @param AdditionalInfoFactory $additionalInfoFactory
-     * @param MethodFactory $methodFactory
-     * @param ModuleConfigInterface $moduleConfig
-     * @param StoreManagerInterface $storeManager
-     * @param CurrencyFactory $currencyFactory
+     * @param AdditionalInfoFactory      $additionalInfoFactory
+     * @param MethodFactory              $methodFactory
+     * @param ModuleConfigInterface      $moduleConfig
+     * @param StoreManagerInterface      $storeManager
+     * @param CurrencyFactory            $currencyFactory
      * @param DateTimeFormatterInterface $dateTimeFormatter
-     * @param CarrierLogo $logo
+     * @param CarrierLogo                $logo
      */
     public function __construct(
         AdditionalInfoFactory $additionalInfoFactory,
