@@ -36,6 +36,11 @@
             <argument name="logger" xsi:type="object">Dhl\ExpressRates\Model\Logger\Virtual</argument>
         </arguments>
     </type>
+    <type name="Dhl\ExpressRates\Webservice\Rate\ResponseDataMapper">
+        <arguments>
+            <argument name="dateTimeFormatter" xsi:type="object">Dhl\ExpressRates\Virtual\DateTimeFormatter</argument>
+        </arguments>
+    </type>
 
     <!-- virtual types -->
     <virtualType name="Dhl\ExpressRates\Model\Logger\Virtual" type="Magento\Framework\Logger\Monolog">
@@ -43,6 +48,11 @@
             <argument name="handlers" xsi:type="array">
                 <item name="expressHandler" xsi:type="object">Dhl\ExpressRates\Model\Logger\ExpressHandler</item>
             </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Dhl\ExpressRates\Virtual\DateTimeFormatter" type="Magento\Framework\Stdlib\DateTime\DateTimeFormatter">
+        <arguments>
+            <argument name="useIntlFormatObject" xsi:type="boolean">false</argument>
         </arguments>
     </virtualType>
 
