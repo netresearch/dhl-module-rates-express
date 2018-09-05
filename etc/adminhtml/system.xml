@@ -111,6 +111,19 @@
                     <comment><![CDATA[Select 'Error' to only log errors, 'Info' for warnings, and 'Debug' to log all API activity (may result in large log files!). Log files are located under <code>var/log</code>.]]></comment>
                 </field>
 
+                <!-- Packaging configuration -->
+                <field id="packaging_configuration_heading" translate="label" sortOrder="240" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label><![CDATA[Packaging Configuration]]></label>
+                    <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+                    <attribute type="shared">1</attribute>
+                </field>
+                <field id="packaging_weight" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="241"
+                        translate="label comment tooltip" type="text">
+                    <label><![CDATA[Packaging Weight]]></label>
+                    <comment><![CDATA[The package weight specified here will be added to the combined weight of all items in the shopping cart to calculate shipping rates.]]></comment>
+                    <tooltip><![CDATA[Your weight unit can be configured under Stores > General > Locale Options > Weight Unit. You may enter a full number or a decimal value in the format "1.3".]]></tooltip>
+                </field>
+
                 <!-- Package insurance config fields -->
                 <field id="package_insurance_heading" translate="label" sortOrder="260" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label><![CDATA[Package Insurance]]></label>
@@ -118,7 +131,7 @@
                     <attribute type="shared">1</attribute>
                 </field>
                 <field id="package_insurance" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="265"
-                       translate="label comment toolitip" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
+                       translate="label comment tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Package Insurance]]></label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment><![CDATA[Enable to configure possible insurance charges for shipping rates displayed in Checkout.]]></comment>

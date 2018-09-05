@@ -888,4 +888,19 @@ class ModuleConfig implements ModuleConfigInterface
             $store
         );
     }
+
+    /**
+     * Returns configured packaging weight for rates calculation.
+     *
+     * @param mixed $store
+     * @return float
+     */
+    public function getPackagingWeight($store = null)
+    {
+        return (float)$this->scopeConfig->getValue(
+            self::CONFIG_XML_PATH_PACKAGING_WEIGHT,
+            ScopeInterface::SCOPE_WEBSITE,
+            $store
+        );
+    }
 }

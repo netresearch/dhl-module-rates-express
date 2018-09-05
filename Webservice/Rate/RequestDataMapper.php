@@ -91,7 +91,7 @@ class RequestDataMapper implements RequestDataMapperInterface
 
         $this->rateRequestBuilder->addPackage(
             1,
-            (float)$request->getPackageWeight() ?: 1,
+            $this->calculatePackageWeight($request),
             $this->moduleConfig->getWeightUnit($request->getStoreId()),
             1,
             1,
@@ -123,5 +123,20 @@ class RequestDataMapper implements RequestDataMapperInterface
         }
 
         return $this->rateRequestBuilder->build();
+    }
+
+    /**
+     * Calculate the total weight of the package by adding the individiual weight of the items in the quote to the
+     * configured packaging weight.
+     *
+     * @param RateRequest $request
+     * @return float
+     */
+    private function calculatePackageWeight(RateRequest $request)
+    {
+        $itemWeight = (float)$request->getPackageWeight();
+        $packagingWeight = $this->moduleConfig->getPackagingWeight($request->getWebsiteId());
+
+        return $itemWeight + $packagingWeight;
     }
 }

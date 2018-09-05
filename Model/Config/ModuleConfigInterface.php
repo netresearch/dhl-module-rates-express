@@ -56,6 +56,7 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_TERMS_OF_TRADE = self::CONFIG_ROOT . 'terms_of_trade';
     const CONFIG_XML_PATH_CUT_OFF_TIME = self::CONFIG_ROOT . 'cut_off_time';
     const CONFIG_XML_PATH_ENABLE_RATES_CONFIGURATION = self::CONFIG_ROOT . 'enable_rates_configuration';
+    const CONFIG_XML_PATH_PACKAGING_WEIGHT = self::CONFIG_ROOT . 'packaging_weight';
     const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
     const CONFIG_XML_SUFFIX_FIXED = '_fixed';
     const CONFIG_XML_SUFFIX_PERCENTAGE = '_percentage';
@@ -456,4 +457,12 @@ interface ModuleConfigInterface
      * @return string
      */
     public function getOriginCountry($store = null);
+
+    /**
+     * Returns configured packaging weight for rates calculation.
+     *
+     * @param mixed $store
+     * @return float
+     */
+    public function getPackagingWeight($store = null);
 }
