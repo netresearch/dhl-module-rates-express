@@ -167,3 +167,20 @@ Only visible if "Configure Free Shipping" is enabled in `Free Shipping`_.
 * *Free Shipping Available For*: Select the allowed products for free shipping.
 * *Free Shipping Minimum Order Amount*: Enter the minimum value for free shipping. Leaving this
   empty will disable domestic free shipping.
+
+Shipping settings
+-----------------
+
+Log in to your Magento® admin panel and navigate here:
+
+::
+
+    Configuration -> Sales -> Shipping settings -> Origin
+
+Set the full address of your shop here:
+
+* Country
+* Region / state
+* ZIP code
+* City
+* Street address
