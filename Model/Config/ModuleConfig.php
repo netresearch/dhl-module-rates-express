@@ -229,36 +229,6 @@ class ModuleConfig implements ModuleConfigInterface
     }
 
     /**
-     * Check if Sandbox mode is enabled in config.
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function sandboxModeEnabled($store = null)
-    {
-        return (bool)$this->scopeConfig->getValue(
-            self::CONFIG_XML_PATH_SANDBOX_MODE,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
-     * Check if Sandbox mode is disabled in config.
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function sandboxModeDisabled($store = null)
-    {
-        return !(bool)$this->scopeConfig->getValue(
-            self::CONFIG_XML_PATH_SANDBOX_MODE,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
      * Get the log level.
      *
      * @param string|null $store

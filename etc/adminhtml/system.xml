@@ -91,11 +91,6 @@
                     <validate>validate-length maximum-length-9 minimum-length-9 validate-digits</validate>
                     <tooltip><![CDATA[This is the account number provided by DHL Express]]></tooltip>
                 </field>
-                <field id="sandboxmode" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="220"
-                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
-                    <label><![CDATA[Sandbox Mode]]></label>
-                    <tooltip><![CDATA[Use sandbox mode for testing. No real shipments or labels are created while in sandbox mode.]]></tooltip>
-                </field>
                 <field id="logging" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="225"
                        translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Enable Logging]]></label>

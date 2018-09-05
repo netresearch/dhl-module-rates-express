@@ -26,7 +26,6 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_ERROR_MESSAGE = self::CONFIG_ROOT . 'specificerrmsg';
     const CONFIG_XML_PATH_USERNAME = self::CONFIG_ROOT . 'username';
     const CONFIG_XML_PATH_PASSWORD = self::CONFIG_ROOT . 'password';
-    const CONFIG_XML_PATH_SANDBOX_MODE = self::CONFIG_ROOT . 'sandboxmode';
     const CONFIG_XML_PATH_ACCOUNT_NUMBER = self::CONFIG_ROOT . 'accountnumber';
     const CONFIG_XML_PATH_LOGLEVEL = self::CONFIG_ROOT . 'loglevel';
     const CONFIG_XML_PATH_ENABLE_LOGGING = self::CONFIG_ROOT . 'logging';
@@ -140,22 +139,6 @@ interface ModuleConfigInterface
      * @return string
      */
     public function getPassword($store = null);
-
-    /**
-     * Check if Sandbox mode is enabled.
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function sandboxModeEnabled($store = null);
-
-    /**
-     * Check if Sandbox mode is disabled.
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function sandboxModeDisabled($store = null);
 
     /**
      * Get the Logging status.
