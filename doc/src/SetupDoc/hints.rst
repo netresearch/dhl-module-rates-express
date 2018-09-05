@@ -8,6 +8,8 @@ to DHL or create shipment requests (packaging labels).
 To get and print DHL packaging labels, the shipment information needs to be exported from
 Magento® to DHL Express via a third-party system.
 
+Technically, DHL Express is an offline shipping method.
+
 Language support
 ----------------
 

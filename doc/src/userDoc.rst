@@ -19,10 +19,10 @@
 .. sectnum::
 
 ======================================================================
-DHL Express Rates extension extension for Magento® 2: User Guide
+DHL Express Rates extension for Magento® 2: User Guide
 ======================================================================
 
-This document covers the **usage and workflows** of the DHL Express Rates extension extension.
+This document covers the **usage and workflows** of the DHL Express Rates extension.
 
 .. raw:: pdf
 
@@ -34,10 +34,28 @@ This document covers the **usage and workflows** of the DHL Express Rates extens
 
    PageBreak
 
+Hints and general information
+=============================
+
+.. include:: ./UserDoc/hints.rst
+
+.. raw:: pdf
+
+   PageBreak
+
 Features and usage
 ==================
 
 .. include:: ./UserDoc/usage.rst
+	
+.. raw:: pdf
+
+    PageBreak
+
+Troubleshooting
+===============
+
+.. include:: ./UserDoc/troubleshooting.rst
 	
 .. raw:: pdf
 
