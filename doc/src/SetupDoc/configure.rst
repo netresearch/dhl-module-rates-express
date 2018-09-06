@@ -101,7 +101,7 @@ Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings
   shipments.
 * *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
   calculated as a percentage based on the shopping cart value.
-* *Handling Fixed Fee*: Enter a fixed amout. Positive value will add a fee, negative value
+* *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
   creates discount.
 * *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
   creates discount. Omit the percentage-sign.
@@ -116,7 +116,7 @@ Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings
   shipments.
 * *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
   calculated as a percentage based on the shopping cart value.
-* *Handling Fixed Fee*: Enter a fixed amout. Positive value will add a fee, negative value
+* *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
   creates discount.
 * *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
   creates discount. Omit the percentage-sign.

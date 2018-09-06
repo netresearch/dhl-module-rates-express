@@ -65,7 +65,7 @@ Omit the filename!
 **Note**: After the command "setup:static-content:deploy", put the list of your shop's locales.
 The above is just an example (but it should cover most scenarios).
 
-* Check if any errors occured.
+* Check if any errors occurred.
 * Then proceed with the `Configuration`_.
 
 .. raw:: pdf
@@ -106,7 +106,7 @@ Follow these steps:
 
 * **Note**: After "setup:static-content:deploy", put the list of your shop's locales.
   The above is just an example (but it should cover most scenarios).
-* Check if any errors occured.
+* Check if any errors occurred.
 * Then proceed with the `Configuration`_.
 
 .. raw:: pdf
