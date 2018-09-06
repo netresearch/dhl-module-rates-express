@@ -10,7 +10,7 @@ staging system before moving it into a production system.
 Installing the module
 ---------------------
 
-The module needs to be installed with Composer. Other installation procedures are not
+The module needs to be installed with `Composer <https://getcomposer.org/>`_. Other installation procedures are not
 officially supported.
 
 The module does not make any changes to the database.
