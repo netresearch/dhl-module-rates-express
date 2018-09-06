@@ -36,7 +36,6 @@ API Settings
 * *Username*: Enter the API username which you received from DHL Express.
 * *Password*: Enter the password for the above API username.
 * *Account number*: Enter your DHL Express account number.
-* *Sandbox mode*: Enable this for testing without creating real shipments.
 * *Enable Logging*: Activate this to write messages to the log file in ``var/log``. Select
   the log level via the options below:
 
