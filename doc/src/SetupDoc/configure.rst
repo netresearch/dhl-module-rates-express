@@ -84,8 +84,8 @@ Rates Request Settings
 
 * *Customize Checkout Rates*: Enable this if you want to modify the rates shown in the checkout,
   e.g. by adding handling fees or providing discounts.
-  
-  Options for `International Rates Calculation`_ and `Domestic Rates Calculation`_ will be 
+
+  Options for `International Rates Calculation`_ and `Domestic Rates Calculation`_ will be
   displayed below if this is enabled.
 
 .. raw:: pdf
@@ -98,9 +98,9 @@ International Rates Calculation
 Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
 
 * *Modify International Rates*: Enable this if you want to add handling fees for international
-  shipments.
+  shipments to the rates.
 * *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
-  calculated as a percentage based on the shopping cart value.
+  calculated as a percentage offset.
 * *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
   creates discount.
 * *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
@@ -113,9 +113,9 @@ Domestic Rates Calculation
 Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
 
 * *Modify Domestic Rates*: Enable this if you want to add handling fees for domestic
-  shipments.
+  shipments to the rates.
 * *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
-  calculated as a percentage based on the shopping cart value.
+  calculated as a percentage offset.
 * *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
   creates discount.
 * *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
@@ -156,8 +156,8 @@ International Free Shipping
 Only visible if "Configure Free Shipping" is enabled in `Free Shipping`_.
 
 * *Free Shipping Available For*: Select the allowed products for free shipping.
-* *Free Shipping Minimum Order Amount*: Enter the minimum value for free shipping. Leaving this
-  empty will disable international free shipping.
+* *Free Shipping Minimum Order Amount*: Enter the minimum value of the shopping cart required for free shipping.
+  Leaving this empty will disable international free shipping.
 
 Domestic Free Shipping
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -165,8 +165,8 @@ Domestic Free Shipping
 Only visible if "Configure Free Shipping" is enabled in `Free Shipping`_.
 
 * *Free Shipping Available For*: Select the allowed products for free shipping.
-* *Free Shipping Minimum Order Amount*: Enter the minimum value for free shipping. Leaving this
-  empty will disable domestic free shipping.
+* *Free Shipping Minimum Order Amount*: Enter the minimum value of the shopping cart required for free shipping.
+  Leaving this empty will disable domestic free shipping.
 
 Shipping settings
 -----------------
