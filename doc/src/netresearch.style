@@ -1,5 +1,5 @@
 {
-	"pageSetup": { 
+	"pageSetup": {
 		"size":"A4",
 		"margin-top": "1cm",
 		"margin-bottom": "2cm",
@@ -8,27 +8,21 @@
     },
 	"styles": [
         ["base" , {
-          "fontName":"Verdana"
         }],
         ["bodytext" , {
-          "fontSize": 10,
-          "fontName":"Verdana"
+          "fontSize": 10
         }],
         ["heading" , {
-          "textColor": #202020,
-          "fontName":"Verdana"
+          "textColor": #202020
         }],
         ["heading1" , {
-          "textColor": #202020,
-          "fontName":"Verdana"
+          "textColor": #202020
         }],
         ["heading2" , {
-          "textColor": #202020,
-          "fontName":"Verdana"
+          "textColor": #202020
         }],
         ["heading3" , {
-          "textColor": #202020,
-          "fontName":"Verdana"
+          "textColor": #202020
         }],
 		["footertable" , {
           "borderWidth": 0,
@@ -42,7 +36,6 @@
         }],
         ["titlepage" , {
           "fontSize": 28,
-          "fontName":"Verdana",
           "textColor": #202020
         }],
 		["rightalign" , {
