@@ -16,11 +16,6 @@ namespace Dhl\ExpressRates\Model\Config\Source;
 class RoundedPricesMode implements \Magento\Framework\Option\ArrayInterface
 {
     /**
-     * No rounding key.
-     */
-    const DO_NOT_ROUND = 'no_rounding';
-
-    /**
      * Round up key.
      */
     const ROUND_UP = 'round_up';
@@ -36,9 +31,8 @@ class RoundedPricesMode implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => self::DO_NOT_ROUND, 'label' => 'Don\'t round'],
             ['value' => self::ROUND_UP, 'label' => 'Round up'],
-            ['value' => self::ROUND_OFF, 'label' => 'Round off'],
+            ['value' => self::ROUND_OFF, 'label' => 'Round down'],
         ];
     }
 }

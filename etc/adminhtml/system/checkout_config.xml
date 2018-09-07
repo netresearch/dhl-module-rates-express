@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <field id="checkout_presentation_heading" translate="tooltip label comment" sortOrder="405" showInDefault="1" showInWebsite="1" showInStore="0">
+        <label><![CDATA[Checkout Presentation]]></label>
+        <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
+        <attribute type="shared">1</attribute>
+    </field>
+    <field id="title" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="410" translate="tooltip label comment" type="text" canRestore="1">
+        <label><![CDATA[Display Title]]></label>
+    </field>
+    <field id="sort_order" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="415" translate="tooltip label comment" type="text">
+        <label><![CDATA[Sort Order]]></label>
+        <frontend_class>validate-number</frontend_class>
+        <tooltip><![CDATA[This field determines where DHL Express will be displayed on the Checkout page. To display after Flat Rate or Free Shipping, enter a number just higher than the sort order value configured for those Shipping Methods.]]></tooltip>
+    </field>
+    <field id="checkout_show_delivery_time" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="420"
+            translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
+        <label><![CDATA[Shipping Option Display]]></label>
+        <source_model>Dhl\ExpressRates\Model\Config\Source\ShippingOptionDisplay</source_model>
+    </field>
+    <field id="show_method_if_not_applicable" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="430"
+            translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
+        <label><![CDATA[If No DHL Shipping Option Available]]></label>
+        <source_model>Dhl\ExpressRates\Model\Config\Source\ShowIfNotApplicable</source_model>
+    </field>
+    <field id="specificerrmsg" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="440" translate="tooltip label comment" type="textarea" canRestore="1">
+        <label><![CDATA[Custom Message]]></label>
+        <depends>
+            <field id="show_method_if_not_applicable">1</field>
+        </depends>
+    </field>
+    <field id="package_insurance" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="450"
+            translate="label comment tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
+        <label><![CDATA[Package Insurance]]></label>
+        <button_label>Add insurance charge into shipping rates</button_label>
+        <comment><![CDATA[Enable to configure possible insurance charges for shipping rates displayed in Checkout.]]></comment>
+    </field>
+    <field id="package_insurance_from_value" translate="label" type="text" sortOrder="460" showInDefault="1"
+            showInWebsite="1" showInStore="0">
+        <label><![CDATA[Minimum Cart Value]]></label>
+        <validate>validate-number validate-zero-or-greater</validate>
+        <depends>
+            <field id="package_insurance">1</field>
+        </depends>
+        <comment><![CDATA[Specify a cart value from which on upwards shipping insurance should be automatically applied]]></comment>
+    </field>
+    <!-- Round prices -->
+    <field id="round_prices_format" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="470" translate="tooltip label comment"
+            type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
+        <label><![CDATA[Round Prices]]></label>
+        <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesFormat</source_model>
+    </field>
+    <field id="round_prices_static_decimal" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="480" translate="tooltip label comment" type="text">
+        <label><![CDATA[Decimal Value]]></label>
+        <validate>validate-length maximum-length-2 minimum-length-2 validate-digits</validate>
+        <tooltip><![CDATA[Enter the value without the decimal separator (e.g. 99 for the shipping charges to be rounded up to 99 cents)]]></tooltip>
+        <depends>
+            <field id="round_prices_format">static_decimal</field>
+        </depends>
+    </field>
+    <field id="round_prices_mode" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="490" translate="tooltip label comment"
+            type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
+        <label><![CDATA[Rounding Direction]]></label>
+        <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesMode</source_model>
+        <depends>
+            <field id="round_prices_format" separator=",">full_price,static_decimal</field>
+        </depends>
+    </field>
+</include>

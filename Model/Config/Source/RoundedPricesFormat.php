@@ -16,6 +16,11 @@ namespace Dhl\ExpressRates\Model\Config\Source;
 class RoundedPricesFormat implements \Magento\Framework\Option\ArrayInterface
 {
     /**
+     * No rounding key.
+     */
+    const DO_NOT_ROUND = 'no_rounding';
+
+    /**
      * Full price key.
      */
     const FULL_PRICE = 'full_price';
@@ -30,8 +35,10 @@ class RoundedPricesFormat implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => self::FULL_PRICE, 'label' => 'Round to integer'],
-            ['value' => self::STATIC_DECIMAL, 'label' => 'Round to specific decimal value'],
+
+            ['value' => self::DO_NOT_ROUND, 'label' => 'Don\'t round prices'],
+            ['value' => self::FULL_PRICE, 'label' => 'Round to an integer (ex. 1, 37)'],
+            ['value' => self::STATIC_DECIMAL, 'label' => 'Round to a specific decimal value (ex. 99 cents)'],
         ];
     }
 }

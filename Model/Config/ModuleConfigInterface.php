@@ -43,7 +43,8 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT = self::CONFIG_ROOT . 'round_prices_format';
     const CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL = self::CONFIG_ROOT . 'round_prices_static_decimal';
     const CONFIG_XML_PATH_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'free_shipping_subtotal';
-    const CONFIG_XML_PATH_FREE_SHIPPING_ENABLED = self::CONFIG_ROOT . 'free_shipping_enable';
+    const CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED = self::CONFIG_ROOT . 'domestic_free_shipping_enable';
+    const CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED = self::CONFIG_ROOT . 'international_free_shipping_enable';
     const CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED = self::CONFIG_ROOT . 'free_shipping_virtual_products_enable';
     const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'domestic_free_shipping_products';
     const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'domestic_free_shipping_subtotal';
@@ -52,7 +53,6 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME = self::CONFIG_ROOT . 'checkout_show_delivery_time';
     const CONFIG_XML_PATH_TERMS_OF_TRADE = self::CONFIG_ROOT . 'terms_of_trade';
     const CONFIG_XML_PATH_CUT_OFF_TIME = self::CONFIG_ROOT . 'cut_off_time';
-    const CONFIG_XML_PATH_ENABLE_RATES_CONFIGURATION = self::CONFIG_ROOT . 'enable_rates_configuration';
     const CONFIG_XML_PATH_PACKAGING_WEIGHT = self::CONFIG_ROOT . 'packaging_weight';
     const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
     const CONFIG_XML_SUFFIX_FIXED = '_fixed';

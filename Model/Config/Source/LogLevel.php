@@ -23,8 +23,8 @@ class LogLevel implements \Magento\Framework\Option\ArrayInterface
     {
         return [
             ['value' => (string)Monolog::ERROR, 'label' => 'Error'],
-            ['value' => (string)Monolog::INFO, 'label' => 'Info'],
-            ['value' => (string)Monolog::DEBUG, 'label' => 'Debug'],
+            ['value' => (string)Monolog::INFO, 'label' => 'Info (Errors and Warnings)'],
+            ['value' => (string)Monolog::DEBUG, 'label' => 'Debug (All API Activities)'],
         ];
     }
 }

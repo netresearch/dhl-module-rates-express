@@ -40,8 +40,8 @@ class TermsOfTrade
     public function toArray()
     {
         return [
-            self::TOD_DDP => 'DDP',
-            self::TOD_DDU => 'DDU',
+            self::TOD_DDU => 'Customer pays duties and taxes (DDU)',
+            self::TOD_DDP => 'I will pay duties and taxes (DTP)',
         ];
     }
 }
