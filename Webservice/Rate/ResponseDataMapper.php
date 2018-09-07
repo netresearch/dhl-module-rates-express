@@ -58,11 +58,6 @@ class ResponseDataMapper implements ResponseDataMapperInterface
     private $dateTimeFormatter;
 
     /**
-     * @var CarrierLogo
-     */
-    private $logo;
-
-    /**
      * ResponseDataMapper constructor.
      *
      * @param AdditionalInfoFactory      $additionalInfoFactory
@@ -71,7 +66,6 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @param StoreManagerInterface      $storeManager
      * @param CurrencyFactory            $currencyFactory
      * @param DateTimeFormatterInterface $dateTimeFormatter
-     * @param CarrierLogo                $logo
      */
     public function __construct(
         AdditionalInfoFactory $additionalInfoFactory,
@@ -79,8 +73,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
         ModuleConfigInterface $moduleConfig,
         StoreManagerInterface $storeManager,
         CurrencyFactory $currencyFactory,
-        DateTimeFormatterInterface $dateTimeFormatter,
-        CarrierLogo $logo
+        DateTimeFormatterInterface $dateTimeFormatter
     ) {
         $this->additionalInfoFactory = $additionalInfoFactory;
         $this->methodFactory = $methodFactory;
@@ -88,7 +81,6 @@ class ResponseDataMapper implements ResponseDataMapperInterface
         $this->storeManager = $storeManager;
         $this->currencyFactory = $currencyFactory;
         $this->dateTimeFormatter = $dateTimeFormatter;
-        $this->logo = $logo;
     }
 
     /**
@@ -177,11 +169,6 @@ class ResponseDataMapper implements ResponseDataMapperInterface
     private function getMethodAdditionalInformation(Rate $rate)
     {
         $data = [];
-
-        if ($this->moduleConfig->isCheckoutLogoEnabled()) {
-            $logoUrl = $this->logo->getImageUrl();
-            $data[MethodAdditionalInfoInterface::CARRIER_LOGO_URL] = $logoUrl;
-        }
 
         if ($this->moduleConfig->isCheckoutDeliveryTimeEnabled()) {
             $deliveryDate = $this->getFormattedDeliveryDate($rate->getDeliveryTime());

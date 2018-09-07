@@ -49,8 +49,6 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'domestic_free_shipping_subtotal';
     const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'international_free_shipping_products';
     const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'international_free_shipping_subtotal';
-    const CONFIG_XML_PATH_CARRIER_LOGO = self::CONFIG_ROOT . 'carrier_logo_url';
-    const CONFIG_XML_PATH_CHECKOUT_SHOW_LOGO = self::CONFIG_ROOT . 'checkout_show_logo';
     const CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME = self::CONFIG_ROOT . 'checkout_show_delivery_time';
     const CONFIG_XML_PATH_TERMS_OF_TRADE = self::CONFIG_ROOT . 'terms_of_trade';
     const CONFIG_XML_PATH_CUT_OFF_TIME = self::CONFIG_ROOT . 'cut_off_time';
@@ -341,22 +339,6 @@ interface ModuleConfigInterface
      * @return float
      */
     public function getInternationalFreeShippingSubTotal($store = null);
-
-    /**
-     * Get carrier logo url
-     *
-     * @param string|null $store
-     * @return string
-     */
-    public function getCarrierLogoUrl($store = null);
-
-    /**
-     * Check if logo should be displayed in checkout
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function isCheckoutLogoEnabled($store = null);
 
     /**
      * Check if delivery time should be displayed in checkout

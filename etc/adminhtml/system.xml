@@ -30,12 +30,6 @@
                     <label><![CDATA[Title]]></label>
                     <tooltip><![CDATA[This value will be displayed on the Checkout page unless the "Display DHL Logo in Checkout" is enabled.]]></tooltip>
                 </field>
-                <field id="checkout_show_logo" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="111"
-                       translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
-                    <label><![CDATA[Display DHL Logo]]></label>
-                    <comment><![CDATA[The logo image will replace the method title configured above.]]></comment>
-                    <tooltip><![CDATA[Decide whether you want to show display the carrier name or it's logo image.]]></tooltip>
-                </field>
                 <field id="checkout_show_delivery_time" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="112"
                        translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Toggle">
                     <label><![CDATA[Display Estimated Delivery Date]]></label>

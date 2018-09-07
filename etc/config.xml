@@ -17,8 +17,6 @@
                 <international_handling_type>F</international_handling_type>
                 <cut_off_time>15,00,00</cut_off_time>
                 <pickup_time>00,00,00</pickup_time>
-                <carrier_logo_url>images/logo.svg</carrier_logo_url>
-                <checkout_show_logo>1</checkout_show_logo>
                 <checkout_show_delivery_time>1</checkout_show_delivery_time>
                 <terms_of_trade>DDU</terms_of_trade>
                 <package_insurance_from_value>0</package_insurance_from_value>

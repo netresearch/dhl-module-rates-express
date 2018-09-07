@@ -638,38 +638,6 @@ class ModuleConfig implements ModuleConfigInterface
     }
 
     /**
-     * Get carrier logo url
-     *
-     * @param string|null $store
-     * @return string
-     */
-    public function getCarrierLogoUrl($store = null)
-    {
-        return (string)$this->scopeConfig->getValue(
-            ModuleConfigInterface::CONFIG_XML_PATH_CARRIER_LOGO,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-    }
-
-    /**
-     * Check if logo should be displayed in checkout
-     *
-     * @param string|null $store
-     * @return bool
-     */
-    public function isCheckoutLogoEnabled($store = null)
-    {
-        $value = $this->scopeConfig->getValue(
-            ModuleConfigInterface::CONFIG_XML_PATH_CHECKOUT_SHOW_LOGO,
-            ScopeInterface::SCOPE_STORE,
-            $store
-        );
-
-        return $value === '1';
-    }
-
-    /**
      * Check if delivery time should be displayed in checkout
      *
      * @param string|null $store
