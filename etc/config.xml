@@ -6,7 +6,7 @@
                 <version>0.1.0</version>
                 <model>Dhl\ExpressRates\Model\Carrier\Express</model>
                 <active>0</active>
-                <sort_order>1</sort_order>
+                <sort_order>30</sort_order>
                 <title>DHL Express</title>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
                 <sallowspecific>0</sallowspecific>
@@ -15,7 +15,7 @@
                 <min_package_weight>0.1</min_package_weight>
                 <max_package_weight>99999</max_package_weight>
                 <domestic_handling_type>F</domestic_handling_type>
-                <package_insurance_from_value>101</package_insurance_from_value>
+                <package_insurance_from_value>26</package_insurance_from_value>
                 <international_handling_type>F</international_handling_type>
                 <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
                 <alloweddomesticproducts>N</alloweddomesticproducts>
@@ -23,7 +23,6 @@
                 <pickup_time>16,00,00</pickup_time>
                 <checkout_show_delivery_time>1</checkout_show_delivery_time>
                 <terms_of_trade>DDU</terms_of_trade>
-                <package_insurance_from_value>0</package_insurance_from_value>
             </dhlexpress>
         </carriers>
     </default>

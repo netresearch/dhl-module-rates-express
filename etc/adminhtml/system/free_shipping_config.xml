@@ -20,7 +20,7 @@
             sortOrder="730" translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkboxset">
         <label><![CDATA[Free Shipping Available For]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\InternationalProducts</source_model>
-        <comment><![CDATA[Choose allowed shipping products for free shipping]]></comment>
+        <comment><![CDATA[Choose allowed shipping products for Free Shipping]]></comment>
         <depends>
             <field id="international_free_shipping_enable">1</field>
         </depends>

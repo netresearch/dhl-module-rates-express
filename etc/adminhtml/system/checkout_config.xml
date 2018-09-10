@@ -15,8 +15,9 @@
     </field>
     <field id="checkout_show_delivery_time" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="420"
             translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
-        <label><![CDATA[Shipping Option Display]]></label>
+        <label><![CDATA[Shipping Options Display]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\ShippingOptionDisplay</source_model>
+        <comment>Delivery date is based on your expected shipment date</comment>
     </field>
     <field id="show_method_if_not_applicable" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="430"
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
@@ -32,7 +33,7 @@
     <field id="package_insurance" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="450"
             translate="label comment tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
         <label><![CDATA[Package Insurance]]></label>
-        <button_label>Add insurance charge into shipping rates</button_label>
+        <button_label>Add insurance charge to shipping price</button_label>
         <comment><![CDATA[Enable to configure possible insurance charges for shipping rates displayed in Checkout.]]></comment>
     </field>
     <field id="package_insurance_from_value" translate="label" type="text" sortOrder="460" showInDefault="1"
@@ -42,7 +43,7 @@
         <depends>
             <field id="package_insurance">1</field>
         </depends>
-        <comment><![CDATA[Specify a cart value from which on upwards shipping insurance should be automatically applied]]></comment>
+        <comment><![CDATA[Shipping costs will include shipment protection costs for any cart value equal to or greater than this amount]]></comment>
     </field>
     <!-- Round prices -->
     <field id="round_prices_format" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="470" translate="tooltip label comment"
@@ -53,7 +54,7 @@
     <field id="round_prices_static_decimal" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="480" translate="tooltip label comment" type="text">
         <label><![CDATA[Decimal Value]]></label>
         <validate>validate-length maximum-length-2 minimum-length-2 validate-digits</validate>
-        <tooltip><![CDATA[Enter the value without the decimal separator (e.g. 99 for the shipping charges to be rounded up to 99 cents)]]></tooltip>
+        <tooltip><![CDATA[Enter the value without the decimal separator (ex. 99 for the shipping charges to be rounded to 99 cents)]]></tooltip>
         <depends>
             <field id="round_prices_format">static_decimal</field>
         </depends>

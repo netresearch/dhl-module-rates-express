@@ -2,7 +2,7 @@
 <include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
     <field id="customize_rates_heading" translate="tooltip label comment" sortOrder="610" showInDefault="1"
             showInWebsite="1" showInStore="1">
-        <label><![CDATA[Customize Rates]]></label>
+        <label><![CDATA[Shipping Markup]]></label>
         <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
         <attribute type="shared">1</attribute>
     </field>
@@ -10,12 +10,12 @@
     <!-- International rates calculation config fields -->
     <field id="international_affect_rates" translate="label tooltip" sortOrder="620" showInDefault="1" showInWebsite="1" showInStore="0"
             type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
-        <label><![CDATA[International Rates]]></label>
-        <button_label><![CDATA[Add handling fee to international rates]]></button_label>
+        <label><![CDATA[International Shipping]]></label>
+        <button_label><![CDATA[Add markup to shipping price]]></button_label>
     </field>
     <field id="international_handling_type" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="630"
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
-        <label><![CDATA[Calculate Handling Fee]]></label>
+        <label><![CDATA[Calculate Markup]]></label>
         <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
         <depends>
             <field id="international_affect_rates">1</field>
@@ -23,7 +23,7 @@
     </field>
     <field id="international_handling_fee_fixed" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="640"
             translate="tooltip label comment" type="text">
-        <label><![CDATA[Handling Fixed Fee]]></label>
+        <label><![CDATA[Fixed amount]]></label>
         <validate>validate-number</validate>
         <comment><![CDATA[Enter the markup amount in the currency of your store. Enter a negative to apply a discount]]></comment>
         <depends>
@@ -33,9 +33,9 @@
     </field>
     <field id="international_handling_fee_percentage" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="650"
             translate="tooltip label comment" type="text">
-        <label><![CDATA[Handling Percentage Fee]]></label>
+        <label><![CDATA[Percentage]]></label>
         <validate>validate-number</validate>
-        <comment><![CDATA[Ex. enter 20 to apply a 20% markup in the currency of your store. Enter -20 to apply a 20% discount]]></comment>
+        <comment><![CDATA[For example, enter 20 to apply a 20% markup in the currency of your store. Enter -20 to apply a 20% discount]]></comment>
         <depends>
             <field id="international_affect_rates">1</field>
             <field id="international_handling_type">P</field>
@@ -45,12 +45,12 @@
     <!-- Domestic rates calculation config fields -->
     <field id="domestic_affect_rates" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="660"
             translate="comment label tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
-        <label><![CDATA[Domestic Rates]]></label>
-        <button_label><![CDATA[Add handling fee to domestic rates]]></button_label>
+        <label><![CDATA[Domestic Shipping]]></label>
+        <button_label><![CDATA[Add markup to shipping price]]></button_label>
     </field>
     <field id="domestic_handling_type" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="665"
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
-        <label><![CDATA[Calculate Handling Fee]]></label>
+        <label><![CDATA[Calculate Markup]]></label>
         <source_model>Magento\Shipping\Model\Source\HandlingType</source_model>
         <depends>
             <field id="domestic_affect_rates">1</field>
@@ -58,7 +58,7 @@
     </field>
     <field id="domestic_handling_fee_fixed" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="670"
             translate="tooltip label comment" type="text">
-        <label><![CDATA[Handling Fixed Fee]]></label>
+        <label><![CDATA[Fixed amount]]></label>
         <validate>validate-number</validate>
         <comment><![CDATA[Enter the markup amount in the currency of your store. Enter a negative to apply a discount]]></comment>
         <depends>
@@ -68,9 +68,9 @@
     </field>
     <field id="domestic_handling_fee_percentage" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="680"
             translate="tooltip label comment" type="text">
-        <label><![CDATA[Handling Percentage Fee]]></label>
+        <label><![CDATA[Percentage]]></label>
         <validate>validate-number</validate>
-        <comment><![CDATA[Ex. enter 20 to apply a 20% markup in the currency of your store. Enter -20 to apply a 20% discount]]></comment>
+        <comment><![CDATA[For example, enter 20 to apply a 20% markup in the currency of your store. Enter -20 to apply a 20% discount]]></comment>
         <depends>
             <field id="domestic_affect_rates">1</field>
             <field id="domestic_handling_type">P</field>

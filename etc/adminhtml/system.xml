@@ -14,7 +14,6 @@
                 <include path="Dhl_ExpressRates::system/general_config.xml"/>
                 <include path="Dhl_ExpressRates::system/api_config.xml"/>
                 <include path="Dhl_ExpressRates::system/rate_request_config.xml"/>
-                <include path="Dhl_ExpressRates::system/packaging_config.xml"/>
                 <include path="Dhl_ExpressRates::system/checkout_config.xml"/>
                 <include path="Dhl_ExpressRates::system/customize_rates_config.xml"/>
                 <include path="Dhl_ExpressRates::system/free_shipping_config.xml"/>
