@@ -21,6 +21,9 @@
     <field id="specificcountry" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="130" translate="tooltip label comment" type="multiselect">
         <label><![CDATA[Allow for Specific Countries]]></label>
         <can_be_empty>1</can_be_empty>
+        <depends>
+            <field id="sallowspecific">1</field>
+        </depends>
         <source_model>Magento\Directory\Model\Config\Source\Country</source_model>
     </field>
     <field id="logging" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="140"

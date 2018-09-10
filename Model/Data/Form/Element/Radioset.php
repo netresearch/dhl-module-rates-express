@@ -16,8 +16,6 @@ use Magento\Framework\Data\Form\Element\Radios;
  */
 class Radioset extends Radios
 {
-    const PSEUDO_POSTFIX = '_pseudo'; // used to create the hidden input id.
-
     /**
      * Add a display none style since the css directive that hides the original input element is missing in
      * system_config.
@@ -47,25 +45,32 @@ class Radioset extends Radios
      */
     private function getJsHtml()
     {
-        $hiddenId = $this->getHtmlId() . self::PSEUDO_POSTFIX;
-
-       return <<<HTML
-<input type="hidden" id="{$hiddenId}" name="{$this->getName()}" value="{$this->getData('value')}"/>
+        return <<<HTML
+<input type="hidden"
+       id="{$this->getHtmlId()}"
+       class="{$this->getData('class')}"
+       name="{$this->getName()}"
+       value="{$this->getData('value')}"/>
 <script>
     (function() {
-        let radios = document.querySelectorAll("input[type=\"radio\"][name=\"{$this->getName()}\"]");
-        let hidden = document.getElementById("{$hiddenId}");
+        let radios = document.querySelectorAll("input[type='radio'][name='{$this->getName()}']");
+        let hidden = document.getElementById("{$this->getId()}");
 
         radios.forEach((radio) => {
             if (radio.type === "radio") {
                 radio.name += "[pseudo]";
 
-                // keep the hidden input value in sync with the radio. We also update the radio value because
-                // it may be needed by the core.
+                // Keep the hidden input value in sync with the radio inputs. We also create a change event for the
+                // hidden input because core functionality might listen for it (and the original radio inputs will not
+                // report the correct ID).
                 //
                 // @see module-backend/view/adminhtml/templates/system/shipping/applicable_country.phtml
                 radio.addEventListener("change", function (event) {
+                    event.stopPropagation();
                     hidden.value = event.target.value;
+                    let newEvent = document.createEvent("HTMLEvents");
+                    newEvent.initEvent("change", false, true);
+                    hidden.dispatchEvent(newEvent);
                 });
             }
         });
