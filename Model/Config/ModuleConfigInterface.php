@@ -35,6 +35,8 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_PACKAGE_INSURANCE = self::CONFIG_ROOT . 'package_insurance';
     const CONFIG_XML_PATH_PACKAGE_INSURANCE_FROM_VALUE = self::CONFIG_ROOT . 'package_insurance_from_value';
     const CONFIG_XML_PATH_PICKUP_TIME = self::CONFIG_ROOT . 'pickup_time';
+    const CONFIG_XML_PATH_DOMESTIC_AFFECT_RATES = self::CONFIG_ROOT . 'domestic_affect_rates';
+    const CONFIG_XML_PATH_INTERNATIONAL_AFFECT_RATES = self::CONFIG_ROOT . 'international_affect_rates';
     const CONFIG_XML_PATH_DOMESTIC_HANDLING_TYPE = self::CONFIG_ROOT . 'domestic_handling_type';
     const CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE = self::CONFIG_ROOT . 'domestic_handling_fee';
     const CONFIG_XML_PATH_INTERNATIONAL_HANDLING_TYPE = self::CONFIG_ROOT . 'international_handling_type';
@@ -43,8 +45,8 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT = self::CONFIG_ROOT . 'round_prices_format';
     const CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL = self::CONFIG_ROOT . 'round_prices_static_decimal';
     const CONFIG_XML_PATH_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'free_shipping_subtotal';
-    const CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED = self::CONFIG_ROOT . 'domestic_free_shipping_enable';
-    const CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED = self::CONFIG_ROOT . 'international_free_shipping_enable';
+    const CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED = self::CONFIG_ROOT . 'international_free_shipping_enable';
+    const CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED = self::CONFIG_ROOT . 'domestic_free_shipping_enable';
     const CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED = self::CONFIG_ROOT . 'free_shipping_virtual_products_enable';
     const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'domestic_free_shipping_products';
     const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'domestic_free_shipping_subtotal';
@@ -287,15 +289,6 @@ interface ModuleConfigInterface
     public function getRoundedPricesStaticDecimal($store = null);
 
     /**
-     * Returns whether free shipping is enabled or not.
-     *
-     * @param string|null $store Store name
-     *
-     * @return bool
-     */
-    public function isFreeShippingEnabled($store = null);
-
-    /**
      * Returns whether virtual products should be included in the subtotal value calculation or not.
      *
      * @param string|null $store Store name
@@ -365,12 +358,20 @@ interface ModuleConfigInterface
     public function getCutOffTime($store = null);
 
     /**
-     * Check if rates configuration is enabled
+     * Check if international rates configuration is enabled
      *
      * @param null $store
      * @return bool
      */
-    public function isRatesConfigurationEnabled($store = null);
+    public function isInternationalRatesConfigurationEnabled($store = null);
+
+    /**
+     * Check if domestic rates configuration is enabled
+     *
+     * @param null $store
+     * @return bool
+     */
+    public function isDomesticRatesConfigurationEnabled($store = null);
 
     /**
      * Get the general weight unit.
@@ -430,4 +431,24 @@ interface ModuleConfigInterface
      * @return float
      */
     public function getPackagingWeight($store = null);
+
+    /**
+     * Maps Magento's internal unit names to SDKs unit names
+     *
+     * @param string $unit
+     * @return string
+     */
+    public function normalizeWeightUOM($unit);
+
+    /**
+     * @param mixed $store
+     * @return bool
+     */
+    public function isInternationalFreeShippingEnabled($store = null);
+
+    /**
+     * @param mixed $store
+     * @return bool
+     */
+    public function isDomesticFreeShippingEnabled($store = null);
 }

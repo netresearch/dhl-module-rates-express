@@ -43,21 +43,26 @@ class FreeShipping implements RateProcessorInterface
      */
     public function processMethods(array $methods, $request = null)
     {
-        // Return methods if free shipping is disabled in config
-        if (($request === null) || !$this->moduleConfig->isFreeShippingEnabled()) {
+        if ($request === null) {
             return $methods;
         }
 
-        $productsSubTotal          = $this->getBaseSubTotalInclTax($request);
-        $domesticBaseSubTotal      = $this->moduleConfig->getDomesticFreeShippingSubTotal();
-        $internationalBaseSubTotal = $this->moduleConfig->getInternationalFreeShippingSubTotal();
+        $productsSubTotal = $this->getBaseSubTotalInclTax($request);
+        $domesticBaseSubTotal = $this->moduleConfig->getDomesticFreeShippingSubTotal();
+        $intlBaseSubTotal = $this->moduleConfig->getInternationalFreeShippingSubTotal();
 
         /** @var Method $method */
         foreach ($methods as $method) {
-            if ($this->isDomesticShipping($method) && $this->isEnabledDomesticProduct($method)) {
+            if ($this->isDomesticShipping($method)
+                && $this->moduleConfig->isDomesticFreeShippingEnabled()
+                && $this->isEnabledDomesticProduct($method)
+            ) {
                 $configuredSubTotal = $domesticBaseSubTotal;
-            } elseif (!$this->isDomesticShipping($method) && $this->isEnabledInternationalProduct($method)) {
-                $configuredSubTotal = $internationalBaseSubTotal;
+            } elseif (!$this->isDomesticShipping($method)
+                      && $this->moduleConfig->isInternationalFreeShippingEnabled()
+                      && $this->isEnabledInternationalProduct($method)
+            ) {
+                $configuredSubTotal = $intlBaseSubTotal;
             } else {
                 continue;
             }

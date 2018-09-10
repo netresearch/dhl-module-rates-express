@@ -2,9 +2,11 @@
 /**
  * See LICENSE.md for license details.
  */
+
 namespace Dhl\ExpressRates\Model\Config;
 
 use Dhl\ExpressRates\Model\Config\Source\InternationalProducts;
+use Dhl\ExpressRates\Model\Config\Source\RoundedPricesFormat;
 use Dhl\ExpressRates\Model\Config\Source\RoundedPricesMode;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
@@ -376,7 +378,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getDomesticHandlingType($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
+        return $this->isDomesticRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_HANDLING_TYPE,
                 ScopeInterface::SCOPE_STORE,
@@ -393,14 +395,14 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getDomesticHandlingFee($store = null)
     {
-        if ($this->isRatesConfigurationEnabled($store)) {
+        if ($this->isDomesticRatesConfigurationEnabled($store)) {
             $type = $this->getDomesticHandlingType($store) ===
             \Magento\Shipping\Model\Carrier\AbstractCarrier::HANDLING_TYPE_FIXED ?
                 self::CONFIG_XML_SUFFIX_FIXED :
                 self::CONFIG_XML_SUFFIX_PERCENTAGE;
 
             return (float)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE.$type,
+                ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE . $type,
                 ScopeInterface::SCOPE_STORE,
                 $store
             );
@@ -418,7 +420,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getInternationalHandlingType($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
+        return $this->isInternationalRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_HANDLING_TYPE,
                 ScopeInterface::SCOPE_STORE,
@@ -435,7 +437,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getInternationalHandlingFee($store = null)
     {
-        if ($this->isRatesConfigurationEnabled($store)) {
+        if ($this->isInternationalRatesConfigurationEnabled($store)) {
             $type =
                 $this->getInternationalHandlingType($store) ===
                 \Magento\Shipping\Model\Carrier\AbstractCarrier::HANDLING_TYPE_FIXED ?
@@ -443,7 +445,7 @@ class ModuleConfig implements ModuleConfigInterface
                     self::CONFIG_XML_SUFFIX_PERCENTAGE;
 
             return (float)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_HANDLING_FEE.$type,
+                ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_HANDLING_FEE . $type,
                 ScopeInterface::SCOPE_STORE,
                 $store
             );
@@ -459,12 +461,11 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getRoundedPricesMode($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
-            (string)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_MODE,
-                ScopeInterface::SCOPE_STORE,
-                $store
-            ) : '';
+        return (string)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_MODE,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**
@@ -475,8 +476,9 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function roundUp($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) &&
-            $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_UP;
+        return $this->getRoundedPricesFormat($store) === RoundedPricesFormat::DO_NOT_ROUND
+            ? false
+            : $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_UP;
     }
 
     /**
@@ -487,8 +489,9 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function roundOff($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) &&
-            $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_OFF;
+        return $this->getRoundedPricesFormat($store) === RoundedPricesFormat::DO_NOT_ROUND
+            ? false
+            : $this->getRoundedPricesMode($store) === RoundedPricesMode::ROUND_OFF;
     }
 
     /**
@@ -499,12 +502,11 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getRoundedPricesFormat($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
-            (string)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT,
-                ScopeInterface::SCOPE_STORE,
-                $store
-            ) : '';
+        return (string)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**
@@ -515,26 +517,35 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getRoundedPricesStaticDecimal($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
-            (float)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL,
-                ScopeInterface::SCOPE_STORE,
-                $store
-            ) / 100 :
-            0;
+        return (float)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        ) / 100;
     }
 
     /**
      * @inheritdoc
      */
-    public function isFreeShippingEnabled($store = null)
+    public function isInternationalFreeShippingEnabled($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) &&
-            (bool)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_ENABLED,
-                ScopeInterface::SCOPE_STORE,
-                $store
-            );
+        return (bool)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function isDomesticFreeShippingEnabled($store = null)
+    {
+        return (bool)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**
@@ -542,12 +553,11 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function isFreeShippingVirtualProductsIncluded($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) &&
-            (bool)$this->scopeConfig->getValue(
-                ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED,
-                ScopeInterface::SCOPE_STORE,
-                $store
-            );
+        return (bool)$this->scopeConfig->getValue(
+            ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
     }
 
     /**
@@ -555,7 +565,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getDomesticFreeShippingProducts($store = null)
     {
-        if ($this->isRatesConfigurationEnabled($store)) {
+        if ($this->isDomesticFreeShippingEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS,
                 ScopeInterface::SCOPE_STORE,
@@ -572,7 +582,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getDomesticFreeShippingSubTotal($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
+        return $this->isDomesticFreeShippingEnabled($store) ?
             (float)$this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL,
                 ScopeInterface::SCOPE_STORE,
@@ -585,7 +595,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getInternationalFreeShippingProducts($store = null)
     {
-        if ($this->isRatesConfigurationEnabled($store)) {
+        if ($this->isInternationalFreeShippingEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_PRODUCTS,
                 ScopeInterface::SCOPE_STORE,
@@ -602,7 +612,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getInternationalFreeShippingSubTotal($store = null)
     {
-        return $this->isRatesConfigurationEnabled($store) ?
+        return $this->isInternationalFreeShippingEnabled($store) ?
             (float)$this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_SUBTOTAL,
                 ScopeInterface::SCOPE_STORE,
@@ -685,15 +695,32 @@ class ModuleConfig implements ModuleConfigInterface
     }
 
     /**
-     * Check rates configuration is enabled
+     * Check if international rates configuration is enabled
      *
      * @param null $store
      * @return bool
      */
-    public function isRatesConfigurationEnabled($store = null)
+    public function isInternationalRatesConfigurationEnabled($store = null)
     {
         $value = $this->scopeConfig->getValue(
-            self::CONFIG_XML_PATH_ENABLE_RATES_CONFIGURATION,
+            self::CONFIG_XML_PATH_INTERNATIONAL_AFFECT_RATES,
+            ScopeInterface::SCOPE_STORE,
+            $store
+        );
+
+        return $value === '1';
+    }
+
+    /**
+     * Check if domestic rates configuration is enabled
+     *
+     * @param null $store
+     * @return bool
+     */
+    public function isDomesticRatesConfigurationEnabled($store = null)
+    {
+        $value = $this->scopeConfig->getValue(
+            self::CONFIG_XML_PATH_DOMESTIC_AFFECT_RATES,
             ScopeInterface::SCOPE_STORE,
             $store
         );

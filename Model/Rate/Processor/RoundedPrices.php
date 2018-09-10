@@ -58,14 +58,12 @@ class RoundedPrices implements RateProcessorInterface
      */
     private function roundPrice($price)
     {
-        $mode = $this->moduleConfig->getRoundedPricesMode();
+        $format = $this->moduleConfig->getRoundedPricesFormat();
 
         // Do not round
-        if ($mode === RoundedPricesMode::DO_NOT_ROUND) {
+        if ($format === RoundedPricesFormat::DO_NOT_ROUND) {
             return $price;
         }
-
-        $format = $this->moduleConfig->getRoundedPricesFormat();
 
         // Price should be rounded to a given decimal value
         if ($format === RoundedPricesFormat::STATIC_DECIMAL) {
