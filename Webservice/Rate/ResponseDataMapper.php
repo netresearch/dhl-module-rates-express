@@ -6,7 +6,6 @@ namespace Dhl\ExpressRates\Webservice\Rate;
 
 use Dhl\Express\Api\Data\RateResponseInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
-use Dhl\ExpressRates\Model\Carrier\CarrierLogo;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\Express\Model\Response\Rate\Rate;
 use Dhl\ExpressRates\Api\Data\MethodAdditionalInfoInterface;
@@ -60,11 +59,11 @@ class ResponseDataMapper implements ResponseDataMapperInterface
     /**
      * ResponseDataMapper constructor.
      *
-     * @param AdditionalInfoFactory      $additionalInfoFactory
-     * @param MethodFactory              $methodFactory
-     * @param ModuleConfigInterface      $moduleConfig
-     * @param StoreManagerInterface      $storeManager
-     * @param CurrencyFactory            $currencyFactory
+     * @param AdditionalInfoFactory $additionalInfoFactory
+     * @param MethodFactory $methodFactory
+     * @param ModuleConfigInterface $moduleConfig
+     * @param StoreManagerInterface $storeManager
+     * @param CurrencyFactory $currencyFactory
      * @param DateTimeFormatterInterface $dateTimeFormatter
      */
     public function __construct(
