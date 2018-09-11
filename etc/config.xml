@@ -17,6 +17,7 @@
                 <domestic_handling_type>F</domestic_handling_type>
                 <package_insurance_from_value>26</package_insurance_from_value>
                 <international_handling_type>F</international_handling_type>
+                <packaging_weight>0.5</packaging_weight>
                 <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
                 <alloweddomesticproducts>N</alloweddomesticproducts>
                 <cut_off_time>13,00,00</cut_off_time>

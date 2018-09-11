@@ -5,7 +5,6 @@
 namespace Dhl\ExpressRates\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
-use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Dhl\ExpressRates\Model\Rate\RateProcessorInterface;
 

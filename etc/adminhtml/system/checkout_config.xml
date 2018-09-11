@@ -36,20 +36,20 @@
         <label><![CDATA[Round Prices]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesFormat</source_model>
     </field>
-    <field id="round_prices_static_decimal" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="480" translate="tooltip label comment" type="text">
-        <label><![CDATA[Decimal Value]]></label>
-        <validate>validate-length maximum-length-2 minimum-length-2 validate-digits</validate>
-        <tooltip><![CDATA[Enter the value without the decimal separator (ex. 99 for the shipping charges to be rounded to 99 cents)]]></tooltip>
-        <depends>
-            <field id="round_prices_format">static_decimal</field>
-        </depends>
-    </field>
-    <field id="round_prices_mode" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="490" translate="tooltip label comment"
+    <field id="round_prices_mode" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="480" translate="tooltip label comment"
             type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
         <label><![CDATA[Rounding Direction]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\RoundedPricesMode</source_model>
         <depends>
             <field id="round_prices_format" separator=",">full_price,static_decimal</field>
+        </depends>
+    </field>
+    <field id="round_prices_static_decimal" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="490" translate="tooltip label comment" type="text">
+        <label><![CDATA[Decimal Value]]></label>
+        <validate>validate-length maximum-length-2 minimum-length-2 validate-digits</validate>
+        <tooltip><![CDATA[Enter the value without the decimal separator (ex. 99 for the shipping charges to be rounded to 99 cents)]]></tooltip>
+        <depends>
+            <field id="round_prices_format">static_decimal</field>
         </depends>
     </field>
 </include>
