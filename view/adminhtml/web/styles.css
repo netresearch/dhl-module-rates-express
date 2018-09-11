@@ -25,7 +25,9 @@
     margin: 0 0 1.5em;
 }
 
-.dhl-express-custom-info .content ul {
+.dhl-express-custom-info .content ul,
+.dhl-express-custom-info .content ol
+{
     margin-left: 1.5em;
 }
 
