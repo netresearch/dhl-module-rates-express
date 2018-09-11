@@ -411,15 +411,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/carrier_logo_url images/logo.svg
-     */
-    public function getCarrierLogoUrl()
-    {
-        $this->assertEquals('images/logo.svg', $this->config->getCarrierLogoUrl());
-    }
-
-    /**
-     * @test
      * @magentoConfigFixture current_store carriers/dhlexpress/checkout_show_logo 1
      */
     public function getCheckoutLogoSettingEnabled()
