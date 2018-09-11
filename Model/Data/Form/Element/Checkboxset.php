@@ -43,14 +43,15 @@ class Checkboxset extends Checkboxes
                 let hidden = document.getElementById("%s");
                 /** Make the hidden input the submitted one. **/
                 hidden.name = checkboxes.item(0).name;
-                checkboxes.forEach(function(checkbox) {
-                    checkbox.name = "";
+
+                for (let i = 0; i < checkboxes.length; i++) {
+                    checkboxes[i].name = "";
                     let values = hidden.value.split(",");
-                    if (values.includes(checkbox.value)) {
-                        checkbox.checked = true;
+                    if (values.includes(checkboxes[i].value)) {
+                        checkboxes[i].checked = true;
                     }
                     /** keep the hidden input value in sync with the checkboxes. **/
-                    checkbox.addEventListener("change", function (event) {
+                    checkboxes[i].addEventListener("change", function (event) {
                         let checkbox = event.target;
                         let values = hidden.value.split(",");
                         if (checkbox.checked && !values.includes(checkbox.value)) {
@@ -60,7 +61,7 @@ class Checkboxset extends Checkboxes
                         }
                         hidden.value = values.filter(Boolean).join();
                     });
-                });
+                };
             })();
         </script>';
 

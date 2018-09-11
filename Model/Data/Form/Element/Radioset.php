@@ -56,24 +56,25 @@ class Radioset extends Radios
         let radios = document.querySelectorAll("input[type='radio'][name='{$this->getName()}']");
         let hidden = document.getElementById("{$this->getId()}");
 
-        radios.forEach((radio) => {
-            if (radio.type === "radio") {
-                radio.name += "[pseudo]";
+        for (let i = 0; i < radios.length; i++) {
+            if (radios[i].type === "radio") {
+                radios[i].name += "[pseudo]";
 
                 // Keep the hidden input value in sync with the radio inputs. We also create a change event for the
                 // hidden input because core functionality might listen for it (and the original radio inputs will not
                 // report the correct ID).
                 //
                 // @see module-backend/view/adminhtml/templates/system/shipping/applicable_country.phtml
-                radio.addEventListener("change", function (event) {
+                radios[i].addEventListener("change", function (event) {
                     event.stopPropagation();
                     hidden.value = event.target.value;
+
                     let newEvent = document.createEvent("HTMLEvents");
                     newEvent.initEvent("change", false, true);
                     hidden.dispatchEvent(newEvent);
                 });
             }
-        });
+        }
     })();
 </script>
 HTML;
