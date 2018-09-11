@@ -25,6 +25,10 @@
     margin: 0 0 1.5em;
 }
 
+.dhl-express-custom-info .content ul {
+    margin-left: 1.5em;
+}
+
 .dhl-express-custom-info header {
     background: #FFCC01;
     padding: 15px 25px 10px;
