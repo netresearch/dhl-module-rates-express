@@ -24,6 +24,7 @@ class Checkboxset extends Checkboxes
      */
     public function getElementHtml()
     {
+        $this->setData('value', $this->filterUnavailableValues());
         $this->setData('after_element_html', $this->getAfterHtml());
 
         return parent::getElementHtml();
@@ -72,5 +73,23 @@ class Checkboxset extends Checkboxes
             $this->getName(),
             $this->getHtmlId() . self::PSEUDO_POSTFIX
         );
+    }
+
+    /**
+     * Remove previously selected values whose option is not available any more.
+     *
+     * @return string
+     */
+    private function filterUnavailableValues()
+    {
+        $values = explode(',', $this->getData('value'));
+        $availableValues = array_map(
+            function ($value) {
+                return $value['value'];
+            },
+            $this->getData('values')
+        );
+
+        return implode(',', array_intersect($values, $availableValues));
     }
 }
