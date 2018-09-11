@@ -30,21 +30,6 @@
             <field id="show_method_if_not_applicable">1</field>
         </depends>
     </field>
-    <field id="package_insurance" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="450"
-            translate="label comment tooltip" type="Dhl\ExpressRates\Model\Data\Form\Element\Checkbox">
-        <label><![CDATA[Package Insurance]]></label>
-        <button_label>Add insurance charge to shipping price</button_label>
-        <comment><![CDATA[Enable to configure possible insurance charges for shipping rates displayed in Checkout.]]></comment>
-    </field>
-    <field id="package_insurance_from_value" translate="label" type="text" sortOrder="460" showInDefault="1"
-            showInWebsite="1" showInStore="0">
-        <label><![CDATA[Minimum Cart Value]]></label>
-        <validate>validate-number validate-zero-or-greater</validate>
-        <depends>
-            <field id="package_insurance">1</field>
-        </depends>
-        <comment><![CDATA[Shipping costs will include shipment protection costs for any cart value equal to or greater than this amount]]></comment>
-    </field>
     <!-- Round prices -->
     <field id="round_prices_format" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="470" translate="tooltip label comment"
             type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
