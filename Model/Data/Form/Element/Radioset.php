@@ -38,7 +38,7 @@ class Radioset extends Radios
     {
         $value = $this->getData('value');
 
-        if ($value === null) {
+        if ($value === null && !empty($this->getData('values'))) {
             return $this->getData('values')[0]['value'];
         }
 
