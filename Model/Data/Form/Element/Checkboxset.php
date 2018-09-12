@@ -48,16 +48,17 @@ class Checkboxset extends Checkboxes
                 for (let i = 0; i < checkboxes.length; i++) {
                     checkboxes[i].name = "";
                     let values = hidden.value.split(",");
-                    if (values.includes(checkboxes[i].value)) {
+                    if (values.indexOf(checkboxes[i].value) !== -1) {
                         checkboxes[i].checked = true;
                     }
                     /** keep the hidden input value in sync with the checkboxes. **/
                     checkboxes[i].addEventListener("change", function (event) {
                         let checkbox = event.target;
                         let values = hidden.value.split(",");
-                        if (checkbox.checked && !values.includes(checkbox.value)) {
+                        var valueAlreadyIncluded = values.indexOf(checkbox.value) !== -1; 
+                        if (checkbox.checked && !valueAlreadyIncluded) {
                             values.push(checkbox.value);
-                        } else if (!checkbox.checked && values.includes(checkbox.value)) {
+                        } else if (!checkbox.checked && valueAlreadyIncluded) {
                             values.splice(values.indexOf(checkbox.value), 1)
                         }
                         hidden.value = values.filter(Boolean).join();
