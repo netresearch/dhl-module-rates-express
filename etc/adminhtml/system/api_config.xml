@@ -3,7 +3,7 @@
     <field id="apisettings_heading" translate="tooltip label comment" sortOrder="210" showInDefault="1" showInWebsite="1" showInStore="0">
         <label><![CDATA[DHL Express Account]]></label>
         <frontend_model>Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field\Heading</frontend_model>
-        <comment><![CDATA[Your account information will allow you to access the necessary API. New to DHL? <a href="https://mydhl.express.dhl/index/en.html" target="_blank">Request a business account</a>]]></comment>
+        <comment><![CDATA[Your account information will allow you to access the necessary API. New to DHL? <a href="https://mydhl.express.dhl/index/en.html" target="_blank">Apply for a business account</a>]]></comment>
         <attribute type="shared">1</attribute>
     </field>
     <field id="accountnumber" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="220" translate="tooltip label comment" type="text">

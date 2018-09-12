@@ -11,7 +11,7 @@
         <button_label><![CDATA[Display DHL Express live rates at checkout]]></button_label>
     </field>
 
-    <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="120" canRestore="1"
+    <field id="sallowspecific" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="120"
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
         <label><![CDATA[Applicable Countries]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\CustomizeApplicableCountries</source_model>
