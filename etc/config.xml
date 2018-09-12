@@ -14,16 +14,12 @@
                 <showmethod>1</showmethod>
                 <min_package_weight>0.1</min_package_weight>
                 <max_package_weight>99999</max_package_weight>
-                <domestic_handling_type>F</domestic_handling_type>
-                <package_insurance_from_value>26</package_insurance_from_value>
-                <international_handling_type>F</international_handling_type>
+                <package_insurance_from_value>0</package_insurance_from_value>
                 <packaging_weight>0.5</packaging_weight>
                 <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
                 <alloweddomesticproducts>N</alloweddomesticproducts>
                 <cut_off_time>13,00,00</cut_off_time>
                 <pickup_time>16,00,00</pickup_time>
-                <checkout_show_delivery_time>1</checkout_show_delivery_time>
-                <terms_of_trade>DDU</terms_of_trade>
             </dhlexpress>
         </carriers>
     </default>

@@ -29,6 +29,23 @@ class Radioset extends Radios
     }
 
     /**
+     * Returns the current value of the radio group. If no value is selected the first one of all
+     * available options will be used.
+     *
+     * @return mixed
+     */
+    public function getValue()
+    {
+        $value = $this->getData('value');
+
+        if ($value === null) {
+            return $this->getData('values')[0]['value'];
+        }
+
+        return $value;
+    }
+
+    /**
      * @return string
      */
     public function getElementHtml()
@@ -50,7 +67,7 @@ class Radioset extends Radios
        id="{$this->getHtmlId()}"
        class="{$this->getData('class')}"
        name="{$this->getName()}"
-       value="{$this->getData('value')}"/>
+       value="{$this->getValue()}"/>
 <script>
     (function() {
         let radios = document.querySelectorAll("input[type='radio'][name='{$this->getName()}']");
