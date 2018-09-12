@@ -3,19 +3,17 @@
     <default>
         <carriers>
             <dhlexpress>
-                <version>0.1.0</version>
+                <version>1.0.0</version>
                 <model>Dhl\ExpressRates\Model\Carrier\Express</model>
                 <active>0</active>
-                <sort_order>30</sort_order>
+                <sort_order>0</sort_order>
                 <title>DHL Express</title>
                 <specificerrmsg>This shipping method is not available. To use this shipping method, please contact us.</specificerrmsg>
                 <sallowspecific>0</sallowspecific>
                 <is_online>1</is_online>
                 <showmethod>1</showmethod>
-                <min_package_weight>0.1</min_package_weight>
-                <max_package_weight>99999</max_package_weight>
                 <package_insurance_from_value>0</package_insurance_from_value>
-                <packaging_weight>0.5</packaging_weight>
+                <packaging_weight>0.0</packaging_weight>
                 <allowedinternationalproducts>P;D;U</allowedinternationalproducts>
                 <alloweddomesticproducts>N</alloweddomesticproducts>
                 <cut_off_time>13,00,00</cut_off_time>
