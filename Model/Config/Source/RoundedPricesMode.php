@@ -31,8 +31,8 @@ class RoundedPricesMode implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => self::ROUND_UP, 'label' => 'Round up'],
-            ['value' => self::ROUND_OFF, 'label' => 'Round down'],
+            ['value' => self::ROUND_UP,  'label' => __('Round up')],
+            ['value' => self::ROUND_OFF, 'label' => __('Round down')],
         ];
     }
 }

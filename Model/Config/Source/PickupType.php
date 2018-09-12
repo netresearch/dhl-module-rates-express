@@ -20,8 +20,8 @@ class PickupType implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => '1', 'label' => 'Regularly scheduled pickup'],
-            ['value' => '0', 'label' => 'Ad hoc pickup or service point drop-off'],
+            ['value' => '1', 'label' => __('Regularly scheduled pickup')],
+            ['value' => '0', 'label' => __('Ad hoc pickup or service point drop-off')],
         ];
     }
 }

@@ -20,8 +20,8 @@ class ShippingOptionDisplay implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => '0', 'label' => 'Cost only'],
-            ['value' => '1', 'label' => 'Cost and estimated delivery dates (Only available on v2.2+)'],
+            ['value' => '0', 'label' => __('Cost only')],
+            ['value' => '1', 'label' => __('Cost and estimated delivery dates (Only available on v2.2+)')],
         ];
     }
 }

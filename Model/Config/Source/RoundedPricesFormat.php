@@ -36,9 +36,9 @@ class RoundedPricesFormat implements \Magento\Framework\Option\ArrayInterface
     {
         return [
 
-            ['value' => self::DO_NOT_ROUND, 'label' => 'Don\'t round prices'],
-            ['value' => self::FULL_PRICE, 'label' => 'Round to a whole number (ex. 1 or 37)'],
-            ['value' => self::STATIC_DECIMAL, 'label' => 'Round to a specific decimal value (ex. 99 cents)'],
+            ['value' => self::DO_NOT_ROUND,   'label' => __('Don\'t round prices')],
+            ['value' => self::FULL_PRICE,     'label' => __('Round to a whole number (ex. 1 or 37)')],
+            ['value' => self::STATIC_DECIMAL, 'label' => __('Round to a specific decimal value (ex. 99 cents)')],
         ];
     }
 }

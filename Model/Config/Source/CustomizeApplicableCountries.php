@@ -20,8 +20,8 @@ class CustomizeApplicableCountries implements \Magento\Framework\Option\ArrayInt
     public function toOptionArray()
     {
         return [
-            ['value' => '0', 'label' => 'Use default countries from General > Country'],
-            ['value' => '1', 'label' => 'Create a customized country list'],
+            ['value' => '0', 'label' => __('Use default countries from General > Country')],
+            ['value' => '1', 'label' => __('Create a customized country list')],
         ];
     }
 }

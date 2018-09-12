@@ -20,8 +20,8 @@ class ShowIfNotApplicable implements \Magento\Framework\Option\ArrayInterface
     public function toOptionArray()
     {
         return [
-            ['value' => '0', 'label' => 'Hide this option from customer'],
-            ['value' => '1', 'label' => 'Display customized message'],
+            ['value' => '0', 'label' => __('Hide this option from customer')],
+            ['value' => '1', 'label' => __('Display customized message')],
         ];
     }
 }
