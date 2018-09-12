@@ -71,3 +71,7 @@
     padding: 15px;
     border-top: 1px solid #f3f1e4;
 }
+
+.config .system-fieldset-sub-head p.comment {
+    padding-left: 2.8rem;
+}
