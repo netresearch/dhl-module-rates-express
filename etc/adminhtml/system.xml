@@ -11,12 +11,12 @@
                     <attribute type="shared">1</attribute>
                 </field>
 
-                <include path="Dhl_ExpressRates::system/general_config.xml"/>
-                <include path="Dhl_ExpressRates::system/api_config.xml"/>
-                <include path="Dhl_ExpressRates::system/rate_request_config.xml"/>
-                <include path="Dhl_ExpressRates::system/checkout_config.xml"/>
-                <include path="Dhl_ExpressRates::system/customize_rates_config.xml"/>
-                <include path="Dhl_ExpressRates::system/free_shipping_config.xml"/>
+                <include path="Dhl_ExpressRates::system/100_general_settings.xml"/>
+                <include path="Dhl_ExpressRates::system/200_dhl_express_account.xml"/>
+                <include path="Dhl_ExpressRates::system/300_shipping_preferences.xml"/>
+                <include path="Dhl_ExpressRates::system/400_checkout_presentation.xml"/>
+                <include path="Dhl_ExpressRates::system/500_shipping_markup.xml"/>
+                <include path="Dhl_ExpressRates::system/600_free_shipping.xml"/>
             </group>
         </section>
     </system>
