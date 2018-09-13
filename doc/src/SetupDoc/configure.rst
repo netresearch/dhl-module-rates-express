@@ -9,37 +9,17 @@ After `installing the module`_, log in to your Magento® admin panel and navigat
 
 Set the following configuration:
 
-Checkout Presentation
-~~~~~~~~~~~~~~~~~~~~~
+General settings
+~~~~~~~~~~~~~~~~
 
-* *Enabled*: Set this to "Yes" to use the module and display DHL Express in the checkout.
-* *Sort Order*: Enter a number into this field to control the sorting of shipping methods
-  in the checkout (optional).
-* *Title*: Set the shipping method title which will be displayed in the checkout if
-  the DHL logo is not shown (see below).
-* *Display DHL Logo*: Select if the DHL logo should be shown in the checkout.
-* *Display Estimated Delivery Date*: Select if the estimated delivery date should be shown
-  in the checkout. The date is calculated based on the expected shipping date.
-* *Applicable Countries*: Activate this checkbox if you want to limit the allowed destination
-  countries. The countries can be selected in the box below.
-* *Allow for Specific Countries*: Select one or more allowed destination countries. This will
-  override the default Magento® setting in "Configuration -> General -> Country Options".
-* *Show Method if Not Applicable*: Activate this checkbox if the shipping method should be
-  visible even if it cannot be used. A message for the customer can be configured in the box
-  below.
-* *Unavailability Message*: Enter a message which will be displayed if the shipping method
-  cannot be used.
+* *Enabled*: Activate this to use the module and display DHL Express live rates in the checkout.
+* *Applicable Countries*: Select if you want to limit the allowed destination
+  countries based on the Magento® default configuration, or by setting a custom list in
+  the box *Allow for Specific Countries* below.
+* *Logging*: Activate this to write messages to the log file in ``var/log``. Select the
+  *Logging level* via the options below:
 
-API Settings
-~~~~~~~~~~~~
-
-* *Username*: Enter the API username which you received from DHL Express.
-* *Password*: Enter the password for the above API username.
-* *Account number*: Enter your DHL Express account number.
-* *Enable Logging*: Activate this to write messages to the log file in ``var/log``. Select
-  the log level via the options below:
-
-  * *Error*: Only serious errors will be logged.
+  * *Errors*: Only serious errors will be logged.
   * *Info*: Errors and warnings will be logged.
   * *Debug*: Log everything, including all API communication. This setting will create very
     large log files over time. **Only recommended for troubleshooting!**
@@ -50,122 +30,100 @@ API Settings
    automatically. Personal data must only be stored as long as absolutely necessary. See also
    the section `Data protection`_.
 
-Package Insurance
-~~~~~~~~~~~~~~~~~
+DHL Express Account
+~~~~~~~~~~~~~~~~~~~
 
-* *Package Insurance*: Enable this to configure possible insurance charges for shipping rates
-  displayed in the checkout.
-* *Minimum Cart Value*: If the cart value is equal to this or higher, shipping insurance will
-  automatically be applied.
+* *Account number*: Enter your DHL Express account number.
+* *API Credentials*: Enter the API username which you received from DHL Express.
+* *Password*: Enter the password for the above API username.
 
-Rates Request Settings
-~~~~~~~~~~~~~~~~~~~~~~
+.. raw:: pdf
+
+   PageBreak
+
+Shipping Preferences
+~~~~~~~~~~~~~~~~~~~~
 
 * *Allowed International Products*: Limit which international DHL Express products should be
   available in the checkout.
 * *Allowed Domestic Products*: Limit which domestic DHL Express products should be available in
   the checkout.
+* *Packaging weight*: Enter a weight (kg) which will be added to the total weight. The total
+  weight will be used to calculate shipping rates.
 * *Order Cut-off Time*: Orders which are placed before this time are expected to ship on the same
   day; orders placed afterwards are expected to ship on the following day. Holidays and weekends
   (globally between shipment origin and destination) are taken into account.
-* *Regular Pickup*: Enable this if you have an agreement with DHL Express about regular pickups
-  (e.g. every day at a fixed time).
 * *Pickup/Handover Time*: Set the time at which shipments are regularly handed over to or picked
   up by DHL.
-* *Terms of Trade*: Select one of these options:
+* *Pickup Type*: Select if you have an agreement with DHL Express about regular pickups
+  (e.g. every day at a fixed time), or ad-hoc pickups / drop-off at a service point.
+* *Duties & Taxes*: Select who pays the duties and taxes for shipments.
+* *Package Insurance*: Enable this to add insurance charges to the shipping price.
+* *Minimum Cart Value*: If the cart value is equal to this or higher, shipping insurance will
+  automatically be applied.
 
-  * *DDP*: Delivered Duty Paid. The seller is responsible for delivering the goods to the
-    destination, and pays all costs in bringing the goods to the destination, including import
-    duties and taxes.
-  * *DDU*: Delivered Duty Unpaid. The seller bears the risks and costs (transportation and customs
-    clearance expenses) associated with supplying the goods to the delivery location. The
-    buyer is responsible for paying the duty and taxes.
+Checkout Presentation
+~~~~~~~~~~~~~~~~~~~~~
 
-* *Customize Checkout Rates*: Enable this if you want to modify the rates shown in the checkout,
-  e.g. by adding handling fees or providing discounts.
+* *Display Title*: Set the shipping method title which will be displayed in the checkout if
+  the DHL logo is not shown (see below).
+* *Sort Order*: Enter a number into this field to control the sorting of shipping methods
+  in the checkout (optional).
+* *Shipping Options Display*: Select what should be displayed in the checkout:
 
-  Options for `International Rates Calculation`_ and `Domestic Rates Calculation`_ will be
-  displayed below if this is enabled.
+  * *Cost only*: Display only the shipping cost in the checkout.
+  * *Cost and estimated delivery dates*: Display both shipping cost and estimated delivery dates.
+
+    Estimated delivery dates are only supported in Magento® 2.2 or higher.
+
+* *If No DHL Shipping Option Available*: Select what should happen if the shipping method
+  cannot be used:
+  
+  * *Hide this option from customer*
+  * *Display customized message*. A message for the customer can be configured in the box below.
+
+* *Round prices*: Select if and how the shipping rates should be rounded.
+* *Rounding direction*: Select if prices should be rounded up or down.
+* *Decimal Value*: If rounding to specific decimal value is selected, enter the value here without
+  the decimal separator.
 
 .. raw:: pdf
 
    PageBreak
 
-International Rates Calculation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
+Shipping markup
+~~~~~~~~~~~~~~~
 
-* *Modify International Rates*: Enable this if you want to add handling fees for international
+* *International Shipping*: Enable this if you want to add markup (handling fees) for international
   shipments to the rates.
-* *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
-  calculated as a percentage offset.
-* *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
-  creates discount.
-* *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
-  creates discount. Omit the percentage-sign.
-
-
-Domestic Rates Calculation
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
-
-* *Modify Domestic Rates*: Enable this if you want to add handling fees for domestic
+* *Calculate Markup*: Select if the markup should be added as a fixed amount, or
+  calculated as a percentage offset. Enter the value in the box below.
+* *Domestic Shipping*: Enable this if you want to add markup (handling fees) for domestic
   shipments to the rates.
-* *Calculate Handling Fee*: Select if the handling fee should be added as a fixed amount, or
-  calculated as a percentage offset.
-* *Handling Fixed Fee*: Enter a fixed amount. Positive value will add a fee, negative value
-  creates discount.
-* *Handling Percentage Fee*: Enter a percentage. Positive value will add a fee, negative value
-  creates discount. Omit the percentage-sign.
-
-Round prices
-~~~~~~~~~~~~
-
-Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
-
-* *Rounding Mode*: Select if and how the shipping rates should be rounded.
-* *Rounding Options*: Select one of these options:
-
-  * *Integer*: Round to full integer value, e.g. "12.00".
-  * *Decimal value*: Round to the configured decimal value, e.g. "XX.95".
-
-* *Decimal value*: Enter the decimal value for rounding, e.g. "95" . Omit the decimal point.
+* *Calculate Markup*: Select if the markup should be added as a fixed amount, or
+  calculated as a percentage offset. Enter the value in the box below.
 
 Free Shipping
 ~~~~~~~~~~~~~
 
-Only visible if "Customize Checkout Rates" is enabled in `Rates Request Settings`_.
+* *Free Shipping Calculation*: Enable this to include virtual products.
+* *International Orders*: Enable this to configure free shipping for international orders.
+  Additional options will be displayed below.
+* *Free Shipping Available For*: Select the allowed products for free shipping.
+* *International Minimum Order Amount*: Enter the minimum value of the shopping cart required
+  for free shipping. Leaving this empty will disable international free shipping.
 
-* *Configure Free Shipping*: Enable this if you want to offer free shipping via DHL Express.
+* *Domestic Orders*: Enable this to configure free shipping for domestic orders.
+  Additional options will be displayed below.
+* *Free Shipping Available For*: Select the allowed products for free shipping.
+* *Domestic Minimum Order Amount*: Enter the minimum value of the shopping cart required
+  for free shipping. Leaving this empty will disable domestic free shipping.
 
-  Options for `International Free Shipping`_ and `Domestic Free Shipping`_ will be displayed
-  below if this is enabled.
-* *Include Virtual Products in Price Calculation*: Enable this if virtual products should be
-  considered for free shipping.
 
 .. raw:: pdf
 
    PageBreak
-
-International Free Shipping
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Only visible if "Configure Free Shipping" is enabled in `Free Shipping`_.
-
-* *Free Shipping Available For*: Select the allowed products for free shipping.
-* *Free Shipping Minimum Order Amount*: Enter the minimum value of the shopping cart required for free shipping.
-  Leaving this empty will disable international free shipping.
-
-Domestic Free Shipping
-~~~~~~~~~~~~~~~~~~~~~~
-
-Only visible if "Configure Free Shipping" is enabled in `Free Shipping`_.
-
-* *Free Shipping Available For*: Select the allowed products for free shipping.
-* *Free Shipping Minimum Order Amount*: Enter the minimum value of the shopping cart required for free shipping.
-  Leaving this empty will disable domestic free shipping.
 
 Shipping settings
 -----------------

@@ -26,4 +26,4 @@ The merchant needs the agreement from the customer to process the data, e.g. via
 terms and conditions and / or an agreement in the checkout (Magento® Checkout Agreements).
 
 The actual data which is transmitted can be seen in the log file in ``var/log``
-(see `API Settings`_).
+(see `General settings`_).
