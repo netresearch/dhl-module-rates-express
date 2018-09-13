@@ -5,6 +5,7 @@
 namespace Dhl\ExpressRates\Model\Carrier;
 
 use Dhl\ExpressRates\Model\Rate\CheckoutProvider as RateProvider;
+use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 
@@ -37,6 +38,11 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     private $rateProvider;
 
     /**
+     * @var ModuleConfigInterface
+     */
+    private $moduleConfig;
+
+    /**
      * Express constructor.
      *
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
@@ -44,6 +50,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      * @param \Psr\Log\LoggerInterface $logger
      * @param \Magento\Shipping\Model\Rate\ResultFactory $rateFactory
      * @param RateProvider $rateProvider
+     * @param ModuleConfigInterface $moduleConfig
      * @param array $data
      */
     public function __construct(
@@ -52,10 +59,12 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
         \Psr\Log\LoggerInterface $logger,
         \Magento\Shipping\Model\Rate\ResultFactory $rateFactory,
         RateProvider $rateProvider,
+        ModuleConfigInterface $moduleConfig,
         array $data = []
     ) {
         $this->rateFactory = $rateFactory;
         $this->rateProvider = $rateProvider;
+        $this->moduleConfig = $moduleConfig;
 
         parent::__construct($scopeConfig, $rateErrorFactory, $logger, $data);
     }
@@ -65,7 +74,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      */
     public function collectRates(RateRequest $request)
     {
-        if (!$this->getConfigFlag('active')) {
+        if (!$this->moduleConfig->isEnabled($this->getStore())) {
             return false;
         }
 
@@ -119,11 +128,12 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      */
     private function getErrorMessage()
     {
-        if ($this->getConfigFlag('show_method_if_not_applicable')) {
+        $storeId = $this->getStore();
+        if ($this->moduleConfig->showIfNotApplicable($storeId)) {
             $error = $this->_rateErrorFactory->create();
             $error->setCarrier($this->getCarrierCode());
-            $error->setCarrierTitle($this->getConfigData('title'));
-            $error->setErrorMessage($this->getConfigData('specificerrmsg'));
+            $error->setCarrierTitle($this->moduleConfig->getTitle($storeId));
+            $error->setErrorMessage($this->moduleConfig->getNotApplicableErrorMessage($storeId));
 
             return $error;
         }
