@@ -868,4 +868,16 @@ class ModuleConfig implements ModuleConfigInterface
             $store
         );
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getVersion($store = null)
+    {
+        return $this->scopeConfig->getValue(
+            self::CONFIG_XML_PATH_VERSION,
+            ScopeInterface::SCOPE_WEBSITE,
+            $store
+        );
+    }
 }

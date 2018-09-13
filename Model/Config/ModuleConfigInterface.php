@@ -59,6 +59,7 @@ interface ModuleConfigInterface
     const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
     const CONFIG_XML_SUFFIX_FIXED = '_fixed';
     const CONFIG_XML_SUFFIX_PERCENTAGE = '_percentage';
+    const CONFIG_XML_PATH_VERSION = self::CONFIG_ROOT . 'version';
 
     /**
      * Check if the module is enabled.
@@ -451,4 +452,13 @@ interface ModuleConfigInterface
      * @return bool
      */
     public function isDomesticFreeShippingEnabled($store = null);
+
+    /**
+     * Returns the module version.
+     *
+     * @param mixed $store
+     *
+     * @return string
+     */
+    public function getVersion($store = null);
 }

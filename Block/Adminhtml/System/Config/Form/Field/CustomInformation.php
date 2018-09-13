@@ -4,54 +4,56 @@
  */
 namespace Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field;
 
-use Magento\Config\Block\System\Config\Form\Field;
+use Dhl\ExpressRates\Model\Config\ModuleConfig;
 use Magento\Backend\Block\Template\Context;
-use Magento\Framework\View\Asset\Repository;
-use Magento\Framework\Module\ModuleList;
+use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\View\Element\Template;
 
 /**
  * Class CustomInformation
  *
- * @package Dhl\ExpressRates\Block\Adminhtml
- * @author Ronny Gertler <ronny.gertler@netresearch.de>
+ * @package   Dhl\ExpressRates\Block\Adminhtml
+ * @author    Ronny Gertler <ronny.gertler@netresearch.de>
  * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
+ * @link      http://www.netresearch.de/
  */
 class CustomInformation extends Field
 {
-
     /**
-     * @var ModuleList
+     * @var ModuleConfig
      */
-    private $moduleList;
+    private $moduleConfig;
 
     /**
      * CustomInformation constructor.
      *
-     * @param Context    $context
-     * @param ModuleList $moduleList
+     * @param Context      $context
+     * @param ModuleConfig $moduleConfig
      */
-    public function __construct(Context $context, ModuleList $moduleList)
-    {
-        $this->moduleList = $moduleList;
+    public function __construct(
+        Context $context,
+        ModuleConfig $moduleConfig
+    ) {
+        $this->moduleConfig = $moduleConfig;
 
         parent::__construct($context);
     }
 
-
     /**
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param AbstractElement $element
      *
      * @return string
-     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws LocalizedException
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(AbstractElement $element)
     {
-        $moduleVersion = $this->moduleList->getOne('Dhl_ExpressRates')['setup_version'];
+        $moduleVersion = $this->moduleConfig->getVersion();
         $logo          = $this->getViewFileUrl('Dhl_ExpressRates::images/logo.svg');
 
         $html = $this->getLayout()
-            ->createBlock(\Magento\Framework\View\Element\Template::class)
+            ->createBlock(Template::class)
             ->setModuleVersion($moduleVersion)
             ->setLogo($logo)
             ->setTemplate('Dhl_ExpressRates::system/config/customInformation.phtml')
