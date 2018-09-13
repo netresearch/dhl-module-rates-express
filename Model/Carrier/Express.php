@@ -98,7 +98,6 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
 
         if ($errorMsg) {
             $this->_logger->error($errorMsg);
-
             return $this->getErrorMessage();
         }
 
@@ -120,7 +119,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      */
     private function getErrorMessage()
     {
-        if ($this->getConfigData('showmethod')) {
+        if ($this->getConfigFlag('show_method_if_not_applicable')) {
             $error = $this->_rateErrorFactory->create();
             $error->setCarrier($this->getCarrierCode());
             $error->setCarrierTitle($this->getConfigData('title'));
