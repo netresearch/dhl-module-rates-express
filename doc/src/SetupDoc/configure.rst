@@ -1,22 +1,22 @@
-Shipping methods
+Shipping Methods
 ----------------
 
 After `installing the module`_, log in to your Magento® admin panel and navigate here:
 
 ::
 
-    Configuration -> Sales -> Shipping methods -> DHL Express
+    Configuration -> Sales -> Shipping Methods -> DHL Express
 
 Set the following configuration:
 
-General settings
+General Settings
 ~~~~~~~~~~~~~~~~
 
 * *Enabled*: Activate this to use the module and display DHL Express live rates in the checkout.
 * *Applicable Countries*: Select if you want to limit the allowed destination
   countries based on the Magento® default configuration, or by setting a custom list in
   the box *Allow for Specific Countries* below.
-* *Logging*: Activate this to write messages to the log file in ``var/log``. Select the
+* *Logging*: Activate this to write messages to the log files in ``var/log``. Select the
   *Logging level* via the options below:
 
   * *Errors*: Only serious errors will be logged.
@@ -48,7 +48,7 @@ Shipping Preferences
   available in the checkout.
 * *Allowed Domestic Products*: Limit which domestic DHL Express products should be available in
   the checkout.
-* *Packaging weight*: Enter a weight (kg) which will be added to the total weight. The total
+* *Packaging weight*: Enter a weight (kg) which will be added to the total shipment weight. The total
   weight will be used to calculate shipping rates.
 * *Order Cut-off Time*: Orders which are placed before this time are expected to ship on the same
   day; orders placed afterwards are expected to ship on the following day. Holidays and weekends
@@ -65,8 +65,7 @@ Shipping Preferences
 Checkout Presentation
 ~~~~~~~~~~~~~~~~~~~~~
 
-* *Display Title*: Set the shipping method title which will be displayed in the checkout if
-  the DHL logo is not shown (see below).
+* *Display Title*: Set the shipping method title which will be displayed in the checkout.
 * *Sort Order*: Enter a number into this field to control the sorting of shipping methods
   in the checkout (optional).
 * *Shipping Options Display*: Select what should be displayed in the checkout:
@@ -92,7 +91,7 @@ Checkout Presentation
    PageBreak
 
 
-Shipping markup
+Shipping Markup
 ~~~~~~~~~~~~~~~
 
 * *International Shipping*: Enable this if you want to add markup (handling fees) for international
@@ -107,7 +106,7 @@ Shipping markup
 Free Shipping
 ~~~~~~~~~~~~~
 
-* *Free Shipping Calculation*: Enable this to include virtual products.
+* *Free Shipping Calculation*: Enable this to include virtual products in the minimum order value calculation.
 * *International Orders*: Enable this to configure free shipping for international orders.
   Additional options will be displayed below.
 * *Free Shipping Available For*: Select the allowed products for free shipping.
