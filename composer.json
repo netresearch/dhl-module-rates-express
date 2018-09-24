@@ -36,7 +36,7 @@
     "ext-intl": "*",
     "psr/log": "~1.0",
     "magento/module-shipping": "^100.1.0",
-    "dhl/sdk-api-express": "@dev"
+    "dhl/sdk-api-express": "^1.0.1"
   },
   "require-dev": {
     "roave/security-advisories": "dev-master",
