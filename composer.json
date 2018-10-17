@@ -1,17 +1,23 @@
 {
   "name": "dhl/module-rates-express",
-  "version": "1.0.0",
   "type": "magento2-module",
   "description": "Rates in Checkout implementation for DHL Express API",
   "license": "OSL-3.0",
+  "version": "1.0.0",
   "authors": [
     {
-      "email": "max.melzer@netresearch.de",
-      "name": "Max Melzer"
+      "name": "Max Melzer",
+      "email": "max.melzer@netresearch.de"
+    },
+    {
+      "name": "Andreas Müller",
+      "email": "andreas.mueller@netresearch.de"
+    },
+    {
+      "name": "Rico Sonntag",
+      "email": "rico.sonntag@netresearch.de"
     }
   ],
-  "minimum-stability": "dev",
-  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Dhl\\ExpressRates\\": ""
@@ -20,26 +26,18 @@
       "registration.php"
     ]
   },
-  "autoload-dev": {
-    "psr-4": {
-      "Dhl\\ExpressRates\\": [
-        "Test/Integration"
-      ]
-    }
-  },
-  "config": {
-    "platform": {
-      "php": "5.6"
-    }
-  },
   "require": {
-    "ext-intl": "*",
+    "php": "~5.6.5 || 7.0.2 || 7.0.4 || ~7.0.6 || ~7.1.0 || ~7.2.0",
     "psr/log": "~1.0",
+    "magento/module-backend": "^100.1.0 || ^101.0.0",
+    "magento/module-catalog": "^100.1.0 || ^101.0.0 || ^102.0.0 || ^103.0.0",
+    "magento/module-config": "^100.1.0 || ^101.0.0",
+    "magento/module-directory": "^100.1.0",
+    "magento/module-payment": "^100.1.0",
+    "magento/module-quote": "^100.1.0 || ^101.0.0",
     "magento/module-shipping": "^100.1.0",
+    "magento/module-store": "^100.1.0 || ^101.0.0",
+    "magento/framework": "^100.1.0 || ^101.0.0 || ^102.0.0",
     "dhl/sdk-api-express": "^1.0.1"
-  },
-  "require-dev": {
-    "roave/security-advisories": "dev-master",
-    "phpunit/phpunit": "*"
   }
 }
