@@ -15,8 +15,7 @@
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
         <label><![CDATA[Applicable Countries]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\CustomizeApplicableCountries</source_model>
-        <!-- frontend_class does not append, but replace all classes. The Radioset element type needs the admin__control-radio class to be styled correctly. -->
-        <frontend_class>shipping-applicable-country admin__control-radio</frontend_class>
+        <!-- frontend_class "shipping-applicable-country" intentionally omitted. -->
     </field>
     <field id="specificcountry" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="130" translate="tooltip label comment" type="multiselect">
         <label><![CDATA[Allow for Specific Countries]]></label>

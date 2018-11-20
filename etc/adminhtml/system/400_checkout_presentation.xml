@@ -19,7 +19,7 @@
         <source_model>Dhl\ExpressRates\Model\Config\Source\ShippingOptionDisplay</source_model>
         <comment>Delivery date is based on your expected shipment date</comment>
     </field>
-    <field id="show_method_if_not_applicable" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="430"
+    <field id="showmethod" showInDefault="1" showInWebsite="1" showInStore="0" sortOrder="430"
             translate="tooltip label comment" type="Dhl\ExpressRates\Model\Data\Form\Element\Radioset">
         <label><![CDATA[If No DHL Shipping Option Available]]></label>
         <source_model>Dhl\ExpressRates\Model\Config\Source\ShowIfNotApplicable</source_model>
@@ -27,7 +27,7 @@
     <field id="specificerrmsg" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="440" translate="tooltip label comment" type="textarea" canRestore="1">
         <label><![CDATA[Custom Message]]></label>
         <depends>
-            <field id="show_method_if_not_applicable">1</field>
+            <field id="showmethod">1</field>
         </depends>
     </field>
     <!-- Round prices -->
