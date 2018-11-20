@@ -29,23 +29,6 @@ class Radioset extends Radios
     }
 
     /**
-     * Returns the current value of the radio group. If no value is selected the first one of all
-     * available options will be used.
-     *
-     * @return mixed
-     */
-    public function getValue()
-    {
-        $value = $this->getData('value');
-
-        if ($value === null && !empty($this->getData('values'))) {
-            return $this->getData('values')[0]['value'];
-        }
-
-        return $value;
-    }
-
-    /**
      * @return string
      */
     public function getElementHtml()
