@@ -198,7 +198,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     public function getLogLevel()
     {
         $this->assertEquals('400', $this->config->getLogLevel());
-        $this->assertEquals('200', $this->config->getLogLevel('fixturestore'));
         $this->assertEquals('100', $this->config->getLogLevel('secondstore'));
     }
 
