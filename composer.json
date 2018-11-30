@@ -39,5 +39,8 @@
     "magento/module-store": "^100.1.0 || ^101.0.0",
     "magento/framework": "^100.1.0 || ^101.0.0 || ^102.0.0",
     "dhl/sdk-api-express": "^1.0.1"
+  },
+  "conflict": {
+    "dhl/module-carrier-express": "*"
   }
 }
