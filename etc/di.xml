@@ -46,7 +46,7 @@
     <virtualType name="Dhl\ExpressRates\Model\Logger\Virtual" type="Magento\Framework\Logger\Monolog">
         <arguments>
             <argument name="handlers" xsi:type="array">
-                <item name="expressHandler" xsi:type="object">Dhl\ExpressRates\Model\Logger\ExpressHandler</item>
+                <item name="debug" xsi:type="object">Dhl\ExpressRates\Model\Logger\ExpressHandler</item>
             </argument>
         </arguments>
     </virtualType>

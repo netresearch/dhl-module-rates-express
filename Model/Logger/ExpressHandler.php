@@ -23,7 +23,7 @@ class ExpressHandler extends Base
     /**
      * @var string
      */
-    protected $fileName = 'var/log/dhl_express_rates.log';
+    protected $fileName = '/var/log/dhl_express_rates.log';
 
     /**
      * ExpressHandler constructor.
