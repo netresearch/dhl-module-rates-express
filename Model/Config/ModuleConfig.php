@@ -391,7 +391,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @param string|null $store
      *
-     * @return float
+     * @return float|null
      */
     public function getDomesticHandlingFee($store = null)
     {
