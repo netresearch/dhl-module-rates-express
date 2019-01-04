@@ -4,6 +4,7 @@
  */
 namespace Dhl\ExpressRates\Test\Integration\Model\Config;
 
+use Dhl\ExpressRates\Model\Config\ModuleConfig;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\TestFramework\ObjectManager;
@@ -171,23 +172,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($encryptor->decrypt('testcase2'), $this->config->getPassword('fixturestore'));
     }
 
-    /**
-     * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/sandboxmode 0
-     */
-    public function sandboxModeDisabled()
-    {
-        $this->assertFalse($this->config->sandboxModeEnabled());
-    }
-
-    /**
-     * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/sandboxmode 1
-     */
-    public function sandboxModeEnabled()
-    {
-        $this->assertTrue($this->config->sandboxModeEnabled());
-    }
 
     /**
      * @test
@@ -221,17 +205,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     {
         $this->assertEquals(0, $this->config->isLoggingEnabled());
         $this->assertEquals(1, $this->config->isLoggingEnabled('fixturestore'));
-    }
-
-    /**
-     * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/duty_taxes_accountnumber 987654321
-     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/duty_taxes_accountnumber 123456789
-     */
-    public function getDutyTaxesAccountNumber()
-    {
-        $this->assertEquals('987654321', $this->config->getDutyTaxesAccountNumber());
-        $this->assertEquals('123456789', $this->config->getDutyTaxesAccountNumber('fixturestore'));
     }
 
     /**
@@ -272,12 +245,14 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
-     * @magentoConfigFixture current_store      carriers/dhlexpress/domestic_handling_fee 0
-     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/domestic_handling_fee 30
+     * @magentoConfigFixture current_store          carriers/dhlexpress/domestic_handling_fee 0
+     * @magentoConfigFixture current_store          carriers/dhlexpress/domestic_affect_rates true
+     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_handling_fee 30
+     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_affect_rates true
      */
     public function getDomesticHandlingFee()
     {
-        self::assertSame(0.0, $this->config->getDomesticHandlingFee());
+        self::assertSame(0, $this->config->getDomesticHandlingFee());
         self::assertSame(30.0, $this->config->getDomesticHandlingFee('fixturestore'));
     }
 
