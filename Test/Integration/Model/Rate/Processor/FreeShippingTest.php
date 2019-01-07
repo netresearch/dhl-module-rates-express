@@ -4,8 +4,9 @@
  */
 namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
-use Dhl\ExpressRates\Api\Data\ShippingProductsInterface;
+use Dhl\Express\Api\Data\ShippingProductsInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
+use Dhl\ExpressRates\Model\Config\ModuleConfig;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Model\Config\Source\DomesticProducts;
 use Dhl\ExpressRates\Model\Rate\Processor\FreeShipping;
@@ -137,6 +138,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/free_shipping_enable                  1
      * @magentoConfigFixture current_store carriers/dhlexpress/free_shipping_virtual_products_enable 1
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_free_shipping_enable        1
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_free_shipping_subtotal       50
      * @magentoConfigFixture current_store carriers/dhlexpress/international_free_shipping_subtotal  50
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_free_shipping_products       N
@@ -174,9 +176,10 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/free_shipping_enable                  1
      * @magentoConfigFixture current_store carriers/dhlexpress/free_shipping_virtual_products_enable 1
+     * @magentoConfigFixture current_store carriers/dhlexpress/international_free_shipping_enable 1
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_free_shipping_subtotal       50
      * @magentoConfigFixture current_store carriers/dhlexpress/international_free_shipping_subtotal  50
-     * @magentoConfigFixture current_store carriers/dhlexpress/international_free_shipping_products  X
+     * @magentoConfigFixture current_store carriers/dhlexpress/international_free_shipping_products  T
      */
     public function processMethodsInternationalWithLargerSubtotal()
     {
@@ -185,7 +188,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
                 'data' => [
                     'carrier'       => Express::CARRIER_CODE,
                     'carrier_title' => 'TEST',
-                    'method'        => ShippingProductsInterface::CODE_INTERNATIONAL_ENVELOPE_DUTYFREE,
+                    'method'        => ShippingProductsInterface::CODE_INTERNATIONAL_12_00_DUTYFREE,
                     'method_title'  => 'LABEL',
                     'price'         => 6.0,
                     'cost'          => 6.0,

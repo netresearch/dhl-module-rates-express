@@ -232,6 +232,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      * @magentoConfigFixture current_store      carriers/dhlexpress/domestic_handling_type F
+     * @magentoConfigFixture current_store      carriers/dhlexpress/domestic_affect_rates 1
+     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/domestic_affect_rates 1
      * @magentoConfigFixture fixturestore_store carriers/dhlexpress/domestic_handling_type P
      */
     public function getDomesticHandlingType()
@@ -246,19 +248,22 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      * @magentoConfigFixture current_store          carriers/dhlexpress/domestic_handling_fee 0
-     * @magentoConfigFixture current_store          carriers/dhlexpress/domestic_affect_rates true
-     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_handling_fee 30
-     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_affect_rates true
+     * @magentoConfigFixture current_store          carriers/dhlexpress/domestic_affect_rates 1
+     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_affect_rates 1
+     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_handling_fee_percentage 30
+     * @magentoConfigFixture fixturestore_store     carriers/dhlexpress/domestic_handling_type P
      */
     public function getDomesticHandlingFee()
     {
-        self::assertSame(0, $this->config->getDomesticHandlingFee());
+        self::assertSame(0.0, $this->config->getDomesticHandlingFee());
         self::assertSame(30.0, $this->config->getDomesticHandlingFee('fixturestore'));
     }
 
     /**
      * @test
+     * @magentoConfigFixture current_store      carriers/dhlexpress/international_affect_rates 1
      * @magentoConfigFixture current_store      carriers/dhlexpress/international_handling_type F
+     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_affect_rates 1
      * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_handling_type P
      */
     public function getInternationalHandlingType()
@@ -272,8 +277,11 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
+     * @magentoConfigFixture current_store      carriers/dhlexpress/international_affect_rates 1
+     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_affect_rates 1
      * @magentoConfigFixture current_store      carriers/dhlexpress/international_handling_fee 0
-     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_handling_fee 30
+     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_handling_type P
+     * @magentoConfigFixture fixturestore_store carriers/dhlexpress/international_handling_fee_percentage 30
      */
     public function getInternationalHandlingFee()
     {
@@ -336,7 +344,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     /**
      * @test
      * @magentoConfigFixture current_store carriers/dhlexpress/round_prices_mode no_rounding
+     * @magentoConfigFixture fixturestore_store  carriers/dhlexpress/round_prices_format full_price
      * @magentoConfigFixture fixturestore_store carriers/dhlexpress/round_prices_mode round_up
+     * @magentoConfigFixture secondstore_store  carriers/dhlexpress/round_prices_format full_price
      * @magentoConfigFixture secondstore_store carriers/dhlexpress/round_prices_mode round_off
      */
     public function roundUp()
@@ -348,9 +358,10 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
 
     /**
      * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/round_prices_mode no_rounding
+     * @magentoConfigFixture current_store      carriers/dhlexpress/round_prices_mode no_rounding
      * @magentoConfigFixture fixturestore_store carriers/dhlexpress/round_prices_mode round_up
-     * @magentoConfigFixture secondstore_store carriers/dhlexpress/round_prices_mode round_off
+     * @magentoConfigFixture secondstore_store  carriers/dhlexpress/round_prices_format full_price
+     * @magentoConfigFixture secondstore_store  carriers/dhlexpress/round_prices_mode round_off
      */
     public function roundOff()
     {
@@ -381,15 +392,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         $this->assertEquals(0.00, $this->config->getRoundedPricesStaticDecimal('current'));
         $this->assertEquals(0.1, $this->config->getRoundedPricesStaticDecimal('fixturestore'));
         $this->assertEquals(0.25, $this->config->getRoundedPricesStaticDecimal('secondstore'));
-    }
-
-    /**
-     * @test
-     * @magentoConfigFixture current_store carriers/dhlexpress/checkout_show_logo 1
-     */
-    public function getCheckoutLogoSettingEnabled()
-    {
-        $this->assertTrue($this->config->isCheckoutLogoEnabled());
     }
 
     /**

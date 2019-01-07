@@ -4,7 +4,7 @@
  */
 namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
-use Dhl\ExpressRates\Api\Data\ShippingProductsInterface;
+use Dhl\Express\Api\Data\ShippingProductsInterface;
 use Dhl\ExpressRates\Model\Carrier\Express;
 use Dhl\ExpressRates\Model\Config\ModuleConfig;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
@@ -95,7 +95,8 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_type F
-     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee  3
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee_fixed  3
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_affect_rates 1
      */
     public function processMethodsWithFixedDomesticHandlingFee()
     {
@@ -125,7 +126,8 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/international_handling_type F
-     * @magentoConfigFixture current_store carriers/dhlexpress/international_handling_fee  3
+     * @magentoConfigFixture current_store carriers/dhlexpress/international_handling_fee_fixed  3
+     * @magentoConfigFixture current_store carriers/dhlexpress/international_affect_rates 1
      */
     public function processMethodsWithFixedInternationalHandlingFee()
     {
@@ -134,7 +136,7 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
                 'data' => [
                     'carrier'       => Express::CARRIER_CODE,
                     'carrier_title' => 'TEST',
-                    'method'        => ShippingProductsInterface::CODE_INTERNATIONAL_09_00_DUTYFREE,
+                    'method'        => ShippingProductsInterface::CODE_INTERNATIONAL_WORLDWIDE_DUTYFREE_WITHIN_EU,
                     'method_title'  => 'LABEL',
                     'price'         => 6.0,
                     'cost'          => 6.0,
@@ -155,7 +157,8 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_type P
-     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee  50
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee_percentage  50
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_affect_rates 1
      */
     public function processMethodsWithPercentHandlingFee()
     {
@@ -185,7 +188,8 @@ class HandlingFeeTest extends \PHPUnit\Framework\TestCase
      * @test
      *
      * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_type F
-     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee  -10
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_handling_fee_fixed  -10
+     * @magentoConfigFixture current_store carriers/dhlexpress/domestic_affect_rates 1
      */
     public function processMethodsWithFixedNegativeHandlingFee()
     {

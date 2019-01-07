@@ -5,6 +5,7 @@
 namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Carrier\Express;
+use Dhl\ExpressRates\Model\Rate\Processor\RoundedPrices;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\TestFramework\ObjectManager;
