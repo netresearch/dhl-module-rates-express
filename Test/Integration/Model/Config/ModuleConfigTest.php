@@ -5,6 +5,7 @@
 namespace Dhl\ExpressRates\Test\Integration\Model\Config;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfig;
+use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\TestFramework\ObjectManager;
@@ -24,7 +25,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     private $objectManager;
 
-    /** @var ModuleConfigInterface */
+    /**
+     * @var ModuleConfigInterface
+     */
     private $config;
 
     /**
@@ -42,6 +45,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
 
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore.php');
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_second_third_fixturestore.php');
+
         parent::setUpBeforeClass();
     }
 
@@ -56,6 +60,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         require realpath(
             TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_second_third_fixturestore_rollback.php'
         );
+
         parent::tearDownAfterClass();
     }
 
@@ -171,7 +176,6 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         $this->assertSame($encryptor->decrypt('testcase1'), $this->config->getPassword());
         $this->assertSame($encryptor->decrypt('testcase2'), $this->config->getPassword('fixturestore'));
     }
-
 
     /**
      * @test
