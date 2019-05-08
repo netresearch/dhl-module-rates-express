@@ -140,3 +140,33 @@ Set the full address of your shop here:
 * ZIP code
 * City
 * Street address
+
+Currency configuration
+----------------------
+
+It is recommended to use the same Base Currency in Magento® as is
+configured in your own DHL Express account settings.
+
+You can configure your Magento® Base Currency here:
+
+::
+
+    Stores -> Configuration -> General -> Currency Setup -> Currency Options
+
+.. image:: images/admin_base_currency.png
+   :scale: 200%
+
+Please refer to your DHL Express contact to find out which currency is
+configured for your account.
+
+The module will attempt to convert the currency configured in your DHL
+Express account into your configured Base Currency. If you are using different base currencies
+for individual Websites, make sure that all neccessary currency exchange rates
+are configured here:
+
+::
+
+    Stores -> Currency Rates
+
+.. image:: images/admin_currency_rates.png
+   :scale: 100%
