@@ -5,8 +5,8 @@ Magento®
 
 The most recent versions of the following Magento® editions are supported:
 
-- Community Edition 2.1+, 2.2+
-- Enterprise Edition 2.1+, 2.2+
+- Community Edition 2.1, 2.2, 2.3
+- Enterprise Edition 2.1, 2.2, 2.3
 
 PHP
 ---
