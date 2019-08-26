@@ -15,7 +15,7 @@ use Magento\Framework\DataObject;
  * @copyright 2018 Netresearch GmbH & Co. KG
  * @link http://www.netresearch.de/
  */
-final class AdditionalInfo extends DataObject implements MethodAdditionalInfoInterface
+class AdditionalInfo extends DataObject implements MethodAdditionalInfoInterface
 {
     /**
      * @inheritdoc
