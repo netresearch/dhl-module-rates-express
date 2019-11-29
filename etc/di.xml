@@ -4,9 +4,7 @@
     <preference for="Dhl\ExpressRates\Model\Config\ModuleConfigInterface" type="Dhl\ExpressRates\Model\Config\ModuleConfig"/>
 
     <!-- rate classes -->
-    <preference for="Dhl\ExpressRates\Webservice\RateAdapterInterface" type="Dhl\ExpressRates\Webservice\RateAdapter"/>
     <preference for="Dhl\ExpressRates\Webservice\Adapter\RateServiceAdapterInterface" type="Dhl\ExpressRates\Webservice\Soap\RateServiceAdapter"/>
-    <preference for="Dhl\ExpressRates\Webservice\RateClientInterface" type="Dhl\ExpressRates\Webservice\RateClient"/>
     <preference for="Dhl\ExpressRates\Webservice\Rate\RequestDataMapperInterface" type="Dhl\ExpressRates\Webservice\Rate\RequestDataMapper"/>
     <preference for="Dhl\ExpressRates\Webservice\Rate\ResponseDataMapperInterface" type="Dhl\ExpressRates\Webservice\Rate\ResponseDataMapper"/>
 

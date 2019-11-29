@@ -7,7 +7,9 @@ namespace Dhl\ExpressRates\Webservice;
 use Dhl\Express\Api\Data\RateRequestInterface;
 use Dhl\Express\Api\Data\RateResponseInterface;
 use Dhl\Express\Api\ServiceFactoryInterface;
+use Dhl\Express\Exception\ExpressApiException;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
+use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -18,7 +20,7 @@ use Psr\Log\LoggerInterface;
  * @copyright 2018 Netresearch GmbH & Co. KG
  * @link http://www.netresearch.de/
  */
-class RateClient implements RateClientInterface
+class RateClient
 {
     /**
      * @var ServiceFactoryInterface
@@ -55,17 +57,20 @@ class RateClient implements RateClientInterface
     /**
      * @param RateRequestInterface $request
      * @return RateResponseInterface
-     * @throws \Dhl\Express\Exception\RateRequestException
-     * @throws \Dhl\Express\Exception\SoapException
+     * @throws LocalizedException
      */
     public function performRatesRequest(RateRequestInterface $request)
     {
-        $rateService = $this->serviceFactory->createRateService(
-            $this->moduleConfig->getUserName(),
-            $this->moduleConfig->getPassword(),
-            $this->logger
-        );
+        try {
+            $rateService = $this->serviceFactory->createRateService(
+                $this->moduleConfig->getUserName(),
+                $this->moduleConfig->getPassword(),
+                $this->logger
+            );
 
-        return $rateService->collectRates($request);
+            return $rateService->collectRates($request);
+        } catch (ExpressApiException $exception) {
+            throw new LocalizedException(__('Web service request failed: %1', $exception->getMessage()), $exception);
+        }
     }
 }

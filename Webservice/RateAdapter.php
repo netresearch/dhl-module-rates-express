@@ -4,19 +4,18 @@
  */
 namespace Dhl\ExpressRates\Webservice;
 
-use Dhl\Express\Exception\RateRequestException;
-use Dhl\Express\Exception\SoapException;
 use Dhl\ExpressRates\Webservice\Rate\RequestDataMapperInterface;
 use Dhl\ExpressRates\Webservice\Rate\ResponseDataMapperInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
+use Magento\Quote\Model\Quote\Address\RateResult\AbstractResult;
 
 /**
  * Class RateAdapter
  *
  * @package Dhl\ExpressRates\Webservice
  */
-class RateAdapter implements RateAdapterInterface
+class RateAdapter
 {
     /**
      * @var RequestDataMapperInterface
@@ -29,7 +28,7 @@ class RateAdapter implements RateAdapterInterface
     private $responseDataMapper;
 
     /**
-     * @var RateClientInterface
+     * @var RateClient
      */
     private $client;
 
@@ -38,12 +37,12 @@ class RateAdapter implements RateAdapterInterface
      *
      * @param RequestDataMapperInterface $requestDataMapper
      * @param ResponseDataMapperInterface $responseDataMapper
-     * @param RateClientInterface $client
+     * @param RateClient $client
      */
     public function __construct(
         RequestDataMapperInterface $requestDataMapper,
         ResponseDataMapperInterface $responseDataMapper,
-        RateClientInterface $client
+        RateClient $client
     ) {
         $this->requestDataMapper = $requestDataMapper;
         $this->responseDataMapper = $responseDataMapper;
@@ -54,24 +53,14 @@ class RateAdapter implements RateAdapterInterface
      * Fetch Rates through API client
      *
      * @param RateRequest $request
-     *
-     * @return array
-     *
+     * @return AbstractResult[]
      * @throws LocalizedException
      */
     public function getRates(RateRequest $request)
     {
         $requestModel = $this->requestDataMapper->mapRequest($request);
 
-        try {
-            $response = $this->client->performRatesRequest($requestModel);
-            $result   = $this->responseDataMapper->mapResult($response);
-        } catch (RateRequestException $e) {
-            throw new LocalizedException(__('Error during rate request.'), $e, $e->getCode());
-        } catch (SoapException $e) {
-            throw new LocalizedException(__('Error during rate request.'), $e, $e->getCode());
-        }
-
-        return $result;
+        $response = $this->client->performRatesRequest($requestModel);
+        return $this->responseDataMapper->mapResult($response);
     }
 }

@@ -4,8 +4,8 @@
  */
 namespace Dhl\ExpressRates\Model\Carrier;
 
-use Dhl\ExpressRates\Model\Rate\CheckoutProvider as RateProvider;
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
+use Dhl\ExpressRates\Model\Rate\CheckoutProvider as RateProvider;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 

@@ -4,10 +4,9 @@
  */
 namespace Dhl\ExpressRates\Model\Rate;
 
-use Dhl\ExpressRates\Webservice\RateAdapterInterface;
+use Dhl\ExpressRates\Webservice\RateAdapter;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
-use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
 
@@ -22,7 +21,7 @@ use Magento\Shipping\Model\Rate\ResultFactory;
 class CheckoutProvider
 {
     /**
-     * @var RateAdapterInterface
+     * @var RateAdapter
      */
     private $rateAdapter;
 
@@ -39,12 +38,12 @@ class CheckoutProvider
     /**
      * CheckoutProvider constructor.
      *
-     * @param RateAdapterInterface $rateAdapter
+     * @param RateAdapter $rateAdapter
      * @param ResultFactory $rateResultFactory
      * @param RateProcessorInterface[] $rateProcessors
      */
     public function __construct(
-        RateAdapterInterface $rateAdapter,
+        RateAdapter $rateAdapter,
         ResultFactory $rateResultFactory,
         array $rateProcessors = []
     ) {
