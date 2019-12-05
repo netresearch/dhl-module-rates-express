@@ -2,7 +2,7 @@
 
 The DHL Express Rates at Checkout extension for Magento® 2 integrates the DHL Express Rates API into the Magento® 2 checkout process.
 
-* version: 1.0.2
+* version: 1.0.3
 
 ## Requirements
 

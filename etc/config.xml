@@ -3,7 +3,7 @@
     <default>
         <carriers>
             <dhlexpress>
-                <version>1.0.2</version>
+                <version>1.0.3</version>
                 <model>Dhl\ExpressRates\Model\Carrier\Express</model>
                 <is_online>1</is_online>
 

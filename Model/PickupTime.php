@@ -45,7 +45,7 @@ class PickupTime
      * Returns the timestamp when the offer is ready. When the current time is after today's cut off time,
      * tomorrows cut off time will be returned. If it's not, today's cut off time will be returned.
      *
-     * @return int
+     * @return \DateTime
      */
     public function getReadyAtTimestamp()
     {
@@ -62,6 +62,6 @@ class PickupTime
             $pickUpTime->modify('+1 day');
         }
 
-        return $pickUpTime->getTimestamp();
+        return $pickUpTime;
     }
 }
