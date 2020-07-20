@@ -25,7 +25,7 @@
                                                     <item name="children" xsi:type="array">
                                                         <item name="shipping-rates-validation" xsi:type="array">
                                                             <item name="children" xsi:type="array">
-                                                                <item name="dhl-express-rates-validation" xsi:type="array">
+                                                                <item name="dhlexpress-rates-validation" xsi:type="array">
                                                                     <item name="component" xsi:type="string">Dhl_ExpressRates/js/view/register-shipping-rates-validator</item>
                                                                 </item>
                                                             </item>
