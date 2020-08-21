@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Plugin\Quote\Cart;
 
 use Dhl\ExpressRates\Api\Data\MethodAdditionalInfoInterface;
@@ -13,14 +17,6 @@ use Magento\Quote\Model\Quote\Address\Rate;
 use Magento\Quote\Model\Quote\Address\RateResult\AbstractResult;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 
-/**
- * Class ShippingMethodConverterPlugin
- *
- * @package Dhl\ExpressRates\Plugin
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class ShippingMethodConverterPlugin
 {
     /**
@@ -35,11 +31,6 @@ class ShippingMethodConverterPlugin
      */
     private $methodAdditionalInfo = [];
 
-    /**
-     * DeliveryDate constructor.
-     *
-     * @param ShippingMethodExtensionFactory $extensionFactory
-     */
     public function __construct(ShippingMethodExtensionFactory $extensionFactory)
     {
         $this->extensionFactory = $extensionFactory;
@@ -96,7 +87,7 @@ class ShippingMethodConverterPlugin
      * @param ShippingMethodInterface $result
      * @return string
      */
-    private function getCarrierMethod(ShippingMethodInterface $result)
+    private function getCarrierMethod(ShippingMethodInterface $result): string
     {
         return $result->getCarrierCode() . '_' . $result->getMethodCode();
     }

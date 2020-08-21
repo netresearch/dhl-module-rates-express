@@ -1,34 +1,24 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Method;
 
 use Dhl\ExpressRates\Api\Data\MethodAdditionalInfoInterface;
 use Magento\Framework\DataObject;
 
-/**
- * Class AdditionalInfo
- *
- * @package Dhl\ExpressRates\Model
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class AdditionalInfo extends DataObject implements MethodAdditionalInfoInterface
 {
-    /**
-     * @inheritdoc
-     */
-    public function getDeliveryDate()
+    public function getDeliveryDate(): string
     {
         return (string)$this->getData(self::DELIVERY_DATE);
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function setDeliveryDate($deliveryDate)
+    public function setDeliveryDate($deliveryDate): void
     {
         $this->setData(self::DELIVERY_DATE, $deliveryDate);
     }

@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Webservice\Rate;
 
 use Dhl\Express\Api\Data\RateResponseInterface;
@@ -11,19 +15,12 @@ use Dhl\Express\Model\Response\Rate\Rate;
 use Dhl\ExpressRates\Api\Data\MethodAdditionalInfoInterface;
 use Dhl\ExpressRates\Model\Method\AdditionalInfoFactory;
 use Magento\Directory\Model\CurrencyFactory;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Stdlib\DateTime\DateTimeFormatterInterface;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\Store\Model\StoreManagerInterface;
 
-/**
- * Class ResponseDataMapper
- *
- * @package Dhl\ExpressRates\Webservice\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class ResponseDataMapper implements ResponseDataMapperInterface
 {
     /**
@@ -56,16 +53,6 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      */
     private $dateTimeFormatter;
 
-    /**
-     * ResponseDataMapper constructor.
-     *
-     * @param AdditionalInfoFactory $additionalInfoFactory
-     * @param MethodFactory $methodFactory
-     * @param ModuleConfigInterface $moduleConfig
-     * @param StoreManagerInterface $storeManager
-     * @param CurrencyFactory $currencyFactory
-     * @param DateTimeFormatterInterface $dateTimeFormatter
-     */
     public function __construct(
         AdditionalInfoFactory $additionalInfoFactory,
         MethodFactory $methodFactory,
@@ -86,10 +73,10 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @param RateResponseInterface $rateResponse
      *
      * @return Method[]
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      * @throws \InvalidArgumentException
      */
-    public function mapResult(RateResponseInterface $rateResponse)
+    public function mapResult(RateResponseInterface $rateResponse): array
     {
         $result = [];
 
@@ -124,7 +111,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      *
      * @return string
      */
-    private function getFormattedDeliveryDate(\DateTime $dateTime)
+    private function getFormattedDeliveryDate(\DateTime $dateTime): string
     {
         return $this->dateTimeFormatter->formatObject(
             $dateTime,
@@ -140,10 +127,10 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @param string $inputCurrencyCode
      *
      * @return float
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @throws NoSuchEntityException
      * @throws \InvalidArgumentException
      */
-    private function convertPriceToCurrency($value, $inputCurrencyCode)
+    private function convertPriceToCurrency($value, $inputCurrencyCode): float
     {
         /** @var string $baseCurrencyCode */
         $baseCurrencyCode = $this->storeManager->getStore()->getBaseCurrencyCode();
@@ -165,7 +152,7 @@ class ResponseDataMapper implements ResponseDataMapperInterface
      * @param Rate $rate
      * @return MethodAdditionalInfoInterface
      */
-    private function getMethodAdditionalInformation(Rate $rate)
+    private function getMethodAdditionalInformation(Rate $rate): MethodAdditionalInfoInterface
     {
         $data = [];
 

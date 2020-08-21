@@ -1,29 +1,26 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field;
 
 use Magento\Config\Block\System\Config\Form\Field;
+use Magento\Framework\Data\Form\Element\AbstractElement;
 
-/**
- * Class Heading
- *
- * @package Dhl\ExpressRates\Block\Adminhtml
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class Heading extends Field
 {
     /**
      * Retrieve HTML markup for given form element
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param AbstractElement $element
      *
      * @return string
      */
-    public function render(\Magento\Framework\Data\Form\Element\AbstractElement $element)
+    public function render(AbstractElement $element): string
     {
         $comment = $element->getData('comment');
         if ($comment) {
@@ -37,12 +34,12 @@ class Heading extends Field
     /**
      * Decorate field row html
      *
-     * @param \Magento\Framework\Data\Form\Element\AbstractElement $element
+     * @param AbstractElement $element
      * @param string $html
      *
      * @return string
      */
-    protected function _decorateRowHtml(\Magento\Framework\Data\Form\Element\AbstractElement $element, $html)
+    protected function _decorateRowHtml(AbstractElement $element, $html): string
     {
         return '<tr class="system-fieldset-sub-head" id="row_' . $element->getHtmlId() . '">' . $html . '</tr>';
     }

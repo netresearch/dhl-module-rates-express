@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Data\Form\Element;
 
 use Magento\Framework\Data\Form\Element\Checkboxes;
@@ -12,12 +16,10 @@ use Magento\Framework\Data\Form\Element\Checkboxes;
  * Implementation of a checkbox set input element that works inside the Magento system configuration and mimics a
  * multiselect, concatenating the values of all selected options separated with a comma inside a hidden input.
  * Used by entering the class name into the "type" attribute of a system.xml field element.
- *
- * @package Dhl\ExpressRates\Model
  */
 class Checkboxset extends Checkboxes
 {
-    const PSEUDO_POSTFIX = '_hidden'; // used to create the hidden input id.
+    public const PSEUDO_POSTFIX = '_hidden'; // used to create the hidden input id.
 
     /**
      * @return string
@@ -35,7 +37,7 @@ class Checkboxset extends Checkboxes
      *
      * @return string
      */
-    private function getAfterHtml()
+    private function getAfterHtml(): string
     {
         $html = '<input type="hidden" id="%s" value="%s"/>
         <script>
@@ -55,7 +57,7 @@ class Checkboxset extends Checkboxes
                     checkboxes[i].addEventListener("change", function (event) {
                         let checkbox = event.target;
                         let values = hidden.value.split(",");
-                        var valueAlreadyIncluded = values.indexOf(checkbox.value) !== -1; 
+                        var valueAlreadyIncluded = values.indexOf(checkbox.value) !== -1;
                         if (checkbox.checked && !valueAlreadyIncluded) {
                             values.push(checkbox.value);
                         } else if (!checkbox.checked && valueAlreadyIncluded) {
@@ -81,9 +83,11 @@ class Checkboxset extends Checkboxes
      *
      * @return string
      */
-    private function filterUnavailableValues()
+    private function filterUnavailableValues(): string
     {
-        $values = explode(',', $this->getData('value'));
+        $value  = $this->getData('value');
+        $values = $value ? explode(',', $value) : [];
+
         $availableValues = array_map(
             function ($value) {
                 return $value['value'];

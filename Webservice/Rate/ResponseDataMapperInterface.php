@@ -1,20 +1,16 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Webservice\Rate;
 
 use Dhl\Express\Api\Data\RateResponseInterface;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 
-/**
- * Interface ResponseDataMapperInterface
- *
- * @package Dhl\ExpressRates\Webservice\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 interface ResponseDataMapperInterface
 {
     /**
@@ -23,5 +19,5 @@ interface ResponseDataMapperInterface
      * @param RateResponseInterface $rateResponse
      * @return Method[]
      */
-    public function mapResult(RateResponseInterface $rateResponse);
+    public function mapResult(RateResponseInterface $rateResponse): array;
 }

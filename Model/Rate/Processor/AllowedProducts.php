@@ -1,18 +1,17 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Dhl\ExpressRates\Model\Rate\RateProcessorInterface;
 
-/**
- * Class AllowedProducts
- *
- * @package Dhl\ExpressRates\Model\Rate\Processor
- */
 class AllowedProducts implements RateProcessorInterface
 {
     /**
@@ -30,10 +29,7 @@ class AllowedProducts implements RateProcessorInterface
         $this->config = $config;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, $request = null): array
     {
         $result = [];
         foreach ($methods as $method) {
@@ -52,7 +48,7 @@ class AllowedProducts implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledProduct(Method $method)
+    private function isEnabledProduct(Method $method): bool
     {
         $allowedDomestic      = $this->config->getAllowedDomesticProducts();
         $allowedInternational = $this->config->getAllowedInternationalProducts();

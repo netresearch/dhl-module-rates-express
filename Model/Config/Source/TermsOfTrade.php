@@ -1,26 +1,25 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config\Source;
 
-/**
- * Class TermsOfTrade
- *
- * @package Dhl\ExpressRates\Model
- */
 class TermsOfTrade
 {
-    const TOD_DDP = 'DDP';
+    public const TOD_DDP = 'DDP';
 
-    const TOD_DDU = 'DDU';
+    public const TOD_DDU = 'DDU';
 
     /**
      * Options getter
      *
      * @return mixed[]
      */
-    public function toOptionArray()
+    public function toOptionArray(): array
     {
         $optionArray = [];
 
@@ -37,7 +36,7 @@ class TermsOfTrade
      *
      * @return mixed[]
      */
-    public function toArray()
+    public function toArray(): array
     {
         return [
             self::TOD_DDU => __('Customer pays duties and taxes (DDU)'),

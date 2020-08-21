@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Data\Form\Element;
 
 use Magento\Framework\Data\Form\Element\Checkbox as CoreCheckbox;
@@ -11,12 +15,10 @@ use Magento\Framework\Data\Form\Element\Checkbox as CoreCheckbox;
  *
  * Implementation of a checkbox boolean input element that works inside the Magento system configuration.
  * Used by entering the class name into the "type" attribute of a system.xml field element.
- *
- * @package Dhl\ExpressRates\Model
  */
 class Checkbox extends CoreCheckbox
 {
-    const PSEUDO_POSTFIX = '_pseudo'; // used to create the hidden input id.
+    public const PSEUDO_POSTFIX = '_pseudo'; // used to create the hidden input id.
 
     /**
      * @return string
@@ -32,7 +34,7 @@ class Checkbox extends CoreCheckbox
     /**
      * @return string
      */
-    public function getButtonLabel()
+    public function getButtonLabel(): string
     {
         return isset($this->getData('field_config')['button_label'])
             ? $this->getData('field_config')['button_label']
@@ -44,7 +46,7 @@ class Checkbox extends CoreCheckbox
      *
      * @return string
      */
-    protected function getJsHtml()
+    protected function getJsHtml(): string
     {
         $html = '<input type="hidden" id="%s" value="%s"/>
         <script>
@@ -57,13 +59,13 @@ class Checkbox extends CoreCheckbox
                 /**
                  * keep the hidden input value in sync with the checkbox. We also update the checkbox value because
                  * it may be needed by the core.
-                 * 
+                 *
                  * @see module-backend/view/adminhtml/templates/system/shipping/applicable_country.phtml
                  **/
                 checkbox.addEventListener("change", function (event) {
                     checkbox.value = hidden.value = event.target.checked ? "1" : "0";
-                });    
-            })();   
+                });
+            })();
         </script>';
 
         return sprintf(
@@ -78,7 +80,7 @@ class Checkbox extends CoreCheckbox
     /**
      * @return string
      */
-    protected function getSecondaryLabelHtml()
+    protected function getSecondaryLabelHtml(): string
     {
         $html = '<label for="%s" class="admin__field-label">%s</label>';
 

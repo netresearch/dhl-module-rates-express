@@ -1,65 +1,61 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config;
 
-/**
- * ModuleConfigInterface
- *
- * @package  Dhl\ExpressRates\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
- */
 interface ModuleConfigInterface
 {
-    const CONFIG_ROOT = 'carriers/dhlexpress/';
+    public const CONFIG_ROOT = 'carriers/dhlexpress/';
 
-    const CONFIG_XML_PATH_ENABLED = self::CONFIG_ROOT . 'active';
-    const CONFIG_XML_PATH_SORT_ORDER = self::CONFIG_ROOT . 'sort_order';
-    const CONFIG_XML_PATH_TITLE = self::CONFIG_ROOT . 'title';
-    const CONFIG_XML_PATH_EMULATED_CARRIER = self::CONFIG_ROOT . 'emulated_carrier';
-    const CONFIG_XML_PATH_SHIP_TO_SPECIFIC_COUNTRIES = self::CONFIG_ROOT . 'sallowspecific';
-    const CONFIG_XML_PATH_SPECIFIC_COUNTRIES = self::CONFIG_ROOT . 'specificcountry';
-    const CONFIG_XML_PATH_SHOW_IF_NOT_APPLICABLE = self::CONFIG_ROOT . 'showmethod';
-    const CONFIG_XML_PATH_ERROR_MESSAGE = self::CONFIG_ROOT . 'specificerrmsg';
-    const CONFIG_XML_PATH_USERNAME = self::CONFIG_ROOT . 'username';
-    const CONFIG_XML_PATH_PASSWORD = self::CONFIG_ROOT . 'password';
-    const CONFIG_XML_PATH_ACCOUNT_NUMBER = self::CONFIG_ROOT . 'accountnumber';
-    const CONFIG_XML_PATH_LOGLEVEL = self::CONFIG_ROOT . 'loglevel';
-    const CONFIG_XML_PATH_ENABLE_LOGGING = self::CONFIG_ROOT . 'logging';
-    const CONFIG_XML_PATH_ALLOWED_DOMESTIC_PRODUCTS = self::CONFIG_ROOT . 'alloweddomesticproducts';
-    const CONFIG_XML_PATH_ALLOWED_INTERNATIONAL_PRODUCTS = self::CONFIG_ROOT . 'allowedinternationalproducts';
-    const CONFIG_XML_PATH_REGULAR_PICKUP = self::CONFIG_ROOT . 'regular_pickup';
-    const CONFIG_XML_PATH_PACKAGE_INSURANCE = self::CONFIG_ROOT . 'package_insurance';
-    const CONFIG_XML_PATH_PACKAGE_INSURANCE_FROM_VALUE = self::CONFIG_ROOT . 'package_insurance_from_value';
-    const CONFIG_XML_PATH_PICKUP_TIME = self::CONFIG_ROOT . 'pickup_time';
-    const CONFIG_XML_PATH_DOMESTIC_AFFECT_RATES = self::CONFIG_ROOT . 'domestic_affect_rates';
-    const CONFIG_XML_PATH_INTERNATIONAL_AFFECT_RATES = self::CONFIG_ROOT . 'international_affect_rates';
-    const CONFIG_XML_PATH_DOMESTIC_HANDLING_TYPE = self::CONFIG_ROOT . 'domestic_handling_type';
-    const CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE = self::CONFIG_ROOT . 'domestic_handling_fee';
-    const CONFIG_XML_PATH_INTERNATIONAL_HANDLING_TYPE = self::CONFIG_ROOT . 'international_handling_type';
-    const CONFIG_XML_PATH_INTERNATIONAL_HANDLING_FEE = self::CONFIG_ROOT . 'international_handling_fee';
-    const CONFIG_XML_PATH_ROUNDED_PRICES_MODE = self::CONFIG_ROOT . 'round_prices_mode';
-    const CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT = self::CONFIG_ROOT . 'round_prices_format';
-    const CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL = self::CONFIG_ROOT . 'round_prices_static_decimal';
-    const CONFIG_XML_PATH_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'free_shipping_subtotal';
-    const CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED = self::CONFIG_ROOT . 'international_free_shipping_enable';
-    const CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED = self::CONFIG_ROOT . 'domestic_free_shipping_enable';
-    const CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED = self::CONFIG_ROOT . 'free_shipping_virtual_products_enable';
-    const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'domestic_free_shipping_products';
-    const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'domestic_free_shipping_subtotal';
-    const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'international_free_shipping_products';
-    const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'international_free_shipping_subtotal';
-    const CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME = self::CONFIG_ROOT . 'checkout_show_delivery_time';
-    const CONFIG_XML_PATH_TERMS_OF_TRADE = self::CONFIG_ROOT . 'terms_of_trade';
-    const CONFIG_XML_PATH_CUT_OFF_TIME = self::CONFIG_ROOT . 'cut_off_time';
-    const CONFIG_XML_PATH_PACKAGING_WEIGHT = self::CONFIG_ROOT . 'packaging_weight';
-    const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
-    const CONFIG_XML_SUFFIX_FIXED = '_fixed';
-    const CONFIG_XML_SUFFIX_PERCENTAGE = '_percentage';
-    const CONFIG_XML_PATH_VERSION = self::CONFIG_ROOT . 'version';
+    public const CONFIG_XML_PATH_ENABLED = self::CONFIG_ROOT . 'active';
+    public const CONFIG_XML_PATH_SORT_ORDER = self::CONFIG_ROOT . 'sort_order';
+    public const CONFIG_XML_PATH_TITLE = self::CONFIG_ROOT . 'title';
+    public const CONFIG_XML_PATH_EMULATED_CARRIER = self::CONFIG_ROOT . 'emulated_carrier';
+    public const CONFIG_XML_PATH_SHIP_TO_SPECIFIC_COUNTRIES = self::CONFIG_ROOT . 'sallowspecific';
+    public const CONFIG_XML_PATH_SPECIFIC_COUNTRIES = self::CONFIG_ROOT . 'specificcountry';
+    public const CONFIG_XML_PATH_SHOW_IF_NOT_APPLICABLE = self::CONFIG_ROOT . 'showmethod';
+    public const CONFIG_XML_PATH_ERROR_MESSAGE = self::CONFIG_ROOT . 'specificerrmsg';
+    public const CONFIG_XML_PATH_USERNAME = self::CONFIG_ROOT . 'username';
+    public const CONFIG_XML_PATH_PASSWORD = self::CONFIG_ROOT . 'password';
+    public const CONFIG_XML_PATH_ACCOUNT_NUMBER = self::CONFIG_ROOT . 'accountnumber';
+    public const CONFIG_XML_PATH_LOGLEVEL = self::CONFIG_ROOT . 'loglevel';
+    public const CONFIG_XML_PATH_ENABLE_LOGGING = self::CONFIG_ROOT . 'logging';
+    public const CONFIG_XML_PATH_ALLOWED_DOMESTIC_PRODUCTS = self::CONFIG_ROOT . 'alloweddomesticproducts';
+    public const CONFIG_XML_PATH_ALLOWED_INTERNATIONAL_PRODUCTS = self::CONFIG_ROOT . 'allowedinternationalproducts';
+    public const CONFIG_XML_PATH_REGULAR_PICKUP = self::CONFIG_ROOT . 'regular_pickup';
+    public const CONFIG_XML_PATH_PACKAGE_INSURANCE = self::CONFIG_ROOT . 'package_insurance';
+    public const CONFIG_XML_PATH_PACKAGE_INSURANCE_FROM_VALUE = self::CONFIG_ROOT . 'package_insurance_from_value';
+    public const CONFIG_XML_PATH_PICKUP_TIME = self::CONFIG_ROOT . 'pickup_time';
+    public const CONFIG_XML_PATH_DOMESTIC_AFFECT_RATES = self::CONFIG_ROOT . 'domestic_affect_rates';
+    public const CONFIG_XML_PATH_INTERNATIONAL_AFFECT_RATES = self::CONFIG_ROOT . 'international_affect_rates';
+    public const CONFIG_XML_PATH_DOMESTIC_HANDLING_TYPE = self::CONFIG_ROOT . 'domestic_handling_type';
+    public const CONFIG_XML_PATH_DOMESTIC_HANDLING_FEE = self::CONFIG_ROOT . 'domestic_handling_fee';
+    public const CONFIG_XML_PATH_INTERNATIONAL_HANDLING_TYPE = self::CONFIG_ROOT . 'international_handling_type';
+    public const CONFIG_XML_PATH_INTERNATIONAL_HANDLING_FEE = self::CONFIG_ROOT . 'international_handling_fee';
+    public const CONFIG_XML_PATH_ROUNDED_PRICES_MODE = self::CONFIG_ROOT . 'round_prices_mode';
+    public const CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT = self::CONFIG_ROOT . 'round_prices_format';
+    public const CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL = self::CONFIG_ROOT . 'round_prices_static_decimal';
+    public const CONFIG_XML_PATH_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'free_shipping_subtotal';
+    public const CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED = self::CONFIG_ROOT . 'international_free_shipping_enable';
+    public const CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED = self::CONFIG_ROOT . 'domestic_free_shipping_enable';
+    public const CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED = self::CONFIG_ROOT . 'free_shipping_virtual_products_enable';
+    public const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'domestic_free_shipping_products';
+    public const CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'domestic_free_shipping_subtotal';
+    public const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_PRODUCTS = self::CONFIG_ROOT . 'international_free_shipping_products';
+    public const CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_SUBTOTAL = self::CONFIG_ROOT . 'international_free_shipping_subtotal';
+    public const CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME = self::CONFIG_ROOT . 'checkout_show_delivery_time';
+    public const CONFIG_XML_PATH_TERMS_OF_TRADE = self::CONFIG_ROOT . 'terms_of_trade';
+    public const CONFIG_XML_PATH_CUT_OFF_TIME = self::CONFIG_ROOT . 'cut_off_time';
+    public const CONFIG_XML_PATH_PACKAGING_WEIGHT = self::CONFIG_ROOT . 'packaging_weight';
+    public const CONFIG_XML_PATH_WEIGHT_UNIT = 'general/locale/weight_unit';
+    public const CONFIG_XML_SUFFIX_FIXED = '_fixed';
+    public const CONFIG_XML_SUFFIX_PERCENTAGE = '_percentage';
+    public const CONFIG_XML_PATH_VERSION = self::CONFIG_ROOT . 'version';
 
     /**
      * Check if the module is enabled.
@@ -67,7 +63,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isEnabled($store = null);
+    public function isEnabled($store = null): bool;
 
     /**
      * Get the sort order.
@@ -75,7 +71,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getSortOrder($store = null);
+    public function getSortOrder($store = null): int;
 
     /**
      * Get the title.
@@ -83,7 +79,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getTitle($store = null);
+    public function getTitle($store = null): string;
 
     /**
      * Get the emulated carrier.
@@ -91,7 +87,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getEmulatedCarrier($store = null);
+    public function getEmulatedCarrier($store = null): string;
 
     /**
      * Check if shipping only to specific countries.
@@ -99,7 +95,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function shipToSpecificCountries($store = null);
+    public function shipToSpecificCountries($store = null): bool;
 
     /**
      * Get the specific countries.
@@ -107,7 +103,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getSpecificCountries($store = null);
+    public function getSpecificCountries($store = null): array;
 
     /**
      * Show DHL Express in checkout if there are no products available.
@@ -115,7 +111,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function showIfNotApplicable($store = null);
+    public function showIfNotApplicable($store = null): bool;
 
     /**
      * Get the error message.
@@ -123,7 +119,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getNotApplicableErrorMessage($store = null);
+    public function getNotApplicableErrorMessage($store = null): string;
 
     /**
      * Get the username.
@@ -131,7 +127,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getUserName($store = null);
+    public function getUserName($store = null): string;
 
     /**
      * Get the password.
@@ -139,7 +135,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getPassword($store = null);
+    public function getPassword($store = null): string;
 
     /**
      * Get the Logging status.
@@ -147,7 +143,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isLoggingEnabled($store = null);
+    public function isLoggingEnabled($store = null): bool;
 
     /**
      * Get the log level.
@@ -155,7 +151,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getLogLevel($store = null);
+    public function getLogLevel($store = null): int;
 
     /**
      * Get the account number.
@@ -163,7 +159,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getAccountNumber($store = null);
+    public function getAccountNumber($store = null): string;
 
     /**
      * Get the allowed domestic products.
@@ -171,7 +167,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedDomesticProducts($store = null);
+    public function getAllowedDomesticProducts($store = null): array;
 
     /**
      * Get the allowed international products.
@@ -179,7 +175,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedInternationalProducts($store = null);
+    public function getAllowedInternationalProducts($store = null): array;
 
     /**
      * Check if regular pickup is enabled.
@@ -187,7 +183,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isRegularPickup($store = null);
+    public function isRegularPickup($store = null): bool;
 
     /**
      * Return if packages are insured.
@@ -195,7 +191,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isInsured($store = null);
+    public function isInsured($store = null): bool;
 
     /**
      * Get the value from which the packages should be insured.
@@ -203,7 +199,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function insuranceFromValue($store = null);
+    public function insuranceFromValue($store = null): float;
 
     /**
      * Get the pickup time.
@@ -211,7 +207,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getPickupTime($store = null);
+    public function getPickupTime($store = null): string;
 
     /**
      * Get the domestic handling type.
@@ -220,7 +216,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getDomesticHandlingType($store = null);
+    public function getDomesticHandlingType($store = null): string;
 
     /**
      * Get the domestic handling fee.
@@ -238,7 +234,7 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getInternationalHandlingType($store = null);
+    public function getInternationalHandlingType($store = null): string;
 
     /**
      * Get the international handling fee.
@@ -247,15 +243,15 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalHandlingFee($store = null);
+    public function getInternationalHandlingFee($store = null): float;
 
     /**
      * Get mode for rounded prices.
      *
      * @param string|null $store
-     * @return string|null
+     * @return string
      */
-    public function getRoundedPricesMode($store = null);
+    public function getRoundedPricesMode($store = null): string;
 
     /**
      * Returns true when price should be rounded up.
@@ -263,7 +259,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundUp($store = null);
+    public function roundUp($store = null): bool;
 
     /**
      * Returns true when price should be rounded off.
@@ -271,7 +267,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundOff($store = null);
+    public function roundOff($store = null): bool;
 
     /**
      * Get rounded prices format.
@@ -279,7 +275,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesFormat($store = null);
+    public function getRoundedPricesFormat($store = null): string;
 
     /**
      * Get rounded prices static value.
@@ -287,7 +283,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getRoundedPricesStaticDecimal($store = null);
+    public function getRoundedPricesStaticDecimal($store = null): float;
 
     /**
      * Returns whether virtual products should be included in the subtotal value calculation or not.
@@ -296,7 +292,7 @@ interface ModuleConfigInterface
      *
      * @return bool
      */
-    public function isFreeShippingVirtualProductsIncluded($store = null);
+    public function isFreeShippingVirtualProductsIncluded($store = null): bool;
 
     /**
      * Get the domestic free shipping allowed products.
@@ -305,7 +301,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getDomesticFreeShippingProducts($store = null);
+    public function getDomesticFreeShippingProducts($store = null): array;
 
     /**
      * Get the domestic free shipping subtotal value.
@@ -314,7 +310,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getDomesticFreeShippingSubTotal($store = null);
+    public function getDomesticFreeShippingSubTotal($store = null): float;
 
     /**
      * Get the international free shipping allowed products.
@@ -323,7 +319,7 @@ interface ModuleConfigInterface
      *
      * @return string[]
      */
-    public function getInternationalFreeShippingProducts($store = null);
+    public function getInternationalFreeShippingProducts($store = null): array;
 
     /**
      * Get the international free shipping subtotal value.
@@ -332,7 +328,7 @@ interface ModuleConfigInterface
      *
      * @return float
      */
-    public function getInternationalFreeShippingSubTotal($store = null);
+    public function getInternationalFreeShippingSubTotal($store = null): float;
 
     /**
      * Check if delivery time should be displayed in checkout
@@ -340,7 +336,7 @@ interface ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutDeliveryTimeEnabled($store = null);
+    public function isCheckoutDeliveryTimeEnabled($store = null): bool;
 
     /**
      * Get terms of trade
@@ -348,7 +344,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getTermsOfTrade($store = null);
+    public function getTermsOfTrade($store = null): string;
 
     /**
      * Get the cut off time.
@@ -356,7 +352,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getCutOffTime($store = null);
+    public function getCutOffTime($store = null): string;
 
     /**
      * Check if international rates configuration is enabled
@@ -364,7 +360,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isInternationalRatesConfigurationEnabled($store = null);
+    public function isInternationalRatesConfigurationEnabled($store = null): bool;
 
     /**
      * Check if domestic rates configuration is enabled
@@ -372,7 +368,7 @@ interface ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isDomesticRatesConfigurationEnabled($store = null);
+    public function isDomesticRatesConfigurationEnabled($store = null): bool;
 
     /**
      * Get the general weight unit.
@@ -380,14 +376,14 @@ interface ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getWeightUnit($store = null);
+    public function getWeightUnit($store = null): string;
 
     /**
      * Get the general dimensions unit.
      *
      * @return string
      */
-    public function getDimensionsUOM();
+    public function getDimensionsUOM(): string;
 
     /**
      * Maps Magento's internal unit names to SDKs unit names
@@ -395,7 +391,7 @@ interface ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeDimensionUOM($unit);
+    public function normalizeDimensionUOM($unit): string;
 
     /**
      * Checks if route is dutiable by stores origin country and eu country list
@@ -405,7 +401,7 @@ interface ModuleConfigInterface
      * @return bool
      *
      */
-    public function isDutiableRoute($receiverCountry, $store = null);
+    public function isDutiableRoute($receiverCountry, $store = null): bool;
 
     /**
      * Returns countries that are marked as EU-Countries
@@ -413,7 +409,7 @@ interface ModuleConfigInterface
      * @param mixed $store
      * @return string[]
      */
-    public function getEuCountries($store = null);
+    public function getEuCountries($store = null): array;
 
     /**
      * Returns the shipping origin country
@@ -423,7 +419,7 @@ interface ModuleConfigInterface
      * @param mixed $store
      * @return string
      */
-    public function getOriginCountry($store = null);
+    public function getOriginCountry($store = null): string;
 
     /**
      * Returns configured packaging weight for rates calculation.
@@ -431,7 +427,7 @@ interface ModuleConfigInterface
      * @param mixed $store
      * @return float
      */
-    public function getPackagingWeight($store = null);
+    public function getPackagingWeight($store = null): float;
 
     /**
      * Maps Magento's internal unit names to SDKs unit names
@@ -439,19 +435,19 @@ interface ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeWeightUOM($unit);
+    public function normalizeWeightUOM($unit): string;
 
     /**
      * @param mixed $store
      * @return bool
      */
-    public function isInternationalFreeShippingEnabled($store = null);
+    public function isInternationalFreeShippingEnabled($store = null): bool;
 
     /**
      * @param mixed $store
      * @return bool
      */
-    public function isDomesticFreeShippingEnabled($store = null);
+    public function isDomesticFreeShippingEnabled($store = null): bool;
 
     /**
      * Returns the module version.
@@ -460,5 +456,5 @@ interface ModuleConfigInterface
      *
      * @return string
      */
-    public function getVersion($store = null);
+    public function getVersion($store = null): string;
 }

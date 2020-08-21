@@ -1,23 +1,21 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config\Source;
 
 use Magento\Framework\App\Config\ScopeConfigInterface;
-use Magento\Framework\Option\ArrayInterface;
+use Magento\Framework\Data\OptionSourceInterface;
 
-/**
- * Class Carriers
- *
- * @package Dhl\ExpressRates\Model\Backend\Config\Source
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
-class OfflineCarriers implements ArrayInterface
+class OfflineCarriers implements OptionSourceInterface
 {
-    /** @var ScopeConfigInterface */
+    /**
+     * @var ScopeConfigInterface
+     */
     private $scopeConfig;
 
     /**

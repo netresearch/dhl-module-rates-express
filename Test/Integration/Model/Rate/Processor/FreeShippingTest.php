@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\Express\Api\Data\ShippingProductsInterface;
@@ -14,16 +18,9 @@ use Magento\Catalog\Model\ProductFactory;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\TestFramework\ObjectManager;
+use PHPUnit\Framework\TestCase;
 
-/**
- * FreeShippingTest
- *
- * @package Dhl\ExpressRates\Test\Integration
- * @author  Rico Sonntag <rico.sonntag@netresearch.de>
- * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link    https://www.netresearch.de/
- */
-class FreeShippingTest extends \PHPUnit\Framework\TestCase
+class FreeShippingTest extends TestCase
 {
     /**
      * @var $objectManager ObjectManager
@@ -61,7 +58,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
      *
      * @link http://magento.stackexchange.com/a/93961
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -79,7 +76,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
      *
      * @see setUpBeforeClass()
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -89,7 +86,7 @@ class FreeShippingTest extends \PHPUnit\Framework\TestCase
         parent::tearDownAfterClass();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 

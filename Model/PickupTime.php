@@ -1,18 +1,16 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Stdlib\DateTime\TimezoneInterface;
 
-/**
- * Class PickupTime
- *
- * @author Max Melzer <max.melzer@netresearch.de>
- * @package Dhl\ExpressRates\Model
- */
 class PickupTime
 {
     /**
@@ -27,12 +25,6 @@ class PickupTime
      */
     private $timezone;
 
-    /**
-     * PickupTime constructor.
-     *
-     * @param ModuleConfigInterface $moduleConfig
-     * @param TimezoneInterface $timezone
-     */
     public function __construct(
         ModuleConfigInterface $moduleConfig,
         TimezoneInterface $timezone
@@ -47,7 +39,7 @@ class PickupTime
      *
      * @return \DateTime
      */
-    public function getReadyAtTimestamp()
+    public function getReadyAtTimestamp(): \DateTime
     {
         $cutOffTimeRaw = explode(',', $this->moduleConfig->getCutOffTime());
         $pickUpTimeRaw = explode(',', $this->moduleConfig->getPickupTime());

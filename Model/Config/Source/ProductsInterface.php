@@ -1,23 +1,21 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config\Source;
 
-/**
- * Class ProductsInterface
- *
- * @package   Dhl\ExpressRates\Model\Backend\Config\Source
- * @author    Rico Sonntag <rico.sonntag@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link      http://www.netresearch.de/
- */
-interface ProductsInterface extends \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Data\OptionSourceInterface;
+
+interface ProductsInterface extends OptionSourceInterface
 {
     /**
      * Returns the list of options as plain array.
      *
      * @return array
      */
-    public function toPlainArray();
+    public function toPlainArray(): array;
 }

@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Test\Integration\Model\Config;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfig;
@@ -9,16 +13,9 @@ use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Encryption\EncryptorInterface;
 use Magento\Shipping\Model\Carrier\AbstractCarrier;
 use Magento\TestFramework\ObjectManager;
+use PHPUnit\Framework\TestCase;
 
-/**
- * ModuleConfigTest
- *
- * @package Dhl\ExpressRates\Test\Integration
- * @author  Christoph Aßmann <christoph.assmann@netresearch.de>
- * @license https://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link    https://www.netresearch.de/
- */
-class ModuleConfigTest extends \PHPUnit\Framework\TestCase
+class ModuleConfigTest extends TestCase
 {
     /**
      * @var $objectManager ObjectManager
@@ -36,7 +33,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      *
      * @link http://magento.stackexchange.com/a/93961
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -54,7 +51,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      *
      * @see setUpBeforeClass()
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -64,7 +61,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         parent::tearDownAfterClass();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
@@ -80,8 +77,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function isEnabled()
     {
-        $this->assertEquals(0, $this->config->isEnabled());
-        $this->assertEquals(1, $this->config->isEnabled('fixturestore'));
+        self::assertEquals(0, $this->config->isEnabled());
+        self::assertEquals(1, $this->config->isEnabled('fixturestore'));
     }
 
     /**
@@ -91,8 +88,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getSortOrder()
     {
-        $this->assertEquals(10, $this->config->getSortOrder());
-        $this->assertEquals(20, $this->config->getSortOrder('fixturestore'));
+        self::assertEquals(10, $this->config->getSortOrder());
+        self::assertEquals(20, $this->config->getSortOrder('fixturestore'));
     }
 
     /**
@@ -102,8 +99,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getTitle()
     {
-        $this->assertEquals('DHL Express', $this->config->getTitle());
-        $this->assertEquals('Title', $this->config->getTitle('fixturestore'));
+        self::assertEquals('DHL Express', $this->config->getTitle());
+        self::assertEquals('Title', $this->config->getTitle('fixturestore'));
     }
 
     /**
@@ -113,8 +110,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getEmulatedCarrier()
     {
-        $this->assertEquals('flatrate', $this->config->getEmulatedCarrier());
-        $this->assertEquals('tablerate', $this->config->getEmulatedCarrier('fixturestore'));
+        self::assertEquals('flatrate', $this->config->getEmulatedCarrier());
+        self::assertEquals('tablerate', $this->config->getEmulatedCarrier('fixturestore'));
     }
 
     /**
@@ -124,8 +121,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function shipToSpecificCountries()
     {
-        $this->assertEquals(0, $this->config->shipToSpecificCountries());
-        $this->assertEquals(1, $this->config->shipToSpecificCountries('fixturestore'));
+        self::assertEquals(0, $this->config->shipToSpecificCountries());
+        self::assertEquals(1, $this->config->shipToSpecificCountries('fixturestore'));
     }
 
     /**
@@ -135,10 +132,10 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     public function getSpecificCountries()
     {
         $euCountries = $this->config->getSpecificCountries();
-        $this->assertNotEmpty($euCountries);
-        $this->assertCount(2, $euCountries);
-        $this->assertContains('AL', $euCountries);
-        $this->assertContains('DZ', $euCountries);
+        self::assertNotEmpty($euCountries);
+        self::assertCount(2, $euCountries);
+        self::assertContains('AL', $euCountries);
+        self::assertContains('DZ', $euCountries);
     }
 
     /**
@@ -148,8 +145,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getErrorMessage()
     {
-        $this->assertEquals('Error message', $this->config->getNotApplicableErrorMessage());
-        $this->assertEquals('Special error message', $this->config->getNotApplicableErrorMessage('fixturestore'));
+        self::assertEquals('Error message', $this->config->getNotApplicableErrorMessage());
+        self::assertEquals('Special error message', $this->config->getNotApplicableErrorMessage('fixturestore'));
     }
 
     /**
@@ -159,8 +156,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getUserName()
     {
-        $this->assertEquals('Username', $this->config->getUserName());
-        $this->assertEquals('userName', $this->config->getUserName('fixturestore'));
+        self::assertEquals('Username', $this->config->getUserName());
+        self::assertEquals('userName', $this->config->getUserName('fixturestore'));
     }
 
     /**
@@ -173,8 +170,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
         /** @var EncryptorInterface $encryptor */
         $encryptor = $this->objectManager->get(EncryptorInterface::class);
 
-        $this->assertSame($encryptor->decrypt('testcase1'), $this->config->getPassword());
-        $this->assertSame($encryptor->decrypt('testcase2'), $this->config->getPassword('fixturestore'));
+        self::assertSame($encryptor->decrypt('testcase1'), $this->config->getPassword());
+        self::assertSame($encryptor->decrypt('testcase2'), $this->config->getPassword('fixturestore'));
     }
 
     /**
@@ -185,8 +182,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getLogLevel()
     {
-        $this->assertEquals('400', $this->config->getLogLevel());
-        $this->assertEquals('100', $this->config->getLogLevel('secondstore'));
+        self::assertEquals('400', $this->config->getLogLevel());
+        self::assertEquals('100', $this->config->getLogLevel('secondstore'));
     }
 
     /**
@@ -196,8 +193,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getAccountNumber()
     {
-        $this->assertEquals('987654321', $this->config->getAccountNumber());
-        $this->assertEquals('123456789', $this->config->getAccountNumber('fixturestore'));
+        self::assertEquals('987654321', $this->config->getAccountNumber());
+        self::assertEquals('123456789', $this->config->getAccountNumber('fixturestore'));
     }
 
     /**
@@ -207,8 +204,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getLogging()
     {
-        $this->assertEquals(0, $this->config->isLoggingEnabled());
-        $this->assertEquals(1, $this->config->isLoggingEnabled('fixturestore'));
+        self::assertEquals(0, $this->config->isLoggingEnabled());
+        self::assertEquals(1, $this->config->isLoggingEnabled('fixturestore'));
     }
 
     /**
@@ -218,8 +215,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getRegularPickup()
     {
-        $this->assertEquals(1, $this->config->isRegularPickup());
-        $this->assertEquals(0, $this->config->isRegularPickup('fixturestore'));
+        self::assertEquals(1, $this->config->isRegularPickup());
+        self::assertEquals(0, $this->config->isRegularPickup('fixturestore'));
     }
 
     /**
@@ -229,8 +226,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getPickupTime()
     {
-        $this->assertEquals('00,00,00', $this->config->getPickupTime());
-        $this->assertEquals('12,07,10', $this->config->getPickupTime('fixturestore'));
+        self::assertEquals('00,00,00', $this->config->getPickupTime());
+        self::assertEquals('12,07,10', $this->config->getPickupTime('fixturestore'));
     }
 
     /**
@@ -300,14 +297,14 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     public function getAllowedDomesticProducts()
     {
         $productKeys = $this->config->getAllowedDomesticProducts();
-        $this->assertInternalType('array', $productKeys);
-        $this->assertNotEmpty($productKeys);
-        $this->assertContainsOnly('string', $productKeys);
-        $this->assertCount(4, $productKeys);
-        $this->assertContains('I', $productKeys);
-        $this->assertContains('O', $productKeys);
-        $this->assertContains('1', $productKeys);
-        $this->assertContains('N', $productKeys);
+        self::assertTrue(is_array($productKeys));
+        self::assertNotEmpty($productKeys);
+        self::assertContainsOnly('string', $productKeys);
+        self::assertCount(4, $productKeys);
+        self::assertContains('I', $productKeys);
+        self::assertContains('O', $productKeys);
+        self::assertContains('1', $productKeys);
+        self::assertContains('N', $productKeys);
     }
 
     /**
@@ -317,19 +314,19 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
     public function getAllowedInternationalProducts()
     {
         $productKeys = $this->config->getAllowedInternationalProducts();
-        $this->assertInternalType('array', $productKeys);
-        $this->assertNotEmpty($productKeys);
-        $this->assertContainsOnly('string', $productKeys);
-        $this->assertCount(9, $productKeys);
-        $this->assertContains('X', $productKeys);
-        $this->assertContains('D', $productKeys);
-        $this->assertContains('P', $productKeys);
-        $this->assertContains('K', $productKeys);
-        $this->assertContains('E', $productKeys);
-        $this->assertContains('L', $productKeys);
-        $this->assertContains('M', $productKeys);
-        $this->assertContains('T', $productKeys);
-        $this->assertContains('Y', $productKeys);
+        self::assertTrue(is_array($productKeys));
+        self::assertNotEmpty($productKeys);
+        self::assertContainsOnly('string', $productKeys);
+        self::assertCount(9, $productKeys);
+        self::assertContains('X', $productKeys);
+        self::assertContains('D', $productKeys);
+        self::assertContains('P', $productKeys);
+        self::assertContains('K', $productKeys);
+        self::assertContains('E', $productKeys);
+        self::assertContains('L', $productKeys);
+        self::assertContains('M', $productKeys);
+        self::assertContains('T', $productKeys);
+        self::assertContains('Y', $productKeys);
     }
 
     /**
@@ -340,9 +337,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getRoundedPricesMode()
     {
-        $this->assertEquals('no_rounding', $this->config->getRoundedPricesMode());
-        $this->assertEquals('round_up', $this->config->getRoundedPricesMode('fixturestore'));
-        $this->assertEquals('round_off', $this->config->getRoundedPricesMode('secondstore'));
+        self::assertEquals('no_rounding', $this->config->getRoundedPricesMode());
+        self::assertEquals('round_up', $this->config->getRoundedPricesMode('fixturestore'));
+        self::assertEquals('round_off', $this->config->getRoundedPricesMode('secondstore'));
     }
 
     /**
@@ -355,9 +352,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function roundUp()
     {
-        $this->assertFalse($this->config->roundUp('current'));
-        $this->assertTrue($this->config->roundUp('fixturestore'));
-        $this->assertFalse($this->config->roundUp('secondstore'));
+        self::assertFalse($this->config->roundUp('current'));
+        self::assertTrue($this->config->roundUp('fixturestore'));
+        self::assertFalse($this->config->roundUp('secondstore'));
     }
 
     /**
@@ -369,9 +366,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function roundOff()
     {
-        $this->assertFalse($this->config->roundOff('current'));
-        $this->assertFalse($this->config->roundOff('fixturestore'));
-        $this->assertTrue($this->config->roundOff('secondstore'));
+        self::assertFalse($this->config->roundOff('current'));
+        self::assertFalse($this->config->roundOff('fixturestore'));
+        self::assertTrue($this->config->roundOff('secondstore'));
     }
 
     /**
@@ -381,8 +378,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getRoundedPricesFormat()
     {
-        $this->assertEquals('full_price', $this->config->getRoundedPricesFormat());
-        $this->assertEquals('static_decimal', $this->config->getRoundedPricesFormat('fixturestore'));
+        self::assertEquals('full_price', $this->config->getRoundedPricesFormat());
+        self::assertEquals('static_decimal', $this->config->getRoundedPricesFormat('fixturestore'));
     }
 
     /**
@@ -393,9 +390,9 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getRoundedPricesStaticDecimal()
     {
-        $this->assertEquals(0.00, $this->config->getRoundedPricesStaticDecimal('current'));
-        $this->assertEquals(0.1, $this->config->getRoundedPricesStaticDecimal('fixturestore'));
-        $this->assertEquals(0.25, $this->config->getRoundedPricesStaticDecimal('secondstore'));
+        self::assertEquals(0.00, $this->config->getRoundedPricesStaticDecimal('current'));
+        self::assertEquals(0.1, $this->config->getRoundedPricesStaticDecimal('fixturestore'));
+        self::assertEquals(0.25, $this->config->getRoundedPricesStaticDecimal('secondstore'));
     }
 
     /**
@@ -405,8 +402,8 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getTermsOfTrade()
     {
-        $this->assertEquals('DTP/DDP', $this->config->getTermsOfTrade());
-        $this->assertEquals('DDU/DAP', $this->config->getTermsOfTrade('fixturestore'));
+        self::assertEquals('DTP/DDP', $this->config->getTermsOfTrade());
+        self::assertEquals('DDU/DAP', $this->config->getTermsOfTrade('fixturestore'));
     }
 
     /**
@@ -415,7 +412,7 @@ class ModuleConfigTest extends \PHPUnit\Framework\TestCase
      */
     public function getCutOffTime()
     {
-        $this->assertEquals('00,00,00', $this->config->getCutOffTime());
-        $this->assertEquals('12,07,10', $this->config->getCutOffTime('fixturestore'));
+        self::assertEquals('00,00,00', $this->config->getCutOffTime());
+        self::assertEquals('12,07,10', $this->config->getCutOffTime('fixturestore'));
     }
 }

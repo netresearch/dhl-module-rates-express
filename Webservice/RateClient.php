@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Webservice;
 
 use Dhl\Express\Api\Data\RateRequestInterface;
@@ -12,14 +16,6 @@ use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
 
-/**
- * Class RateClient
- *
- * @package Dhl\ExpressRates\Webservice
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class RateClient
 {
     /**
@@ -37,13 +33,6 @@ class RateClient
      */
     private $logger;
 
-    /**
-     * RateClient constructor.
-     *
-     * @param ServiceFactoryInterface $serviceFactory
-     * @param ModuleConfigInterface $moduleConfig
-     * @param LoggerInterface $logger
-     */
     public function __construct(
         ServiceFactoryInterface $serviceFactory,
         ModuleConfigInterface $moduleConfig,
@@ -59,7 +48,7 @@ class RateClient
      * @return RateResponseInterface
      * @throws LocalizedException
      */
-    public function performRatesRequest(RateRequestInterface $request)
+    public function performRatesRequest(RateRequestInterface $request): RateResponseInterface
     {
         try {
             $rateService = $this->serviceFactory->createRateService(

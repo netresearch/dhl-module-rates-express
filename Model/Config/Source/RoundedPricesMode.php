@@ -1,33 +1,27 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
 
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config\Source;
 
-/**
- * Class Rounded prices
- *
- * @package Dhl\ExpressRates\Model\Backend\Config\Source
- * @author Ronny Gertler <ronny.gertler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
-class RoundedPricesMode implements \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Data\OptionSourceInterface;
+
+class RoundedPricesMode implements OptionSourceInterface
 {
     /**
      * Round up key.
      */
-    const ROUND_UP = 'round_up';
+    public const ROUND_UP = 'round_up';
 
     /**
      * Round off key.
      */
-    const ROUND_OFF = 'round_off';
+    public const ROUND_OFF = 'round_off';
 
-    /**
-     * {@inheritdoc}
-     */
     public function toOptionArray()
     {
         return [

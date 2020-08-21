@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Block\Adminhtml\System\Config\Form\Field;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfig;
@@ -11,14 +15,6 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\View\Element\Template;
 
-/**
- * Class CustomInformation
- *
- * @package   Dhl\ExpressRates\Block\Adminhtml
- * @author    Ronny Gertler <ronny.gertler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link      http://www.netresearch.de/
- */
 class CustomInformation extends Field
 {
     /**
@@ -47,7 +43,7 @@ class CustomInformation extends Field
      * @return string
      * @throws LocalizedException
      */
-    public function render(AbstractElement $element)
+    public function render(AbstractElement $element): string
     {
         $moduleVersion = $this->moduleConfig->getVersion();
         $logo          = $this->getViewFileUrl('Dhl_ExpressRates::images/logo.svg');

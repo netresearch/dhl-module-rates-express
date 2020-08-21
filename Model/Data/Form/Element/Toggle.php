@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Data\Form\Element;
 
 /**
@@ -10,7 +14,6 @@ namespace Dhl\ExpressRates\Model\Data\Form\Element;
  * Implementation of a checkbox boolean input element styled like a toggle that works inside the Magento system
  * configuration. Used by entering the class name into the "type" attribute of a system.xml field element.
  *
- * @package Dhl\ExpressRates\Model
  */
 class Toggle extends Checkbox
 {
@@ -30,7 +33,7 @@ class Toggle extends Checkbox
     /**
      * @return string
      */
-    protected function getSecondaryLabelHtml()
+    protected function getSecondaryLabelHtml(): string
     {
         $html = '<label for="%s" class="admin__actions-switch-label">
             <span class="admin__actions-switch-text" data-text-on="%s" data-text-off="%s"></span>
@@ -40,7 +43,7 @@ class Toggle extends Checkbox
             $html,
             $this->getHtmlId(),
             $this->getButtonLabel() ?: __('Yes'),
-            $this->getButtonLabel()?: __('No')
+            $this->getButtonLabel() ?: __('No')
         );
     }
 }

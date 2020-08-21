@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Webservice\Rate;
 
 use Dhl\Express\Api\Data\RateRequestInterface;
@@ -12,14 +16,6 @@ use Dhl\Express\Model\Request\Rate\ShipmentDetails;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 
-/**
- * Class RequestDataMapper
- *
- * @package Dhl\ExpressRates\Webservice\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class RequestDataMapper implements RequestDataMapperInterface
 {
     /**
@@ -37,13 +33,6 @@ class RequestDataMapper implements RequestDataMapperInterface
      */
     private $pickupTime;
 
-    /**
-     * RequestDataMapper constructor.
-     *
-     * @param RateRequestBuilderInterface $rateRequestBuilder
-     * @param ModuleConfigInterface $moduleConfig
-     * @param PickupTime $pickupTime
-     */
     public function __construct(
         RateRequestBuilderInterface $rateRequestBuilder,
         ModuleConfigInterface $moduleConfig,
@@ -62,7 +51,7 @@ class RequestDataMapper implements RequestDataMapperInterface
      * @return RateRequestInterface
      * @throws LocalizedException
      */
-    public function mapRequest(RateRequest $request)
+    public function mapRequest(RateRequest $request): RateRequestInterface
     {
         $this->rateRequestBuilder->setShipperAddress(
             $request->getCountryId(),
@@ -132,7 +121,7 @@ class RequestDataMapper implements RequestDataMapperInterface
      * @param RateRequest $request
      * @return float
      */
-    private function calculatePackageWeight(RateRequest $request)
+    private function calculatePackageWeight(RateRequest $request): float
     {
         $itemWeight = (float)$request->getPackageWeight();
         $packagingWeight = $this->moduleConfig->getPackagingWeight($request->getWebsiteId());

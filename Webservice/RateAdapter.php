@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Webservice;
 
 use Dhl\ExpressRates\Webservice\Rate\RequestDataMapperInterface;
@@ -10,11 +14,6 @@ use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Quote\Model\Quote\Address\RateResult\AbstractResult;
 
-/**
- * Class RateAdapter
- *
- * @package Dhl\ExpressRates\Webservice
- */
 class RateAdapter
 {
     /**
@@ -32,13 +31,6 @@ class RateAdapter
      */
     private $client;
 
-    /**
-     * RateAdapter constructor.
-     *
-     * @param RequestDataMapperInterface $requestDataMapper
-     * @param ResponseDataMapperInterface $responseDataMapper
-     * @param RateClient $client
-     */
     public function __construct(
         RequestDataMapperInterface $requestDataMapper,
         ResponseDataMapperInterface $responseDataMapper,
@@ -56,7 +48,7 @@ class RateAdapter
      * @return AbstractResult[]
      * @throws LocalizedException
      */
-    public function getRates(RateRequest $request)
+    public function getRates(RateRequest $request): array
     {
         $requestModel = $this->requestDataMapper->mapRequest($request);
 

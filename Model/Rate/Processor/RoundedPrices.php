@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
@@ -10,14 +14,6 @@ use Dhl\ExpressRates\Model\Config\Source\RoundedPricesFormat;
 use Dhl\ExpressRates\Model\Config\Source\RoundedPricesMode;
 use Magento\Quote\Model\Quote\Address\RateRequest;
 
-/**
- * A rate processor to round prices.
- *
- * @package  Dhl\ExpressRates\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
- */
 class RoundedPrices implements RateProcessorInterface
 {
     /**
@@ -25,21 +21,13 @@ class RoundedPrices implements RateProcessorInterface
      */
     private $moduleConfig;
 
-    /**
-     * RoundedPrices constructor.
-     *
-     * @param ModuleConfigInterface $moduleConfig
-     */
     public function __construct(
         ModuleConfigInterface $moduleConfig
     ) {
         $this->moduleConfig = $moduleConfig;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, $request = null): array
     {
         foreach ($methods as $method) {
             $method->setPrice(
@@ -56,7 +44,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundPrice($price)
+    private function roundPrice($price): float
     {
         $format = $this->moduleConfig->getRoundedPricesFormat();
 
@@ -85,7 +73,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundOffToStaticDecimal($price)
+    private function roundOffToStaticDecimal($price): float
     {
         $roundedDecimal = $this->moduleConfig->getRoundedPricesStaticDecimal();
         $decimal = $price - floor($price);
@@ -108,7 +96,7 @@ class RoundedPrices implements RateProcessorInterface
      * @param float $price
      * @return float
      */
-    private function roundUpToStaticDecimal($price)
+    private function roundUpToStaticDecimal($price): float
     {
         $roundedDecimal = $this->moduleConfig->getRoundedPricesStaticDecimal();
         $decimal = $price - floor($price);

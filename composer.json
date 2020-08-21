@@ -1,49 +1,48 @@
 {
-  "name": "dhl/module-rates-express",
-  "type": "magento2-module",
-  "description": "Rates in Checkout implementation for DHL Express API",
-  "license": "OSL-3.0",
-  "version": "1.0.3",
-  "authors": [
-    {
-      "name": "Max Melzer",
-      "email": "max.melzer@netresearch.de"
+    "name": "dhl/module-rates-express",
+    "type": "magento2-module",
+    "description": "Rates in Checkout implementation for DHL Express API",
+    "license": "OSL-3.0",
+    "version": "1.0.3",
+    "authors": [
+        {
+            "email": "plugins@netresearch.de",
+            "name": "Netresearch DTT GmbH",
+            "role": "Manufacturer",
+            "homepage": "https://www.netresearch.de/"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Dhl\\ExpressRates\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
     },
-    {
-      "name": "Andreas Müller",
-      "email": "andreas.mueller@netresearch.de"
+    "require": {
+        "php": "^7.1.3",
+        "dhl/sdk-api-express": "^2.0.0",
+        "magento/framework": "^102.0.0 || ^103.0.0",
+        "magento/module-backend": "^101.0.0 || ^102.0.0",
+        "magento/module-config": "^101.1.0",
+        "magento/module-directory": "^100.3.0",
+        "magento/module-quote": "^101.1.0",
+        "magento/module-shipping": "^100.3.0",
+        "magento/module-store": "^101.0.0",
+        "magento/module-checkout": "^100.3.0",
+        "psr/log": "^1.1.0"
     },
-    {
-      "name": "Rico Sonntag",
-      "email": "rico.sonntag@netresearch.de"
+    "require-dev": {
+        "magento/module-catalog": "^103.0.0 || ^104.0.0",
+        "phpunit/phpunit": "^6.5.0 || ^9.0.0"
+    },
+    "conflict": {
+        "dhl/module-carrier-express": "*"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-develop": "1.1.0.x-dev"
+        }
     }
-  ],
-  "autoload": {
-    "psr-4": {
-      "Dhl\\ExpressRates\\": ""
-    },
-    "files": [
-      "registration.php"
-    ]
-  },
-  "require": {
-    "php": "~5.6.5 || 7.0.2 || 7.0.4 || ~7.0.6 || ~7.1.0 || ~7.2.0 || ~7.3.0",
-    "psr/log": "~1.0",
-    "magento/module-backend": "^100.1.0 || ^101.0.0",
-    "magento/module-catalog": "^100.1.0 || ^101.0.0 || ^102.0.0 || ^103.0.0",
-    "magento/module-config": "^100.1.0 || ^101.0.0",
-    "magento/module-directory": "^100.1.0",
-    "magento/module-payment": "^100.1.0",
-    "magento/module-quote": "^100.1.0 || ^101.0.0",
-    "magento/module-shipping": "^100.1.0",
-    "magento/module-store": "^100.1.0 || ^101.0.0",
-    "magento/framework": "^100.1.0 || ^101.0.0 || ^102.0.0",
-    "dhl/sdk-api-express": "^2.0.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^6.5"
-  },
-  "conflict": {
-    "dhl/module-carrier-express": "*"
-  }
 }

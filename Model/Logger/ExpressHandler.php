@@ -1,18 +1,17 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Logger;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Logger\Handler\Base;
 
-/**
- * Class ExpressHandler
- *
- * @package Dhl\ExpressRates\Model
- */
 class ExpressHandler extends Base
 {
     /**
@@ -41,9 +40,6 @@ class ExpressHandler extends Base
         parent::__construct($filesystem, $filePath);
     }
 
-    /**
-     * @inheritdoc
-     */
     public function isHandling(array $record)
     {
         $logEnabled = $this->moduleConfig->isLoggingEnabled();

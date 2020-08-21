@@ -1,30 +1,26 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Api\Data;
 
-/**
- * Interface MethodAdditionalInfoInterface
- *
- * @package Dhl\ExpressRates\Api
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 interface MethodAdditionalInfoInterface
 {
-    const ATTRIBUTE_KEY = 'additional_info';
-    const DELIVERY_DATE = 'delivery_date';
+    public const ATTRIBUTE_KEY = 'additional_info';
+    public const DELIVERY_DATE = 'delivery_date';
 
     /**
      * @return string
      */
-    public function getDeliveryDate();
+    public function getDeliveryDate(): string;
 
     /**
      * @param string $deliveryDate
      * @return void
      */
-    public function setDeliveryDate($deliveryDate);
+    public function setDeliveryDate($deliveryDate): void;
 }

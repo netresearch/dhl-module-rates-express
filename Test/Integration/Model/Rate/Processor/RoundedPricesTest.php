@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Test\Integration\Model\Rate\Processor;
 
 use Dhl\ExpressRates\Model\Carrier\Express;
@@ -9,8 +13,9 @@ use Dhl\ExpressRates\Model\Rate\Processor\RoundedPrices;
 use Magento\Quote\Model\Quote\Address\RateResult\Method;
 use Magento\Quote\Model\Quote\Address\RateResult\MethodFactory;
 use Magento\TestFramework\ObjectManager;
+use PHPUnit\Framework\TestCase;
 
-class RoundedPricesTest extends \PHPUnit\Framework\TestCase
+class RoundedPricesTest extends TestCase
 {
     /**
      * @var $objectManager ObjectManager
@@ -28,7 +33,7 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
      *
      * @link http://magento.stackexchange.com/a/93961
      */
-    public static function setUpBeforeClass()
+    public static function setUpBeforeClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -45,7 +50,7 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
      *
      * @see setUpBeforeClass()
      */
-    public static function tearDownAfterClass()
+    public static function tearDownAfterClass(): void
     {
         require realpath(TESTS_TEMP_DIR . '/../testsuite/Magento/Store/_files/core_fixturestore_rollback.php');
         require realpath(
@@ -54,7 +59,7 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
         parent::tearDownAfterClass();
     }
 
-    protected function setUp()
+    protected function setUp(): void
     {
 
         $this->objectManager = ObjectManager::getInstance();
@@ -72,16 +77,16 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     public function processMethodsWithNoRounding(array $methods)
     {
         $method = $this->roundedPrices->processMethods($methods['0']);
-        $this->assertSame(0.00, $method[0]->getPrice());
+        self::assertSame(0.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['5.55']);
-        $this->assertSame(5.55, $method[0]->getPrice());
+        self::assertSame(5.55, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['9.99']);
-        $this->assertSame(9.99, $method[0]->getPrice());
+        self::assertSame(9.99, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['10']);
-        $this->assertSame(10.00, $method[0]->getPrice());
+        self::assertSame(10.00, $method[0]->getPrice());
     }
 
     /**
@@ -94,16 +99,16 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     public function processMethodsRoundUpFullPrice(array $methods)
     {
         $method = $this->roundedPrices->processMethods($methods['0']);
-        $this->assertSame(0.00, $method[0]->getPrice());
+        self::assertSame(0.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['5.55']);
-        $this->assertSame(6.00, $method[0]->getPrice());
+        self::assertSame(6.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['9.99']);
-        $this->assertSame(10.00, $method[0]->getPrice());
+        self::assertSame(10.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['10']);
-        $this->assertSame(10.00, $method[0]->getPrice());
+        self::assertSame(10.00, $method[0]->getPrice());
     }
 
     /**
@@ -116,16 +121,16 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     public function processMethodsRoundOffFullPrice(array $methods)
     {
         $method = $this->roundedPrices->processMethods($methods['0']);
-        $this->assertSame(0.00, $method[0]->getPrice());
+        self::assertSame(0.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['5.55']);
-        $this->assertSame(5.00, $method[0]->getPrice());
+        self::assertSame(5.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['9.99']);
-        $this->assertSame(9.00, $method[0]->getPrice());
+        self::assertSame(9.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['10']);
-        $this->assertSame(10.00, $method[0]->getPrice());
+        self::assertSame(10.00, $method[0]->getPrice());
     }
 
     /**
@@ -139,16 +144,16 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     public function processMethodsRoundUpToStaticDecimal(array $methods)
     {
         $method = $this->roundedPrices->processMethods($methods['0']);
-        $this->assertSame(0.95, $method[0]->getPrice());
+        self::assertSame(0.95, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['5.55']);
-        $this->assertSame(5.95, $method[0]->getPrice());
+        self::assertSame(5.95, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['9.99']);
-        $this->assertSame(10.95, $method[0]->getPrice());
+        self::assertSame(10.95, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['10']);
-        $this->assertSame(10.95, $method[0]->getPrice());
+        self::assertSame(10.95, $method[0]->getPrice());
     }
 
     /**
@@ -162,22 +167,22 @@ class RoundedPricesTest extends \PHPUnit\Framework\TestCase
     public function processMethodsRoundOffToStaticDecimal(array $methods)
     {
         $method = $this->roundedPrices->processMethods($methods['0']);
-        $this->assertSame(0.00, $method[0]->getPrice());
+        self::assertSame(0.00, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['5.55']);
-        $this->assertSame(4.95, $method[0]->getPrice());
+        self::assertSame(4.95, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['9.99']);
-        $this->assertSame(9.95, $method[0]->getPrice());
+        self::assertSame(9.95, $method[0]->getPrice());
 
         $method = $this->roundedPrices->processMethods($methods['10']);
-        $this->assertSame(9.95, $method[0]->getPrice());
+        self::assertSame(9.95, $method[0]->getPrice());
     }
 
     /**
-     * @return Method[]
+     * @return \array[][]
      */
-    public function provideTestRateMethods()
+    public function provideTestRateMethods(): array
     {
         $methodFactory = ObjectManager::getInstance()->create(MethodFactory::class);
         $methods = [];

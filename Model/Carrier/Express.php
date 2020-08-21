@@ -1,26 +1,31 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Carrier;
 
 use Dhl\ExpressRates\Model\Config\ModuleConfigInterface;
 use Dhl\ExpressRates\Model\Rate\CheckoutProvider as RateProvider;
+use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\DataObject;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Quote\Model\Quote\Address\RateRequest;
+use Magento\Quote\Model\Quote\Address\RateResult\Error;
+use Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory;
+use Magento\Quote\Model\Quote\Item;
+use Magento\Shipping\Model\Carrier\AbstractCarrier;
+use Magento\Shipping\Model\Carrier\AbstractCarrierOnline;
+use Magento\Shipping\Model\Carrier\CarrierInterface;
+use Magento\Shipping\Model\Rate\ResultFactory;
+use Psr\Log\LoggerInterface;
 
-/**
- * Class Express
- *
- * @package Dhl\ExpressRates\Model\Carrier
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
-class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
-    \Magento\Shipping\Model\Carrier\CarrierInterface
+class Express extends AbstractCarrier implements CarrierInterface
 {
-    const CARRIER_CODE = 'dhlexpress';
+    public const CARRIER_CODE = 'dhlexpress';
 
     /**
      * @var string
@@ -28,7 +33,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     protected $_code = self::CARRIER_CODE;
 
     /**
-     * @var \Magento\Shipping\Model\Rate\ResultFactory
+     * @var ResultFactory
      */
     private $rateFactory;
 
@@ -45,19 +50,19 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     /**
      * Express constructor.
      *
-     * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
-     * @param \Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory $rateErrorFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Shipping\Model\Rate\ResultFactory $rateFactory
+     * @param ScopeConfigInterface $scopeConfig
+     * @param ErrorFactory $rateErrorFactory
+     * @param LoggerInterface $logger
+     * @param ResultFactory $rateFactory
      * @param RateProvider $rateProvider
      * @param ModuleConfigInterface $moduleConfig
      * @param array $data
      */
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
-        \Magento\Quote\Model\Quote\Address\RateResult\ErrorFactory $rateErrorFactory,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Shipping\Model\Rate\ResultFactory $rateFactory,
+        ScopeConfigInterface $scopeConfig,
+        ErrorFactory $rateErrorFactory,
+        LoggerInterface $logger,
+        ResultFactory $rateFactory,
         RateProvider $rateProvider,
         ModuleConfigInterface $moduleConfig,
         array $data = []
@@ -94,10 +99,10 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
      *  - check shipping origin being valid
      *  - check for weightless items (will result in error)
      *
-     * @param \Magento\Framework\DataObject|RateRequest $request
-     * @return bool|\Magento\Framework\DataObject|\Magento\Shipping\Model\Carrier\AbstractCarrierOnline
+     * @param DataObject|RateRequest $request
+     * @return bool|DataObject|AbstractCarrierOnline
      */
-    public function proccessAdditionalValidation(\Magento\Framework\DataObject $request)
+    public function processAdditionalValidation(DataObject $request)
     {
         $errorMsg = false;
 
@@ -110,13 +115,13 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
             return $this->getErrorMessage();
         }
 
-        return parent::proccessAdditionalValidation($request);
+        return parent::processAdditionalValidation($request);
     }
 
     /**
      * @return array
      */
-    public function getAllowedMethods()
+    public function getAllowedMethods(): array
     {
         return [];
     }
@@ -124,7 +129,7 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     /**
      * Get error messages
      *
-     * @return bool|\Magento\Quote\Model\Quote\Address\RateResult\Error
+     * @return bool|Error
      */
     private function getErrorMessage()
     {
@@ -144,12 +149,12 @@ class Express extends \Magento\Shipping\Model\Carrier\AbstractCarrier implements
     /**
      * Check if all request items have a weight configured
      *
-     * @param \Magento\Framework\DataObject|RateRequest $request
+     * @param DataObject|RateRequest $request
      * @return bool
      */
-    private function validateItemWeight(\Magento\Framework\DataObject $request)
+    private function validateItemWeight(DataObject $request): bool
     {
-        /** @var $item \Magento\Quote\Model\Quote\Item */
+        /** @var $item Item */
         foreach ($request->getAllItems() as $item) {
             $product = $item->getProduct();
             if ($product && $product->getWeight()) {

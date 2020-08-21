@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Rate;
 
 use Dhl\ExpressRates\Webservice\RateAdapter;
@@ -10,14 +14,6 @@ use Magento\Quote\Model\Quote\Address\RateRequest;
 use Magento\Shipping\Model\Rate\Result;
 use Magento\Shipping\Model\Rate\ResultFactory;
 
-/**
- * Class CheckoutProvider
- *
- * @package Dhl\ExpressRates\Model\Rate
- * @author Paul Siedler <paul.siedler@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
 class CheckoutProvider
 {
     /**
@@ -57,7 +53,7 @@ class CheckoutProvider
      * @return Result
      * @throws LocalizedException
      */
-    public function getRates(RateRequest $request)
+    public function getRates(RateRequest $request): Result
     {
         $methods    = $this->rateAdapter->getRates($request);
         $rateResult = $this->rateResultFactory->create();

@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Rate\Processor;
 
 use Dhl\Express\Api\Data\ShippingProductsInterface;
@@ -12,11 +16,6 @@ use Magento\Quote\Model\Quote\Address\RateResult\Method;
 
 /**
  * A rate processor to remove the shipping price if certain conditions are met.
- *
- * @package  Dhl\ExpressRates\Model
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
  */
 class FreeShipping implements RateProcessorInterface
 {
@@ -38,10 +37,7 @@ class FreeShipping implements RateProcessorInterface
         $this->moduleConfig = $moduleConfig;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, $request = null): array
     {
         if ($request === null) {
             return $methods;
@@ -84,7 +80,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return float
      */
-    private function getBaseSubTotalInclTax(RateRequest $request)
+    private function getBaseSubTotalInclTax(RateRequest $request): float
     {
         if ($this->moduleConfig->isFreeShippingVirtualProductsIncluded()) {
             return $request->getBaseSubtotalInclTax();
@@ -96,7 +92,7 @@ class FreeShipping implements RateProcessorInterface
             /** @var \Magento\Quote\Model\Quote\Item $item */
             foreach ($request->getAllItems() as $item) {
                 if (!$item->getProduct()->isVirtual()) {
-                    $baseSubTotal += $item->getBasePriceInclTax();
+                    $baseSubTotal += $item->getBaseRowTotalInclTax();
                 }
             }
         }
@@ -111,7 +107,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isDomesticShipping(Method $method)
+    private function isDomesticShipping(Method $method): bool
     {
         return \in_array($method->getMethod(), ShippingProductsInterface::PRODUCTS_DOMESTIC, true);
     }
@@ -123,7 +119,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledDomesticProduct(Method $method)
+    private function isEnabledDomesticProduct(Method $method): bool
     {
         return \in_array(
             $method->getData('method'),
@@ -139,7 +135,7 @@ class FreeShipping implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isEnabledInternationalProduct(Method $method)
+    private function isEnabledInternationalProduct(Method $method): bool
     {
         return \in_array(
             $method->getData('method'),

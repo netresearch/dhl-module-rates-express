@@ -1,7 +1,11 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Rate\Processor;
 
 use Dhl\Express\Api\Data\ShippingProductsInterface;
@@ -13,11 +17,6 @@ use Magento\Shipping\Model\Carrier\AbstractCarrier;
 
 /**
  * A rate processor to append the handling fee based on handling type to the shipping price.
- *
- * @package  Dhl\ExpressRates\Model
- * @author   Rico Sonntag <rico.sonntag@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
  */
 class HandlingFee implements RateProcessorInterface
 {
@@ -26,21 +25,13 @@ class HandlingFee implements RateProcessorInterface
      */
     private $moduleConfig;
 
-    /**
-     * HandlingFee constructor.
-     *
-     * @param ModuleConfigInterface $moduleConfig
-     */
     public function __construct(
         ModuleConfigInterface $moduleConfig
     ) {
         $this->moduleConfig = $moduleConfig;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function processMethods(array $methods, $request = null)
+    public function processMethods(array $methods, $request = null): array
     {
         /** @var Method $method */
         foreach ($methods as $method) {
@@ -65,7 +56,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return string
      */
-    private function getHandlingType(Method $method)
+    private function getHandlingType(Method $method): string
     {
         // Calculate fee depending on shipping type
         if ($this->isDomesticShipping($method)) {
@@ -82,7 +73,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return float
      */
-    private function getHandlingFee(Method $method)
+    private function getHandlingFee(Method $method): float
     {
         // Calculate fee depending on shipping type
         if ($this->isDomesticShipping($method)) {
@@ -99,7 +90,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return bool
      */
-    private function isDomesticShipping(Method $method)
+    private function isDomesticShipping(Method $method): bool
     {
         return \in_array($method->getMethod(), ShippingProductsInterface::PRODUCTS_DOMESTIC, true);
     }
@@ -113,7 +104,7 @@ class HandlingFee implements RateProcessorInterface
      *
      * @return float
      */
-    private function calculatePrice($amount, $handlingType, $handlingFee)
+    private function calculatePrice($amount, $handlingType, $handlingFee): float
     {
         if ($handlingType === AbstractCarrier::HANDLING_TYPE_PERCENT) {
             $amount += $amount * $handlingFee / 100.0;

@@ -1,27 +1,22 @@
 <?php
+
 /**
  * See LICENSE.md for license details.
  */
+
+declare(strict_types=1);
+
 namespace Dhl\ExpressRates\Model\Config\Source;
 
-/**
- * Class ShippingOptionDisplay
- *
- * @package Dhl\ExpressRates\Model\Backend\Config\Source
- * @author Max Melzer <max.melzer@netresearch.de>
- * @copyright 2018 Netresearch GmbH & Co. KG
- * @link http://www.netresearch.de/
- */
-class ShippingOptionDisplay implements \Magento\Framework\Option\ArrayInterface
+use Magento\Framework\Data\OptionSourceInterface;
+
+class ShippingOptionDisplay implements OptionSourceInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function toOptionArray()
     {
         return [
             ['value' => '0', 'label' => __('Cost only')],
-            ['value' => '1', 'label' => __('Cost and estimated delivery dates (Only available on v2.2+)')],
+            ['value' => '1', 'label' => __('Cost and estimated delivery dates')],
         ];
     }
 }

@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * See LICENSE.md for license details.
  */
@@ -14,17 +17,9 @@ use Magento\Shipping\Helper\Carrier;
 use Magento\Shipping\Model\Config;
 use Magento\Store\Model\ScopeInterface;
 
-/**
- * ModuleConfig
- *
- * @package  Dhl\ExpressRates\Model
- * @author   Ronny Gertler <ronny.gertler@netresearch.de>
- * @license  http://opensource.org/licenses/osl-3.0.php Open Software License (OSL 3.0)
- * @link     http://www.netresearch.de/
- */
 class ModuleConfig implements ModuleConfigInterface
 {
-    const DEFAULT_DIMENSION_UNIT = 'in';
+    public const DEFAULT_DIMENSION_UNIT = 'in';
 
     /**
      * @var ScopeConfigInterface
@@ -82,7 +77,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isEnabled($store = null)
+    public function isEnabled($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ENABLED,
@@ -97,7 +92,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getSortOrder($store = null)
+    public function getSortOrder($store = null): int
     {
         return (int)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_SORT_ORDER,
@@ -112,7 +107,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getTitle($store = null)
+    public function getTitle($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_TITLE,
@@ -127,7 +122,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getEmulatedCarrier($store = null)
+    public function getEmulatedCarrier($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_EMULATED_CARRIER,
@@ -142,7 +137,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function shipToSpecificCountries($store = null)
+    public function shipToSpecificCountries($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_SHIP_TO_SPECIFIC_COUNTRIES,
@@ -157,7 +152,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getSpecificCountries($store = null)
+    public function getSpecificCountries($store = null): array
     {
         $countries = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_SPECIFIC_COUNTRIES,
@@ -174,7 +169,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function showIfNotApplicable($store = null)
+    public function showIfNotApplicable($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_SHOW_IF_NOT_APPLICABLE,
@@ -189,7 +184,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getNotApplicableErrorMessage($store = null)
+    public function getNotApplicableErrorMessage($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ERROR_MESSAGE,
@@ -204,7 +199,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getUserName($store = null)
+    public function getUserName($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_USERNAME,
@@ -219,7 +214,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getPassword($store = null)
+    public function getPassword($store = null): string
     {
         return (string)$this->encryptor->decrypt(
             $this->scopeConfig->getValue(
@@ -236,7 +231,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return int
      */
-    public function getLogLevel($store = null)
+    public function getLogLevel($store = null): int
     {
         return (int)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_LOGLEVEL,
@@ -251,7 +246,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getAccountNumber($store = null)
+    public function getAccountNumber($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ACCOUNT_NUMBER,
@@ -266,7 +261,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedDomesticProducts($store = null)
+    public function getAllowedDomesticProducts($store = null): array
     {
         $allowedProducts = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ALLOWED_DOMESTIC_PRODUCTS,
@@ -283,7 +278,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string[]
      */
-    public function getAllowedInternationalProducts($store = null)
+    public function getAllowedInternationalProducts($store = null): array
     {
         $allowedProductsValue = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ALLOWED_INTERNATIONAL_PRODUCTS,
@@ -300,7 +295,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isLoggingEnabled($store = null)
+    public function isLoggingEnabled($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ENABLE_LOGGING,
@@ -315,7 +310,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isRegularPickup($store = null)
+    public function isRegularPickup($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_REGULAR_PICKUP,
@@ -330,7 +325,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isInsured($store = null)
+    public function isInsured($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_PACKAGE_INSURANCE,
@@ -345,7 +340,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function insuranceFromValue($store = null)
+    public function insuranceFromValue($store = null): float
     {
         return (float)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_PACKAGE_INSURANCE_FROM_VALUE,
@@ -360,7 +355,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getPickupTime($store = null)
+    public function getPickupTime($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_PICKUP_TIME,
@@ -376,7 +371,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDomesticHandlingType($store = null)
+    public function getDomesticHandlingType($store = null): string
     {
         return $this->isDomesticRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -418,7 +413,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getInternationalHandlingType($store = null)
+    public function getInternationalHandlingType($store = null): string
     {
         return $this->isInternationalRatesConfigurationEnabled($store) ?
             (string)$this->scopeConfig->getValue(
@@ -435,7 +430,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getInternationalHandlingFee($store = null)
+    public function getInternationalHandlingFee($store = null): float
     {
         if ($this->isInternationalRatesConfigurationEnabled($store)) {
             $type =
@@ -459,7 +454,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesMode($store = null)
+    public function getRoundedPricesMode($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_MODE,
@@ -474,7 +469,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundUp($store = null)
+    public function roundUp($store = null): bool
     {
         return $this->getRoundedPricesFormat($store) === RoundedPricesFormat::DO_NOT_ROUND
             ? false
@@ -487,7 +482,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function roundOff($store = null)
+    public function roundOff($store = null): bool
     {
         return $this->getRoundedPricesFormat($store) === RoundedPricesFormat::DO_NOT_ROUND
             ? false
@@ -500,7 +495,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return string
      */
-    public function getRoundedPricesFormat($store = null)
+    public function getRoundedPricesFormat($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_FORMAT,
@@ -515,7 +510,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return float
      */
-    public function getRoundedPricesStaticDecimal($store = null)
+    public function getRoundedPricesStaticDecimal($store = null): float
     {
         return (float)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_ROUNDED_PRICES_STATIC_DECIMAL,
@@ -524,10 +519,7 @@ class ModuleConfig implements ModuleConfigInterface
         ) / 100;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function isInternationalFreeShippingEnabled($store = null)
+    public function isInternationalFreeShippingEnabled($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_INTERNATIONAL_ENABLED,
@@ -536,10 +528,7 @@ class ModuleConfig implements ModuleConfigInterface
         );
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function isDomesticFreeShippingEnabled($store = null)
+    public function isDomesticFreeShippingEnabled($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_DOMESTIC_ENABLED,
@@ -548,10 +537,7 @@ class ModuleConfig implements ModuleConfigInterface
         );
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function isFreeShippingVirtualProductsIncluded($store = null)
+    public function isFreeShippingVirtualProductsIncluded($store = null): bool
     {
         return (bool)$this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_FREE_SHIPPING_VIRTUAL_ENABLED,
@@ -560,10 +546,7 @@ class ModuleConfig implements ModuleConfigInterface
         );
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getDomesticFreeShippingProducts($store = null)
+    public function getDomesticFreeShippingProducts($store = null): array
     {
         if ($this->isDomesticFreeShippingEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
@@ -577,10 +560,7 @@ class ModuleConfig implements ModuleConfigInterface
         return [];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getDomesticFreeShippingSubTotal($store = null)
+    public function getDomesticFreeShippingSubTotal($store = null): float
     {
         return $this->isDomesticFreeShippingEnabled($store) ?
             (float)$this->scopeConfig->getValue(
@@ -590,10 +570,7 @@ class ModuleConfig implements ModuleConfigInterface
             ) : 0;
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getInternationalFreeShippingProducts($store = null)
+    public function getInternationalFreeShippingProducts($store = null): array
     {
         if ($this->isInternationalFreeShippingEnabled($store)) {
             $allowedProducts = $this->scopeConfig->getValue(
@@ -607,10 +584,7 @@ class ModuleConfig implements ModuleConfigInterface
         return [];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function getInternationalFreeShippingSubTotal($store = null)
+    public function getInternationalFreeShippingSubTotal($store = null): float
     {
         return $this->isInternationalFreeShippingEnabled($store) ?
             (float)$this->scopeConfig->getValue(
@@ -629,7 +603,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @see InternationalProducts
      */
-    private function normalizeAllowedProducts($allowedProductsValue)
+    private function normalizeAllowedProducts($allowedProductsValue): array
     {
         $combinedKeys = explode(',', $allowedProductsValue) ?: [];
 
@@ -653,7 +627,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string|null $store
      * @return bool
      */
-    public function isCheckoutDeliveryTimeEnabled($store = null)
+    public function isCheckoutDeliveryTimeEnabled($store = null): bool
     {
         $value = $this->scopeConfig->getValue(
             ModuleConfigInterface::CONFIG_XML_PATH_CHECKOUT_SHOW_DELIVERY_TIME,
@@ -670,7 +644,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getTermsOfTrade($store = null)
+    public function getTermsOfTrade($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_TERMS_OF_TRADE,
@@ -685,7 +659,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getCutOffTime($store = null)
+    public function getCutOffTime($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_CUT_OFF_TIME,
@@ -700,7 +674,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isInternationalRatesConfigurationEnabled($store = null)
+    public function isInternationalRatesConfigurationEnabled($store = null): bool
     {
         $value = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_INTERNATIONAL_AFFECT_RATES,
@@ -717,7 +691,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param null $store
      * @return bool
      */
-    public function isDomesticRatesConfigurationEnabled($store = null)
+    public function isDomesticRatesConfigurationEnabled($store = null): bool
     {
         $value = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_DOMESTIC_AFFECT_RATES,
@@ -734,7 +708,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param null $store
      * @return string
      */
-    public function getWeightUnit($store = null)
+    public function getWeightUnit($store = null): string
     {
         $weightUOM = $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_WEIGHT_UNIT,
@@ -750,7 +724,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @return string
      */
-    public function getDimensionsUOM()
+    public function getDimensionsUOM(): string
     {
         return $this->getDimensionsUOMfromWeightUOM(
             $this->getWeightUnit()
@@ -763,7 +737,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeDimensionUOM($unit)
+    public function normalizeDimensionUOM($unit): string
     {
         if (array_key_exists($unit, $this->dimensionUnitMap)) {
             return $this->dimensionUnitMap[$unit];
@@ -778,7 +752,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param string $unit
      * @return string
      */
-    public function normalizeWeightUOM($unit)
+    public function normalizeWeightUOM($unit): string
     {
         if (array_key_exists($unit, $this->weightUnitMap)) {
             return $this->weightUnitMap[$unit];
@@ -793,7 +767,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param $unit
      * @return string
      */
-    private function getDimensionsUOMfromWeightUOM($unit)
+    private function getDimensionsUOMfromWeightUOM($unit): string
     {
         if (array_key_exists($unit, $this->weightUnitToDimensionUnitMap)) {
             return $this->weightUnitToDimensionUnitMap[$unit];
@@ -810,7 +784,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @return bool
      *
      */
-    public function isDutiableRoute($receiverCountry, $store = null)
+    public function isDutiableRoute($receiverCountry, $store = null): bool
     {
         $originCountry = $this->getOriginCountry($store);
         $euCountries = $this->getEuCountries($store);
@@ -826,7 +800,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param mixed $store
      * @return string[]
      */
-    public function getEuCountries($store = null)
+    public function getEuCountries($store = null): array
     {
         $euCountries = $this->scopeConfig->getValue(
             Carrier::XML_PATH_EU_COUNTRIES_LIST,
@@ -845,7 +819,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param mixed $store
      * @return string
      */
-    public function getOriginCountry($store = null)
+    public function getOriginCountry($store = null): string
     {
         return (string)$this->scopeConfig->getValue(
             Config::XML_PATH_ORIGIN_COUNTRY_ID,
@@ -860,7 +834,7 @@ class ModuleConfig implements ModuleConfigInterface
      * @param mixed $store
      * @return float
      */
-    public function getPackagingWeight($store = null)
+    public function getPackagingWeight($store = null): float
     {
         return (float)$this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_PACKAGING_WEIGHT,
@@ -869,10 +843,7 @@ class ModuleConfig implements ModuleConfigInterface
         );
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    public function getVersion($store = null)
+    public function getVersion($store = null): string
     {
         return $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_VERSION,
