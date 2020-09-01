@@ -5,15 +5,15 @@ Magento®
 
 The most recent versions of the following Magento® editions are supported:
 
-- Community Edition 2.1, 2.2, 2.3
-- Enterprise Edition 2.1, 2.2, 2.3
+- Community Edition 2.3, 2.4
+- Enterprise Edition 2.3, 2.4
 
 PHP
 ---
 
 These PHP versions are supported by the extension:
 
-- PHP 5.6, 7.0, 7.1
+- PHP >= 7.1.3
 
 .. admonition:: PHP version requirements
 
