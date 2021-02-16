@@ -263,7 +263,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getAllowedDomesticProducts($store = null): array
     {
-        $allowedProducts = $this->scopeConfig->getValue(
+        $allowedProducts = (string) $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ALLOWED_DOMESTIC_PRODUCTS,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -280,7 +280,7 @@ class ModuleConfig implements ModuleConfigInterface
      */
     public function getAllowedInternationalProducts($store = null): array
     {
-        $allowedProductsValue = $this->scopeConfig->getValue(
+        $allowedProductsValue = (string) $this->scopeConfig->getValue(
             self::CONFIG_XML_PATH_ALLOWED_INTERNATIONAL_PRODUCTS,
             ScopeInterface::SCOPE_STORE,
             $store
@@ -549,7 +549,7 @@ class ModuleConfig implements ModuleConfigInterface
     public function getDomesticFreeShippingProducts($store = null): array
     {
         if ($this->isDomesticFreeShippingEnabled($store)) {
-            $allowedProducts = $this->scopeConfig->getValue(
+            $allowedProducts = (string) $this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_DOMESTIC_FREE_SHIPPING_PRODUCTS,
                 ScopeInterface::SCOPE_STORE,
                 $store
@@ -573,7 +573,7 @@ class ModuleConfig implements ModuleConfigInterface
     public function getInternationalFreeShippingProducts($store = null): array
     {
         if ($this->isInternationalFreeShippingEnabled($store)) {
-            $allowedProducts = $this->scopeConfig->getValue(
+            $allowedProducts = (string) $this->scopeConfig->getValue(
                 ModuleConfigInterface::CONFIG_XML_PATH_INTERNATIONAL_FREE_SHIPPING_PRODUCTS,
                 ScopeInterface::SCOPE_STORE,
                 $store
@@ -603,7 +603,7 @@ class ModuleConfig implements ModuleConfigInterface
      *
      * @see InternationalProducts
      */
-    private function normalizeAllowedProducts($allowedProductsValue): array
+    private function normalizeAllowedProducts(string $allowedProductsValue): array
     {
         $combinedKeys = explode(',', $allowedProductsValue) ?: [];
 
