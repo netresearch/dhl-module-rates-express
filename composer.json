@@ -3,7 +3,7 @@
     "type": "magento2-module",
     "description": "Rates in Checkout implementation for DHL Express API",
     "license": "OSL-3.0",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "authors": [
         {
             "email": "plugins@netresearch.de",
